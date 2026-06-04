@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Handwritten Notes to Bullet List Converter — Free Online | Notescribe</title>
+<meta name="description" content="Convert a photo of your handwritten notes into organized bullet points instantly. Free online OCR — no account, no sign-up required. Supports 27 languages.">
+<meta name="keywords" content="handwriting to bullet list, notes to bullet points, convert handwriting to bullets, OCR bullet points, photo of notes to list, digitize notes as bullet points, handwriting recognition bullets, image to bullet list free">
+<meta name="author" content="Notescribe">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://notescribe.app/bullet.html">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://notescribe.app/bullet.html">
+<meta property="og:title" content="Handwritten Notes to Bullet List Converter — Free | Notescribe">
+<meta property="og:description" content="Upload a photo of your handwritten notes and get an organized bullet list in seconds. Free, no sign-up required.">
+<meta property="og:image" content="https://notescribe.app/og-image.png">
+<meta property="og:site_name" content="Notescribe">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Handwritten Notes to Bullet List — Notescribe">
+<meta name="twitter:description" content="Convert a photo of your handwritten notes to organized bullet points in seconds. Free, no sign-up.">
+<meta name="twitter:image" content="https://notescribe.app/og-image.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Notescribe — Bullet List Converter",
+  "url": "https://notescribe.app/bullet.html",
+  "description": "Free online tool that converts photos of handwritten notes to organized bullet point lists using OCR. Supports 27 languages. No sign-up required.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "All",
+  "browserRequirements": "Requires a modern browser with JavaScript enabled",
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": ["Handwriting to bullet list", "27 language support", "Editable output", "No sign-up required", "Copy and download"],
+  "isPartOf": { "@type": "WebSite", "name": "Notescribe", "url": "https://notescribe.app/" }
+}
+</script>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink: #1c1410;
+    --paper: #faf7f2;
+    --paper-dark: #f0ebe0;
+    --cream: #e8e0d0;
+    --amber: #d4813a;
+    --amber-light: #f0a855;
+    --amber-glow: rgba(212,129,58,0.18);
+    --gold: #b8963e;
+    --sage: #4a7a5a;
+    --muted: #9a8f82;
+    --panel-bg: rgba(255,255,255,0.85);
+    --shadow-sm: 0 2px 8px rgba(28,20,16,0.06);
+    --shadow-md: 0 8px 32px rgba(28,20,16,0.1), 0 2px 8px rgba(28,20,16,0.06);
+    --shadow-lg: 0 20px 60px rgba(28,20,16,0.12), 0 4px 16px rgba(28,20,16,0.08);
+    --radius: 16px;
+    --radius-sm: 10px;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 24px 64px;
+    background-image:
+      radial-gradient(ellipse at 15% 10%, rgba(212,129,58,0.08) 0%, transparent 50%),
+      radial-gradient(ellipse at 85% 80%, rgba(74,122,90,0.06) 0%, transparent 50%),
+      repeating-linear-gradient(0deg, transparent, transparent 31px, rgba(184,150,62,0.05) 32px),
+      repeating-linear-gradient(90deg, transparent, transparent 31px, rgba(184,150,62,0.03) 32px);
+  }
+
+  .back-link {
+    align-self: flex-start; display: flex; align-items: center; gap: 6px;
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; margin-bottom: 32px;
+    transition: color 0.15s ease; max-width: 1000px; width: 100%;
+  }
+  .back-link:hover { color: var(--amber); }
+
+  header { text-align: center; margin-bottom: 40px; }
+  .logo-wrap { display: inline-flex; flex-direction: column; align-items: center; }
+  .logo-badge { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .quill-wrap {
+    width: 42px; height: 42px;
+    background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%);
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 20px; box-shadow: 0 4px 14px rgba(212,129,58,0.3); text-decoration: none;
+  }
+  h1 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.2rem); letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
+  h1 em { font-style: italic; font-weight: 400; color: var(--amber); }
+  .page-subtitle { font-size: 0.8rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.04em; }
+
+  .app-container { width: 100%; max-width: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
+  @media (max-width: 720px) { .app-container { grid-template-columns: 1fr; } }
+
+  .panel { background: var(--panel-bg); border: 1px solid rgba(255,255,255,0.9); border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; backdrop-filter: blur(8px); transition: box-shadow 0.3s ease; }
+  .panel:hover { box-shadow: var(--shadow-lg); }
+  .panel-header { padding: 14px 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--paper-dark); background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.5) 100%); }
+  .panel-icon { width: 28px; height: 28px; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 2px 6px rgba(212,129,58,0.3); flex-shrink: 0; }
+  .panel-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); opacity: 0.7; }
+  .panel-tag { margin-left: auto; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); background: var(--amber-glow); border-radius: 100px; padding: 2px 10px; }
+  .panel-body { padding: 22px; }
+
+  #drop-zone { border: 2px dashed var(--cream); border-radius: var(--radius-sm); padding: 44px 20px; text-align: center; cursor: pointer; transition: all 0.25s ease; background: linear-gradient(180deg, var(--paper) 0%, rgba(250,247,242,0) 100%); position: relative; overflow: hidden; }
+  #drop-zone::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, var(--amber-glow) 0%, transparent 70%); opacity: 0; transition: opacity 0.25s ease; }
+  #drop-zone:hover, #drop-zone.dragover { border-color: var(--amber-light); background: rgba(212,129,58,0.03); }
+  #drop-zone:hover::before, #drop-zone.dragover::before { opacity: 1; }
+  .upload-icon-wrap { width: 60px; height: 60px; margin: 0 auto 16px; background: linear-gradient(135deg, var(--paper-dark) 0%, var(--cream) 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: var(--shadow-sm); transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; z-index: 1; }
+  #drop-zone:hover .upload-icon-wrap { transform: translateY(-3px) scale(1.05); box-shadow: var(--shadow-md); }
+  #drop-zone .drop-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; color: var(--ink); margin-bottom: 6px; position: relative; z-index: 1; }
+  #drop-zone small { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.06em; position: relative; z-index: 1; }
+  #file-input { display: none; }
+  .preview-img { width: 100%; border-radius: var(--radius-sm); border: 1px solid var(--cream); display: block; max-height: 260px; object-fit: contain; background: var(--paper); box-shadow: var(--shadow-sm); }
+
+  .lang-select-wrap { position: relative; margin-bottom: 16px; }
+  .lang-select-wrap label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .lang-select { width: 100%; padding: 9px 32px 9px 12px; background: var(--paper); border: 1.5px solid var(--cream); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--ink); cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4813a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; transition: border-color 0.15s ease; }
+  .lang-select:focus { outline: none; border-color: var(--amber); }
+
+  .btn-primary { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 16px; padding: 14px; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); color: #fff; border: none; border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 16px rgba(212,129,58,0.35), inset 0 1px 0 rgba(255,255,255,0.2); position: relative; overflow: hidden; }
+  .btn-primary::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%); pointer-events: none; }
+  .btn-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(212,129,58,0.45), inset 0 1px 0 rgba(255,255,255,0.2); }
+  .btn-primary:active:not(:disabled) { transform: scale(0.98); }
+  .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; transform: none; }
+  .btn-ghost { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-top: 8px; padding: 11px; background: transparent; border: 1.5px solid var(--cream); color: var(--muted); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all 0.18s ease; }
+  .btn-ghost:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); background: var(--paper-dark); }
+  .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 8px; padding: 12px; background: #25D366; color: #fff; border: none; border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 14px rgba(37,211,102,0.3); }
+  .btn-whatsapp:hover { background: #20b858; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37,211,102,0.4); }
+
+  #output-area { min-height: 210px; width: 100%; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; line-height: 1.9; color: var(--ink); white-space: pre-wrap; word-break: break-word; border: none; outline: none; resize: vertical; background: transparent; padding: 0; cursor: text; transition: opacity 0.3s ease; }
+  #output-area::placeholder { font-style: italic; color: var(--cream); }
+  .output-placeholder { min-height: 210px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--cream); pointer-events: none; }
+  .output-placeholder p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.95rem; }
+  .edit-hint { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.06em; color: var(--sage); margin-top: 12px; display: none; align-items: center; gap: 6px; }
+  .edit-hint.visible { display: flex; }
+  .status-bar { margin-top: 14px; padding: 10px 14px; background: linear-gradient(135deg, rgba(212,129,58,0.08) 0%, rgba(184,150,62,0.06) 100%); border: 1px solid rgba(212,129,58,0.15); border-radius: var(--radius-sm); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; color: var(--amber); display: flex; align-items: center; gap: 10px; }
+  .spinner { width: 14px; height: 14px; border: 2px solid rgba(212,129,58,0.25); border-top-color: var(--amber); border-radius: 50%; animation: spin 0.75s linear infinite; flex-shrink: 0; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .action-row { display: flex; gap: 8px; margin-top: 12px; }
+  .action-row .btn-primary { margin-top: 0; flex: 1; }
+  .action-row .btn-ghost { margin-top: 0; flex: 1; }
+  .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--cream), transparent); margin: 18px 0; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .fade-in { animation: fadeUp 0.4s ease forwards; }
+  .seo-section { width: 100%; max-width: 1000px; margin-top: 64px; border-top: 1px solid var(--cream); padding-top: 48px; }
+  .seo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 48px; }
+  @media (max-width: 720px) { .seo-grid { grid-template-columns: 1fr; } }
+  .seo-block h2 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; }
+  .seo-block p { font-size: 0.88rem; line-height: 1.75; color: #5a5248; margin-bottom: 10px; }
+  .seo-steps { list-style: none; counter-reset: steps; display: flex; flex-direction: column; gap: 10px; }
+  .seo-steps li { counter-increment: steps; display: flex; gap: 12px; font-size: 0.88rem; line-height: 1.6; color: #5a5248; align-items: flex-start; }
+  .seo-steps li::before { content: counter(steps); min-width: 22px; height: 22px; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); color: #fff; border-radius: 50%; font-size: 0.68rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+  .seo-features { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .seo-features li { font-size: 0.88rem; line-height: 1.6; color: #5a5248; }
+  .seo-faq { display: flex; flex-direction: column; gap: 4px; }
+  .seo-faq details { border: 1px solid var(--cream); border-radius: 8px; overflow: hidden; }
+  .seo-faq summary { padding: 11px 14px; font-size: 0.85rem; font-weight: 600; color: var(--ink); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background: #fff; transition: background 0.15s; }
+  .seo-faq summary::-webkit-details-marker { display: none; }
+  .seo-faq summary::after { content: '+'; font-size: 1.1rem; color: var(--amber); font-weight: 300; }
+  .seo-faq details[open] summary { background: var(--paper); }
+  .seo-faq details[open] summary::after { content: '−'; }
+  .seo-faq details p { padding: 10px 14px 14px; font-size: 0.84rem; line-height: 1.7; color: #5a5248; background: var(--paper); border-top: 1px solid var(--cream); margin: 0; }
+  footer { margin-top: 48px; padding: 20px 24px; font-size: 0.68rem; letter-spacing: 0.06em; color: var(--muted); text-align: center; border-top: 1px solid var(--cream); width: 100%; max-width: 1000px; }
+</style>
+</head>
+<body>
+
+<a href="index.html" class="back-link">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+  All Tools
+</a>
+
+<header role="banner">
+  <div class="logo-wrap">
+    <div class="logo-badge">
+      <a href="index.html" class="quill-wrap" aria-label="Notescribe home">✒️</a>
+      <h1>Note<em>scribe</em></h1>
+    </div>
+    <p class="page-subtitle">Image of Notes → Bullet List</p>
+  </div>
+</header>
+
+<main role="main">
+<div class="app-container">
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-icon">📷</div>
+      <span class="panel-title">Your Photo</span>
+    </div>
+    <div class="panel-body">
+      <div id="drop-zone">
+        <div class="upload-icon-wrap">📸</div>
+        <p class="drop-title">Drop your photo here</p>
+        <small>or click to browse &nbsp;·&nbsp; JPG, PNG, WEBP</small>
+        <input type="file" id="file-input" accept="image/*">
+      </div>
+      <img id="preview" class="preview-img" style="display:none; margin-top:16px;" alt="Preview">
+      <div class="divider" style="margin-top:18px;"></div>
+      <div class="lang-select-wrap">
+        <label>🌐 Language</label>
+        <select class="lang-select" id="lang-select">
+          <option value="eng">English</option>
+          <option value="ara">Arabic (العربية)</option>
+          <option value="bul">Bulgarian (Български)</option>
+          <option value="chs">Chinese Simplified (简体中文)</option>
+          <option value="cht">Chinese Traditional (繁體中文)</option>
+          <option value="hrv">Croatian (Hrvatski)</option>
+          <option value="cze">Czech (Čeština)</option>
+          <option value="dan">Danish (Dansk)</option>
+          <option value="dut">Dutch (Nederlands)</option>
+          <option value="fin">Finnish (Suomi)</option>
+          <option value="fre">French (Français)</option>
+          <option value="ger">German (Deutsch)</option>
+          <option value="gre">Greek (Ελληνικά)</option>
+          <option value="hun">Hungarian (Magyar)</option>
+          <option value="ita">Italian (Italiano)</option>
+          <option value="jpn">Japanese (日本語)</option>
+          <option value="kor">Korean (한국어)</option>
+          <option value="nor">Norwegian (Norsk)</option>
+          <option value="pol">Polish (Polski)</option>
+          <option value="por">Portuguese (Português)</option>
+          <option value="rom">Romanian (Română)</option>
+          <option value="rus">Russian (Русский)</option>
+          <option value="slv">Slovenian (Slovenščina)</option>
+          <option value="spa">Spanish (Español)</option>
+          <option value="swe">Swedish (Svenska)</option>
+          <option value="tur">Turkish (Türkçe)</option>
+          <option value="ukr">Ukrainian (Українська)</option>
+        </select>
+      </div>
+      <button class="btn-primary" id="convert-btn" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        Convert to Bullet List
+      </button>
+      <button class="btn-ghost" id="clear-btn" style="display:none">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        Clear &amp; start over
+      </button>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-icon">⁃</div>
+      <span class="panel-title">Bullet List</span>
+      <span class="panel-tag">Bullets</span>
+    </div>
+    <div class="panel-body">
+      <div id="output-placeholder" class="output-placeholder">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <p>Your bullet list will appear here</p>
+      </div>
+      <textarea id="output-area" rows="10" spellcheck="true" style="display:none;"></textarea>
+      <p class="edit-hint" id="edit-hint">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Click anywhere to edit or correct mistakes
+      </p>
+      <div id="status-bar" class="status-bar" style="display:none">
+        <div class="spinner"></div>
+        <span id="status-text">Reading your handwriting...</span>
+      </div>
+      <div class="action-row" id="action-row" style="display:none">
+        <button class="btn-primary" id="copy-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          Copy Text
+        </button>
+        <button class="btn-ghost" id="download-btn">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download
+        </button>
+      </div>
+      <button class="btn-whatsapp" id="whatsapp-btn" style="display:none">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        Send via WhatsApp
+      </button>
+    </div>
+  </div>
+</div>
+</main>
+
+<section class="seo-section" aria-label="About Bullet List Conversion">
+  <div class="seo-grid">
+    <div class="seo-block">
+      <h2>Convert Handwritten Notes to Bullet Points</h2>
+      <p>The bullet list converter transforms each line of your handwritten notes into a clean bullet point starting with "•". Numbered lines are automatically de-numbered so the output is uniform and ready to paste into any document or presentation.</p>
+      <p>Great for organizing thoughts, structuring meeting summaries, or preparing content for slides and reports.</p>
+    </div>
+    <div class="seo-block">
+      <h2>How It Works</h2>
+      <ol class="seo-steps">
+        <li><strong>Upload a photo</strong> of your handwritten notes — drag and drop or tap to browse.</li>
+        <li><strong>Select your language</strong> — 27 languages supported.</li>
+        <li><strong>Click Convert</strong> — each line becomes a "•" bullet point automatically.</li>
+        <li><strong>Copy, download, or share</strong> — paste into Word, Google Docs, Notion, Slides, and more.</li>
+      </ol>
+    </div>
+    <div class="seo-block">
+      <h2>When to Use Bullet List Output</h2>
+      <ul class="seo-features">
+        <li>✦ <strong>Meeting notes</strong> — convert action items and decisions into a clean list</li>
+        <li>✦ <strong>Study guides</strong> — organize lecture notes into scannable bullet points</li>
+        <li>✦ <strong>Presentations</strong> — quickly prepare slide content from handwritten outlines</li>
+        <li>✦ <strong>Brainstorming</strong> — digitize whiteboard sessions as structured bullet lists</li>
+        <li>✦ <strong>Reports and summaries</strong> — turn freeform notes into formatted key points</li>
+        <li>✦ <strong>Newsletters and blogs</strong> — extract key takeaways from handwritten drafts</li>
+      </ul>
+    </div>
+    <div class="seo-block">
+      <h2>Frequently Asked Questions</h2>
+      <div class="seo-faq">
+        <details>
+          <summary>How does the bullet formatting work?</summary>
+          <p>Each non-empty line is converted to a bullet point starting with "•". If a line begins with a number (like "1." or "2)"), the numbering is stripped so all bullets are consistent.</p>
+        </details>
+        <details>
+          <summary>Can I edit the bullet list after converting?</summary>
+          <p>Yes. The output text area is fully editable — click any bullet to correct OCR errors, add new points, or reorder content before copying or downloading.</p>
+        </details>
+        <details>
+          <summary>Does it work for notes with mixed content?</summary>
+          <p>Yes. Each paragraph line becomes its own bullet. If your notes mix headings and regular lines, all of them will become bullet points in the output — you can then manually promote headings if needed.</p>
+        </details>
+        <details>
+          <summary>What file format does the download produce?</summary>
+          <p>Downloading gives you a plain .txt file with bullet characters (•) that paste cleanly into any text editor or word processor.</p>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer role="contentinfo">
+  <p>© 2025 Notescribe &nbsp;·&nbsp; Free Handwriting to Text Converter &nbsp;·&nbsp; Powered by OCR.space &nbsp;·&nbsp; No data stored</p>
+</footer>
+
+<script>
+  const dropZone = document.getElementById('drop-zone');
+  const fileInput = document.getElementById('file-input');
+  const preview = document.getElementById('preview');
+  const convertBtn = document.getElementById('convert-btn');
+  const clearBtn = document.getElementById('clear-btn');
+  const outputArea = document.getElementById('output-area');
+  const outputPH = document.getElementById('output-placeholder');
+  const statusBar = document.getElementById('status-bar');
+  const statusText = document.getElementById('status-text');
+  const copyBtn = document.getElementById('copy-btn');
+  const downloadBtn = document.getElementById('download-btn');
+  const actionRow = document.getElementById('action-row');
+  const whatsappBtn = document.getElementById('whatsapp-btn');
+  const editHint = document.getElementById('edit-hint');
+  const langSelect = document.getElementById('lang-select');
+
+  let currentFile = null, currentDataUrl = null;
+
+  const RTL_LANGS = new Set(['ara','heb','per','urd']);
+  const SYSTEM_FONT_LANGS = new Set(['ara','chs','cht','jpn','kor']);
+
+  function applyOutputDir(lang) {
+    outputArea.dir = RTL_LANGS.has(lang) ? 'rtl' : 'ltr';
+    outputArea.style.fontFamily = SYSTEM_FONT_LANGS.has(lang) ? 'system-ui,-apple-system,"Segoe UI",sans-serif' : "'Playfair Display',serif";
+  }
+
+  langSelect.addEventListener('change', () => applyOutputDir(langSelect.value));
+  dropZone.addEventListener('click', () => fileInput.click());
+  dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+  dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+  dropZone.addEventListener('drop', e => {
+    e.preventDefault(); dropZone.classList.remove('dragover');
+    const file = e.dataTransfer.files[0];
+    if (file && file.type.startsWith('image/')) loadFile(file);
+  });
+  fileInput.addEventListener('change', () => { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
+
+  function loadFile(file) {
+    currentFile = file;
+    const reader = new FileReader();
+    reader.onload = e => {
+      currentDataUrl = e.target.result;
+      preview.src = currentDataUrl; preview.style.display = 'block';
+      dropZone.style.display = 'none'; convertBtn.disabled = false;
+      clearBtn.style.display = 'flex'; resetOutput();
+    };
+    reader.readAsDataURL(file);
+  }
+
+  clearBtn.addEventListener('click', () => {
+    currentFile = null; currentDataUrl = null;
+    preview.style.display = 'none'; dropZone.style.display = 'block';
+    convertBtn.disabled = true; clearBtn.style.display = 'none';
+    fileInput.value = ''; resetOutput();
+  });
+
+  function resetOutput() {
+    outputArea.value = ''; outputArea.style.display = 'none';
+    outputPH.style.display = 'flex'; statusBar.style.display = 'none';
+    actionRow.style.display = 'none'; whatsappBtn.style.display = 'none';
+    editHint.classList.remove('visible');
+  }
+
+  function applyFormat(rawText) {
+    const lines = rawText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+    return lines.map(l => '• ' + l.replace(/^[\(\[]?\d+[\.\)\]:][\s]*/, '')).join('\n');
+  }
+
+  convertBtn.addEventListener('click', async () => {
+    if (!currentFile || !currentDataUrl) return;
+    convertBtn.disabled = true;
+    statusBar.style.display = 'flex'; actionRow.style.display = 'none';
+    outputArea.style.display = 'none'; outputPH.style.display = 'flex';
+    statusText.textContent = 'Sending to OCR service...';
+    editHint.classList.remove('visible');
+
+    try {
+      const formData = new FormData();
+      const selectedLang = langSelect.value;
+      applyOutputDir(selectedLang);
+      formData.append('apikey', 'helloworld');
+      formData.append('base64Image', currentDataUrl);
+      formData.append('language', selectedLang);
+      formData.append('isOverlayRequired', 'false');
+      formData.append('detectOrientation', 'true');
+      formData.append('scale', 'true');
+      formData.append('OCREngine', '2');
+
+      const response = await fetch('https://api.ocr.space/parse/image', { method: 'POST', body: formData });
+      const data = await response.json();
+
+      if (data.IsErroredOnProcessing) {
+        showResult('OCR error: ' + (data.ErrorMessage || 'Unknown error'), false);
+      } else if (data.ParsedResults && data.ParsedResults.length > 0) {
+        const rawText = data.ParsedResults[0].ParsedText || '';
+        const formatted = applyFormat(rawText);
+        showResult(formatted || 'No text detected. Try a clearer or higher-contrast image.', !!rawText.trim());
+      } else {
+        showResult('No text found in the image.', false);
+      }
+    } catch (err) {
+      showResult('Connection error: ' + (err && err.message ? err.message : String(err)) + '\n\nMake sure you are connected to the internet.', false);
+    }
+    convertBtn.disabled = false;
+  });
+
+  function showResult(text, success) {
+    outputPH.style.display = 'none'; statusBar.style.display = 'none';
+    outputArea.value = text; outputArea.style.display = 'block';
+    outputArea.classList.add('fade-in');
+    setTimeout(() => outputArea.classList.remove('fade-in'), 400);
+    if (success) { actionRow.style.display = 'flex'; whatsappBtn.style.display = 'flex'; editHint.classList.add('visible'); }
+  }
+
+  copyBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText(outputArea.value).then(() => {
+      copyBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
+      setTimeout(() => { copyBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Text`; }, 2000);
+    });
+  });
+
+  whatsappBtn.addEventListener('click', () => { window.open('https://wa.me/?text=' + encodeURIComponent(outputArea.value), '_blank'); });
+
+  downloadBtn.addEventListener('click', () => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([outputArea.value], { type: 'text/plain' }));
+    a.download = 'bullets.txt'; a.click();
+  });
+</script>
+</body>
+</html>

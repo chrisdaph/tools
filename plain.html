@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Handwritten Notes to Plain Text Converter — Free Online | Notescribe</title>
-<meta name="description" content="Convert a photo of your handwritten notes to clean, editable plain text instantly. Free online OCR — no account, no sign-up required. Supports 27 languages.">
-<meta name="keywords" content="handwriting to plain text, convert notes to text, handwritten to digital text, OCR notes free, photo to plain text, scan handwriting to text, digitize notes online, handwriting recognition free, image to text free">
+<meta name="description" content="Convert a photo of your handwritten notes to clean, editable plain text instantly. Free online tool — no account, no sign-up required. Supports 27 languages.">
+<meta name="keywords" content="handwriting to plain text, convert notes to text, handwritten to digital text, scan notes online free, photo to plain text, scan handwriting to text, digitize notes online, handwriting recognition free, image to text free">
 <meta name="author" content="Notescribe">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://notescribe.app/plain.html">
@@ -25,7 +25,7 @@
   "@type": "WebApplication",
   "name": "Notescribe — Plain Text Converter",
   "url": "https://notescribe.app/plain.html",
-  "description": "Free online tool that converts photos of handwritten notes to clean plain text using OCR. Supports 27 languages. No account or sign-up required.",
+  "description": "Free online tool that converts photos of handwritten notes to clean plain text automatically. Supports 27 languages. No account or sign-up required.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "All",
   "browserRequirements": "Requires a modern browser with JavaScript enabled",
@@ -491,7 +491,7 @@
       <ol class="seo-steps">
         <li><strong>Upload a photo</strong> of your handwritten notes — drag and drop or tap to browse.</li>
         <li><strong>Select your language</strong> — 27 languages supported including multilingual notes.</li>
-        <li><strong>Click Convert</strong> — OCR reads your handwriting and returns editable plain text.</li>
+        <li><strong>Click Convert</strong> — your handwriting is read and returned as editable plain text.</li>
         <li><strong>Copy, download, or share</strong> via WhatsApp — in seconds.</li>
       </ol>
     </div>
@@ -515,7 +515,7 @@
         </details>
         <details>
           <summary>Can I edit the output after converting?</summary>
-          <p>Yes. The output text area is fully editable — click anywhere to correct OCR mistakes or make changes before copying or downloading.</p>
+          <p>Yes. The output text area is fully editable — click anywhere to correct mistakes or make changes before copying or downloading.</p>
         </details>
         <details>
           <summary>How accurate is the handwriting recognition?</summary>
@@ -531,7 +531,7 @@
 </section>
 
 <footer role="contentinfo">
-  <p>© 2025 Notescribe &nbsp;·&nbsp; Free Handwriting to Text Converter &nbsp;·&nbsp; Powered by OCR.space &nbsp;·&nbsp; No data stored</p>
+  <p>© 2025 Notescribe &nbsp;·&nbsp; Free Handwriting to Text Converter &nbsp;·&nbsp; No data stored</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -617,7 +617,7 @@
     actionRow.style.display = 'none';
     outputArea.style.display = 'none';
     outputPH.style.display = 'flex';
-    statusText.textContent = 'Sending to OCR service...';
+    statusText.textContent = 'Analyzing your handwriting...';
     editHint.classList.remove('visible');
 
     try {
@@ -636,7 +636,7 @@
       const data = await response.json();
 
       if (data.IsErroredOnProcessing) {
-        showResult('OCR error: ' + (data.ErrorMessage || 'Unknown error'), false);
+        showResult('Could not read this image: ' + (data.ErrorMessage || 'Unknown error'), false);
       } else if (data.ParsedResults && data.ParsedResults.length > 0) {
         const rawText = data.ParsedResults[0].ParsedText || '';
         const formatted = applyFormat(rawText);

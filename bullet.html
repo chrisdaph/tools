@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Handwritten Notes to Bullet List Converter — Free Online | Notescribe</title>
-<meta name="description" content="Convert a photo of your handwritten notes into organized bullet points instantly. Free online OCR — no account, no sign-up required. Supports 27 languages.">
-<meta name="keywords" content="handwriting to bullet list, notes to bullet points, convert handwriting to bullets, OCR bullet points, photo of notes to list, digitize notes as bullet points, handwriting recognition bullets, image to bullet list free">
+<meta name="description" content="Convert a photo of your handwritten notes into organized bullet points instantly. Free online tool — no account, no sign-up required. Supports 27 languages.">
+<meta name="keywords" content="handwriting to bullet list, notes to bullet points, convert handwriting to bullets, bullet point scanner, photo of notes to list, digitize notes as bullet points, handwriting recognition bullets, image to bullet list free">
 <meta name="author" content="Notescribe">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://notescribe.app/bullet.html">
@@ -25,7 +25,7 @@
   "@type": "WebApplication",
   "name": "Notescribe — Bullet List Converter",
   "url": "https://notescribe.app/bullet.html",
-  "description": "Free online tool that converts photos of handwritten notes to organized bullet point lists using OCR. Supports 27 languages. No sign-up required.",
+  "description": "Free online tool that converts photos of handwritten notes to organized bullet point lists automatically. Supports 27 languages. No sign-up required.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "All",
   "browserRequirements": "Requires a modern browser with JavaScript enabled",
@@ -354,7 +354,7 @@
         </details>
         <details>
           <summary>Can I edit the bullet list after converting?</summary>
-          <p>Yes. The output text area is fully editable — click any bullet to correct OCR errors, add new points, or reorder content before copying or downloading.</p>
+          <p>Yes. The output text area is fully editable — click any bullet to correct errors, add new points, or reorder content before copying or downloading.</p>
         </details>
         <details>
           <summary>Does it work for notes with mixed content?</summary>
@@ -370,7 +370,7 @@
 </section>
 
 <footer role="contentinfo">
-  <p>© 2025 Notescribe &nbsp;·&nbsp; Free Handwriting to Text Converter &nbsp;·&nbsp; Powered by OCR.space &nbsp;·&nbsp; No data stored</p>
+  <p>© 2025 Notescribe &nbsp;·&nbsp; Free Handwriting to Text Converter &nbsp;·&nbsp; No data stored</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -449,7 +449,7 @@
     convertBtn.disabled = true;
     statusBar.style.display = 'flex'; actionRow.style.display = 'none';
     outputArea.style.display = 'none'; outputPH.style.display = 'flex';
-    statusText.textContent = 'Sending to OCR service...';
+    statusText.textContent = 'Analyzing your handwriting...';
     editHint.classList.remove('visible');
 
     try {
@@ -468,7 +468,7 @@
       const data = await response.json();
 
       if (data.IsErroredOnProcessing) {
-        showResult('OCR error: ' + (data.ErrorMessage || 'Unknown error'), false);
+        showResult('Could not read this image: ' + (data.ErrorMessage || 'Unknown error'), false);
       } else if (data.ParsedResults && data.ParsedResults.length > 0) {
         const rawText = data.ParsedResults[0].ParsedText || '';
         const formatted = applyFormat(rawText);

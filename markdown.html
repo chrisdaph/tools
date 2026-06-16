@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Handwritten Notes to Markdown Converter — Free Online | Notescribe</title>
-<meta name="description" content="Convert a photo of your handwritten notes to structured Markdown format instantly. Free online OCR — no account, no sign-up required. Perfect for developers, writers, and GitHub users.">
-<meta name="keywords" content="handwriting to markdown, notes to markdown, convert handwritten notes to markdown, OCR to markdown, photo notes to md file, digitize notes as markdown, handwriting recognition markdown, image to markdown free">
+<meta name="description" content="Convert a photo of your handwritten notes to structured Markdown format instantly. Free online tool — no account, no sign-up required. Perfect for developers, writers, and GitHub users.">
+<meta name="keywords" content="handwriting to markdown, notes to markdown, convert handwritten notes to markdown, scan notes to markdown, photo notes to md file, digitize notes as markdown, handwriting recognition markdown, image to markdown free">
 <meta name="author" content="Notescribe">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://notescribe.app/markdown.html">
@@ -25,7 +25,7 @@
   "@type": "WebApplication",
   "name": "Notescribe — Markdown Converter",
   "url": "https://notescribe.app/markdown.html",
-  "description": "Free online tool that converts photos of handwritten notes to structured Markdown format using OCR. Supports 27 languages. No sign-up required.",
+  "description": "Free online tool that converts photos of handwritten notes to structured Markdown format automatically. Supports 27 languages. No sign-up required.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "All",
   "browserRequirements": "Requires a modern browser with JavaScript enabled",
@@ -341,7 +341,7 @@
 </section>
 
 <footer role="contentinfo">
-  <p>© 2025 Notescribe &nbsp;·&nbsp; Free Handwriting to Text Converter &nbsp;·&nbsp; Powered by OCR.space &nbsp;·&nbsp; No data stored</p>
+  <p>© 2025 Notescribe &nbsp;·&nbsp; Free Handwriting to Text Converter &nbsp;·&nbsp; No data stored</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -422,7 +422,7 @@
     convertBtn.disabled = true;
     statusBar.style.display = 'flex'; actionRow.style.display = 'none';
     outputArea.style.display = 'none'; outputPH.style.display = 'flex';
-    statusText.textContent = 'Sending to OCR service...';
+    statusText.textContent = 'Analyzing your handwriting...';
     editHint.classList.remove('visible');
 
     try {
@@ -441,7 +441,7 @@
       const data = await response.json();
 
       if (data.IsErroredOnProcessing) {
-        showResult('OCR error: ' + (data.ErrorMessage || 'Unknown error'), false);
+        showResult('Could not read this image: ' + (data.ErrorMessage || 'Unknown error'), false);
       } else if (data.ParsedResults && data.ParsedResults.length > 0) {
         const rawText = data.ParsedResults[0].ParsedText || '';
         const formatted = applyFormat(rawText);

@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Handwritten Notes to To-Do List Converter — Free Online | Notescribe</title>
-<meta name="description" content="Convert a photo of your handwritten notes into an interactive, checkable to-do list instantly. Free online OCR — no account, no sign-up required. Supports 27 languages.">
-<meta name="keywords" content="handwriting to todo list, notes to checklist, convert handwriting to tasks, OCR to do list, photo of notes to checklist, digitize handwritten tasks, handwriting recognition todo, image to task list free">
+<meta name="description" content="Convert a photo of your handwritten notes into an interactive, checkable to-do list instantly. Free online tool — no account, no sign-up required. Supports 27 languages.">
+<meta name="keywords" content="handwriting to todo list, notes to checklist, convert handwriting to tasks, scan notes to checklist, photo of notes to checklist, digitize handwritten tasks, handwriting recognition todo, image to task list free">
 <meta name="author" content="Notescribe">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://notescribe.app/todo.html">
@@ -25,7 +25,7 @@
   "@type": "WebApplication",
   "name": "Notescribe — To-Do List Converter",
   "url": "https://notescribe.app/todo.html",
-  "description": "Free online tool that converts photos of handwritten notes to interactive, checkable to-do lists using OCR. Supports 27 languages. No sign-up required.",
+  "description": "Free online tool that converts photos of handwritten notes to interactive, checkable to-do lists automatically. Supports 27 languages. No sign-up required.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "All",
   "browserRequirements": "Requires a modern browser with JavaScript enabled",
@@ -327,7 +327,7 @@
       <ul class="seo-features">
         <li>✦ <strong>Tap to check</strong> — mark tasks done; completed items show a strikethrough</li>
         <li>✦ <strong>Swipe to delete</strong> — swipe a task left on mobile to remove it instantly</li>
-        <li>✦ <strong>Click to edit</strong> — tap any task text to correct OCR errors or update wording</li>
+        <li>✦ <strong>Click to edit</strong> — tap any task text to correct errors or update wording</li>
         <li>✦ <strong>Copy with checkboxes</strong> — copying preserves checkbox state in rich-text apps</li>
         <li>✦ <strong>WhatsApp share</strong> — send the list with [ ] / [x] notation to any contact</li>
         <li>✦ <strong>Download as .txt</strong> — save with [ ] / [x] notation for use in any app</li>
@@ -358,7 +358,7 @@
 </section>
 
 <footer role="contentinfo">
-  <p>© 2025 Notescribe &nbsp;·&nbsp; Free Handwriting to Text Converter &nbsp;·&nbsp; Powered by OCR.space &nbsp;·&nbsp; No data stored</p>
+  <p>© 2025 Notescribe &nbsp;·&nbsp; Free Handwriting to Text Converter &nbsp;·&nbsp; No data stored</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -499,7 +499,7 @@
     convertBtn.disabled = true;
     statusBar.style.display = 'flex'; actionRow.style.display = 'none';
     todoList.style.display = 'none'; outputPH.style.display = 'flex';
-    statusText.textContent = 'Sending to OCR service...';
+    statusText.textContent = 'Analyzing your handwriting...';
     editHint.classList.remove('visible');
 
     try {
@@ -517,7 +517,7 @@
       const data = await response.json();
 
       if (data.IsErroredOnProcessing) {
-        showError('OCR error: ' + (data.ErrorMessage || 'Unknown error'));
+        showError('Could not read this image: ' + (data.ErrorMessage || 'Unknown error'));
       } else if (data.ParsedResults && data.ParsedResults.length > 0) {
         const rawText = data.ParsedResults[0].ParsedText || '';
         if (!rawText.trim()) { showError('No text detected. Try a clearer or higher-contrast image.'); return; }

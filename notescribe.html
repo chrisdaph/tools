@@ -7,7 +7,7 @@
 <!-- ── Primary SEO ──────────────────────────────────────── -->
 <title>Notescribe — Free Handwriting to Text Converter Online | No Sign-up</title>
 <meta name="description" content="Notescribe converts handwritten notes to digital text instantly. Free online handwriting recognition — no account, no app, no sign-up. Supports 27 languages. Export as plain text, bullet points, Markdown, or to-do list.">
-<meta name="keywords" content="handwriting to text, handwritten notes digitizer, OCR handwriting, convert handwriting to digital, free handwriting recognition, scan handwritten notes, digitize handwriting online, handwriting converter, notes to text, handwritten to digital">
+<meta name="keywords" content="handwriting to text, handwritten notes digitizer, handwriting scanner, convert handwriting to digital, free handwriting recognition, scan handwritten notes, digitize handwriting online, handwriting converter, notes to text, handwritten to digital">
 <meta name="author" content="Notescribe">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://notescribe.app/">
@@ -35,7 +35,7 @@
   "@type": "WebApplication",
   "name": "Notescribe",
   "url": "https://notescribe.app/",
-  "description": "Free online tool that converts handwritten notes to digital text using OCR. Supports plain text, bullet points, Markdown, and to-do list formats across 27 languages.",
+  "description": "Free online tool that converts handwritten notes to digital text automatically. Supports plain text, bullet points, Markdown, and to-do list formats across 27 languages.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "All",
   "browserRequirements": "Requires a modern browser with JavaScript enabled",
@@ -1044,7 +1044,7 @@
         <li>✦ <strong>No sign-up required</strong> — works instantly in your browser</li>
         <li>✦ <strong>27 languages</strong> including English, French, Arabic, Chinese, Japanese, Korean, Russian and more</li>
         <li>✦ <strong>Multiple output formats</strong> — plain text, bullets, Markdown, to-do checklist</li>
-        <li>✦ <strong>Editable output</strong> — correct any OCR mistakes right in the app</li>
+        <li>✦ <strong>Editable output</strong> — correct any mistakes right in the app</li>
         <li>✦ <strong>Share anywhere</strong> — copy, download as .txt, or send via WhatsApp</li>
         <li>✦ <strong>Privacy-first</strong> — your images are not stored or shared</li>
       </ul>
@@ -1067,7 +1067,7 @@
         </details>
         <details>
           <summary>Is my handwriting data private?</summary>
-          <p>Your images are sent to the OCR.space API for processing and are not stored on our servers. No personal data is collected or retained.</p>
+          <p>Your images are processed instantly to extract the text and are not stored on our servers. No personal data is collected or retained.</p>
         </details>
         <details>
           <summary>What image formats are supported?</summary>
@@ -1082,7 +1082,7 @@
 </main>
 
 <footer role="contentinfo">
-  <p>© 2025 Notescribe &nbsp;·&nbsp; Free Handwriting to Text Converter &nbsp;·&nbsp; Powered by OCR.space &nbsp;·&nbsp; No data stored</p>
+  <p>© 2025 Notescribe &nbsp;·&nbsp; Free Handwriting to Text Converter &nbsp;·&nbsp; No data stored</p>
 </footer>
 
 <script>
@@ -1330,7 +1330,7 @@
     actionRow.style.display = 'none';
     outputArea.style.display = 'none';
     outputPH.style.display = 'flex';
-    statusText.textContent = 'Sending to OCR service...';
+    statusText.textContent = 'Analyzing your handwriting...';
     editHint.classList.remove('visible');
 
     try {
@@ -1353,7 +1353,7 @@
       const data = await response.json();
 
       if (data.IsErroredOnProcessing) {
-        showResult('OCR error: ' + (data.ErrorMessage || 'Unknown error'), false);
+        showResult('Could not read this image: ' + (data.ErrorMessage || 'Unknown error'), false);
       } else if (data.ParsedResults && data.ParsedResults.length > 0) {
         const rawText = data.ParsedResults[0].ParsedText || '';
         const formatted = applyFormat(rawText, activeFormat);

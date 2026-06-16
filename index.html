@@ -32,7 +32,8 @@
     { "@type": "WebApplication", "name": "Plain Notes Converter", "url": "https://notescribe.app/plain.html", "description": "Convert handwritten notes to clean plain text" },
     { "@type": "WebApplication", "name": "Bullet List Converter", "url": "https://notescribe.app/bullet.html", "description": "Convert handwritten notes to organized bullet points" },
     { "@type": "WebApplication", "name": "Markdown Converter", "url": "https://notescribe.app/markdown.html", "description": "Convert handwritten notes to Markdown format" },
-    { "@type": "WebApplication", "name": "To-Do List Converter", "url": "https://notescribe.app/todo.html", "description": "Convert handwritten notes to an interactive to-do list" }
+    { "@type": "WebApplication", "name": "To-Do List Converter", "url": "https://notescribe.app/todo.html", "description": "Convert handwritten notes to an interactive to-do list" },
+    { "@type": "WebApplication", "name": "Batch Plain Text Converter", "url": "https://notescribe.app/batch.html", "description": "Convert multiple photos of handwritten notes into one combined plain text document" }
   ]
 }
 </script>
@@ -199,6 +200,27 @@
 
   .tool-card-cta svg { flex-shrink: 0; }
 
+  .tool-card-feature {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    gap: 22px;
+    padding: 24px 28px;
+    border-color: rgba(74,122,90,0.25);
+  }
+  .tool-card-feature .tool-card-icon { flex-shrink: 0; }
+  .tool-card-feature-content { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .tool-card-feature-content h2 { display: flex; align-items: center; gap: 8px; }
+  .tool-card-feature .tool-card-cta { margin-top: 0; flex-shrink: 0; }
+  .badge-new {
+    font-size: 0.6rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+    color: #fff; background: var(--sage); padding: 3px 9px; border-radius: 100px;
+  }
+  @media (max-width: 580px) {
+    .tool-card-feature { flex-direction: column; align-items: flex-start; }
+    .tool-card-feature .tool-card-cta { margin-top: 8px; }
+  }
+
   /* ── Divider / footer ────────────────────────────────── */
   .seo-section { width: 100%; max-width: 840px; margin-top: 64px; border-top: 1px solid var(--cream); padding-top: 48px; }
   .seo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 48px; }
@@ -240,6 +262,7 @@
   .tool-card:nth-child(2) { animation: fadeUp 0.4s ease 0.12s both; }
   .tool-card:nth-child(3) { animation: fadeUp 0.4s ease 0.19s both; }
   .tool-card:nth-child(4) { animation: fadeUp 0.4s ease 0.26s both; }
+  .tool-card:nth-child(5) { animation: fadeUp 0.4s ease 0.33s both; }
 </style>
 </head>
 <body>
@@ -302,6 +325,18 @@
       </div>
     </a>
 
+    <a href="batch.html" class="tool-card tool-card-feature">
+      <div class="tool-card-icon">🗂️</div>
+      <div class="tool-card-feature-content">
+        <h2>Batch Convert <span class="badge-new">New</span></h2>
+        <p>Upload multiple photos of handwritten notes at once and merge them into a single plain text document — perfect for multi-page notes.</p>
+      </div>
+      <div class="tool-card-cta">
+        Convert
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>
+
   </div>
 </main>
 
@@ -315,6 +350,7 @@
         <li>✦ <strong>Bullet List</strong> — each line becomes an organized bullet point</li>
         <li>✦ <strong>Markdown</strong> — structured output with H1 heading and body text</li>
         <li>✦ <strong>To-Do List</strong> — interactive checkboxes with swipe-to-delete</li>
+        <li>✦ <strong>Batch Convert</strong> — upload multiple pages and merge them into one plain text document</li>
       </ul>
     </div>
     <div class="seo-block">

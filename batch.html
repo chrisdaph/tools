@@ -710,7 +710,7 @@
 
         let pageText;
         if (data.IsErroredOnProcessing) {
-          pageText = '[Could not read this page: ' + (data.ErrorMessage || 'Unknown error') + ']';
+          pageText = '[Could not read this page — try a clearer photo]';
         } else if (data.ParsedResults && data.ParsedResults.length > 0) {
           const rawText = (data.ParsedResults[0].ParsedText || '').trim();
           pageText = rawText || '[No text detected on this page]';
@@ -720,7 +720,7 @@
         }
         results.push(pages.length > 1 ? `— Page ${i + 1} —\n${pageText}` : pageText);
       } catch (err) {
-        results.push(`— Page ${i + 1} —\n[Connection error: ${err && err.message ? err.message : String(err)}]`);
+        results.push(`— Page ${i + 1} —\n[Connection error — check your internet connection]`);
       }
       if (i < pages.length - 1) await new Promise(r => setTimeout(r, 350));
     }

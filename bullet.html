@@ -468,7 +468,7 @@
       const data = await response.json();
 
       if (data.IsErroredOnProcessing) {
-        showResult('Could not read this image: ' + (data.ErrorMessage || 'Unknown error'), false);
+        showResult('Could not read this image. Try a clearer photo and convert again.', false);
       } else if (data.ParsedResults && data.ParsedResults.length > 0) {
         const rawText = data.ParsedResults[0].ParsedText || '';
         const formatted = applyFormat(rawText);
@@ -477,7 +477,7 @@
         showResult('No text found in the image.', false);
       }
     } catch (err) {
-      showResult('Connection error: ' + (err && err.message ? err.message : String(err)) + '\n\nMake sure you are connected to the internet.', false);
+      showResult('Connection error. Check your internet connection and try again.', false);
     }
     convertBtn.disabled = false;
   });

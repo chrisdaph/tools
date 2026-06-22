@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /notescribe.html
+
+Sitemap: https://tools.oneliest.com/sitemap.xml

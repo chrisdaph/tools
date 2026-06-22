@@ -15,7 +15,9 @@
 <meta property="og:description" content="Upload a photo of your handwritten notes and get structured Markdown in seconds. Perfect for developers, writers, and GitHub users. Free, no sign-up.">
 <meta property="og:image" content="https://tools.oneliest.com/og-image.png">
 <meta property="og:site_name" content="Notescribe">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@notescribe">
 <meta name="twitter:title" content="Handwritten Notes to Markdown — Notescribe">
 <meta name="twitter:description" content="Convert a photo of your handwritten notes to Markdown format in seconds. Free, no sign-up required.">
 <meta name="twitter:image" content="https://tools.oneliest.com/og-image.png">
@@ -43,7 +45,7 @@
   gtag('config', 'G-K5G6NF7D39');
 </script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inconsolata:wght@400;500&family=Inter:wght@300;400;500;600&family=Open+Sans:ital,wght@0,400;0,500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto:wght@400;500&display=swap');
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -74,9 +76,9 @@
   .logo-wrap { display: inline-flex; flex-direction: column; align-items: center; }
   .logo-badge { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
   .quill-wrap { width: 42px; height: 42px; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 14px rgba(212,129,58,0.3); text-decoration: none; }
-  h1 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.2rem); letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
-  h1 em { font-style: italic; font-weight: 400; color: var(--amber); }
-  .page-subtitle { font-size: 0.8rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.04em; }
+  .logo-link { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.2rem); letter-spacing: -0.03em; color: var(--ink); line-height: 1; text-decoration: none; }
+  .logo-link em { font-style: italic; font-weight: 400; color: var(--amber); }
+  .page-subtitle { font-size: 0.8rem; font-family: inherit; font-weight: 400; color: var(--muted); margin-top: 6px; letter-spacing: 0.04em; }
   .app-container { width: 100%; max-width: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
   @media (max-width: 720px) { .app-container { grid-template-columns: 1fr; } }
   .panel { background: var(--panel-bg); border: 1px solid rgba(255,255,255,0.9); border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; backdrop-filter: blur(8px); transition: box-shadow 0.3s ease; }
@@ -128,8 +130,22 @@
   .download-option:hover { background: var(--paper-dark); }
   .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 8px; padding: 12px; background: #25D366; color: #fff; border: none; border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 14px rgba(37,211,102,0.3); }
   .btn-whatsapp:hover { background: #20b858; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37,211,102,0.4); }
-  #output-area { min-height: 210px; width: 100%; font-family: 'Courier New', monospace; font-size: 0.9rem; font-weight: 400; line-height: 1.8; color: var(--ink); white-space: pre-wrap; word-break: break-word; border: none; outline: none; resize: vertical; background: transparent; padding: 0; cursor: text; transition: opacity 0.3s ease; }
-  #output-area::placeholder { font-style: italic; color: var(--cream); }
+  #output-area { min-height: 210px; width: 100%; font-family: 'Courier New', monospace; font-size: 0.9rem; font-weight: 400; line-height: 1.8; color: var(--ink); white-space: pre-wrap; word-break: break-word; border: none; outline: none; background: transparent; cursor: text; transition: opacity 0.3s ease; }
+  #output-area:empty::before { content: 'Your Markdown will appear here'; font-style: italic; color: var(--cream); pointer-events: none; display: block; }
+  .format-toolbar { display: flex; align-items: center; gap: 2px; padding: 5px 8px; background: var(--paper-dark); border: 1px solid var(--cream); border-radius: var(--radius-sm); margin-bottom: 10px; flex-wrap: wrap; }
+  .fmt-btn { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 26px; border: none; background: transparent; border-radius: 5px; cursor: pointer; color: var(--ink); font-size: 0.82rem; font-family: 'Inter', sans-serif; transition: background 0.12s; padding: 0; }
+  .fmt-btn:hover { background: var(--cream); }
+  .fmt-btn.active { background: var(--amber-glow); color: var(--amber); }
+  .fmt-select { height: 26px; border: 1px solid var(--cream); border-radius: 5px; background: var(--paper); padding: 0 4px; font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--ink); cursor: pointer; outline: none; }
+  .fmt-sep { width: 1px; height: 18px; background: var(--cream); margin: 0 4px; flex-shrink: 0; }
+  .fmt-color-btn { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; width: 28px; height: 26px; border-radius: 5px; cursor: pointer; padding: 3px 2px 2px; position: relative; }
+  .fmt-color-btn:hover { background: var(--cream); }
+  .fmt-color-input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; padding: 0; border: none; }
+  #output-area h1 { font-size: 1.5em; font-weight: 700; margin: 4px 0 2px; }
+  #output-area h2 { font-size: 1.25em; font-weight: 700; margin: 4px 0 2px; }
+  #output-area h3 { font-size: 1.1em; font-weight: 600; margin: 4px 0 2px; }
+  #output-area blockquote { border-left: 3px solid var(--amber); padding-left: 10px; margin: 4px 0; color: var(--muted); font-style: italic; }
+  #output-area ul, #output-area ol { padding-left: 1.4em; margin: 2px 0; }
   .output-placeholder { min-height: 210px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--cream); pointer-events: none; }
   .output-placeholder p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.95rem; }
   .edit-hint { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.06em; color: var(--sage); margin-top: 12px; display: none; align-items: center; gap: 6px; }
@@ -176,9 +192,9 @@
   <div class="logo-wrap">
     <div class="logo-badge">
       <a href="index.html" class="quill-wrap" aria-label="Notescribe home">✒️</a>
-      <h1>Note<em>scribe</em></h1>
+      <a href="index.html" class="logo-link">Note<em>scribe</em></a>
     </div>
-    <p class="page-subtitle">Image of Notes → Markdown</p>
+    <h1 class="page-subtitle">Handwritten Notes to Markdown</h1>
   </div>
 </header>
 
@@ -252,7 +268,70 @@
         <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
         <p>Your Markdown will appear here</p>
       </div>
-      <textarea id="output-area" rows="10" spellcheck="false" style="display:none;"></textarea>
+      <div class="format-toolbar" id="format-toolbar" style="display:none;">
+        <button class="fmt-btn" data-cmd="bold" title="Bold"><b>B</b></button>
+        <button class="fmt-btn" data-cmd="italic" title="Italic"><i>I</i></button>
+        <button class="fmt-btn" data-cmd="underline" title="Underline"><u>U</u></button>
+        <button class="fmt-btn" data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
+        <button class="fmt-btn" data-cmd="superscript" title="Superscript" style="font-size:0.68rem">x²</button>
+        <button class="fmt-btn" data-cmd="subscript" title="Subscript" style="font-size:0.68rem">x₂</button>
+        <button class="fmt-btn" data-cmd="removeFormat" title="Clear formatting" style="font-size:0.72rem">✕</button>
+        <span class="fmt-sep"></span>
+        <select class="fmt-select fmt-block" title="Text style" aria-label="Text style">
+          <option value="p">Normal</option>
+          <option value="h1">H1</option>
+          <option value="h2">H2</option>
+          <option value="h3">H3</option>
+          <option value="blockquote">Quote</option>
+        </select>
+        <button class="fmt-btn" data-cmd="insertUnorderedList" title="Bullet list" style="font-size:0.75rem">•≡</button>
+        <button class="fmt-btn" data-cmd="insertOrderedList" title="Numbered list" style="font-size:0.75rem">1≡</button>
+        <button class="fmt-btn" data-cmd="indent" title="Indent" style="font-size:0.7rem">→|</button>
+        <button class="fmt-btn" data-cmd="outdent" title="Outdent" style="font-size:0.7rem">|←</button>
+        <span class="fmt-sep"></span>
+        <label class="fmt-color-btn" title="Text color" aria-label="Text color">
+          <span style="font-weight:700;font-size:0.85rem;line-height:1;font-family:'Inter',sans-serif">A</span>
+          <span class="fmt-text-swatch" style="width:14px;height:3px;border-radius:1px;background:#1c1410;display:block;margin-top:2px"></span>
+          <input type="color" class="fmt-color-input fmt-text-color" value="#1c1410" tabindex="-1">
+        </label>
+        <label class="fmt-color-btn" title="Highlight" aria-label="Highlight color">
+          <span style="font-size:0.85rem;line-height:1;font-family:'Inter',sans-serif">H</span>
+          <span class="fmt-highlight-swatch" style="width:14px;height:3px;border-radius:1px;background:#fac775;display:block;margin-top:2px"></span>
+          <input type="color" class="fmt-color-input fmt-highlight-color" value="#fac775" tabindex="-1">
+        </label>
+        <span class="fmt-sep"></span>
+        <select class="fmt-select fmt-font-family" title="Font" aria-label="Font">
+          <option value="'Playfair Display',Georgia,serif">Playfair</option>
+          <option value="Georgia,serif">Georgia</option>
+          <option value="'Times New Roman',serif">Times</option>
+          <option value="'Roboto',sans-serif">Roboto</option>
+          <option value="'Open Sans',sans-serif">Open Sans</option>
+          <option value="'Inter',sans-serif">Inter</option>
+          <option value="'Dancing Script',cursive">Dancing</option>
+          <option value="'Courier New',monospace" selected>Mono</option>
+          <option value="'Inconsolata',monospace">Inconsolata</option>
+        </select>
+        <select class="fmt-select fmt-font-size" title="Size" aria-label="Font size">
+          <option value="0.75rem">XS</option>
+          <option value="0.875rem">S</option>
+          <option value="0.9rem" selected>M</option>
+          <option value="1.1rem">L</option>
+          <option value="1.4rem">XL</option>
+          <option value="1.8rem">2XL</option>
+        </select>
+        <select class="fmt-select fmt-line-height" title="Line spacing" aria-label="Line spacing">
+          <option value="1.2">Tight</option>
+          <option value="1.5">Compact</option>
+          <option value="1.9" selected>Normal</option>
+          <option value="2.5">Spacious</option>
+        </select>
+        <span class="fmt-sep"></span>
+        <button class="fmt-btn" data-cmd="justifyLeft" title="Align left"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg></button>
+        <button class="fmt-btn" data-cmd="justifyCenter" title="Center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="5" y1="18" x2="19" y2="18"/></svg></button>
+        <button class="fmt-btn" data-cmd="justifyRight" title="Align right"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="6" y1="18" x2="21" y2="18"/></svg></button>
+        <button class="fmt-btn" data-cmd="justifyFull" title="Justify"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      </div>
+      <div id="output-area" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="false" style="display:none;"></div>
       <p class="edit-hint" id="edit-hint">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
         Click anywhere to edit or correct mistakes
@@ -346,6 +425,7 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="download-utils.js"></script>
+<script src="formatting-toolbar.js"></script>
 
 <script>
   const dropZone = document.getElementById('drop-zone');
@@ -362,6 +442,7 @@
   const whatsappBtn = document.getElementById('whatsapp-btn');
   const editHint = document.getElementById('edit-hint');
   const langSelect = document.getElementById('lang-select');
+  const formatToolbar = document.getElementById('format-toolbar');
 
   let currentFile = null, currentDataUrl = null;
 
@@ -404,7 +485,8 @@
   });
 
   function resetOutput() {
-    outputArea.value = ''; outputArea.style.display = 'none';
+    outputArea.innerHTML = ''; outputArea.style.display = 'none';
+    formatToolbar.style.display = 'none';
     outputPH.style.display = 'flex'; statusBar.style.display = 'none';
     actionRow.style.display = 'none'; whatsappBtn.style.display = 'none';
     editHint.classList.remove('visible');
@@ -420,7 +502,7 @@
   convertBtn.addEventListener('click', async () => {
     if (!currentFile || !currentDataUrl) return;
     convertBtn.disabled = true;
-    statusBar.style.display = 'flex'; actionRow.style.display = 'none';
+    statusBar.style.display = 'flex'; actionRow.style.display = 'none'; formatToolbar.style.display = 'none';
     outputArea.style.display = 'none'; outputPH.style.display = 'flex';
     statusText.textContent = 'Analyzing your handwriting...';
     editHint.classList.remove('visible');
@@ -457,22 +539,24 @@
 
   function showResult(text, success) {
     outputPH.style.display = 'none'; statusBar.style.display = 'none';
-    outputArea.value = text; outputArea.style.display = 'block';
+    outputArea.innerText = text; outputArea.style.display = 'block';
+    formatToolbar.style.display = 'flex';
     outputArea.classList.add('fade-in');
     setTimeout(() => outputArea.classList.remove('fade-in'), 400);
     if (success) { actionRow.style.display = 'flex'; whatsappBtn.style.display = 'flex'; editHint.classList.add('visible'); }
   }
 
   copyBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(outputArea.value).then(() => {
+    navigator.clipboard.writeText(outputArea.innerText).then(() => {
       copyBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
       setTimeout(() => { copyBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Text`; }, 2000);
     });
   });
 
-  whatsappBtn.addEventListener('click', () => { window.open('https://wa.me/?text=' + encodeURIComponent(outputArea.value), '_blank'); });
+  whatsappBtn.addEventListener('click', () => { window.open('https://wa.me/?text=' + encodeURIComponent(outputArea.innerText), '_blank'); });
 
-  initDownloadDropdown('download-dropdown', 'download-menu', () => outputArea.value, 'note');
+  initDownloadDropdown('download-dropdown', 'download-menu', () => outputArea.innerText, 'note');
+  initFormattingToolbar('format-toolbar', 'output-area');
 </script>
 </body>
 </html>

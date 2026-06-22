@@ -1,0 +1,41 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&amp;family=Inter:wght@400;500&amp;display=swap');
+.brand { font-family: 'Playfair Display', Georgia, serif; }
+.sans  { font-family: 'Inter', system-ui, sans-serif; }
+</style>
+
+<rect width="1200" height="630" fill="#faf7f2"/>
+
+<circle cx="1110" cy="0" r="195" fill="#d4813a" opacity="0.07"/>
+<circle cx="1095" cy="0" r="105" fill="#d4813a" opacity="0.07"/>
+<circle cx="0" cy="630" r="160" fill="#b8963e" opacity="0.07"/>
+
+<rect x="0" y="0" width="9" height="630" fill="#d4813a"/>
+
+<line x1="64" y1="106" x2="64" y2="524" stroke="#e8e0d0" stroke-width="1"/>
+<line x1="1136" y1="106" x2="1136" y2="524" stroke="#e8e0d0" stroke-width="1"/>
+
+<text x="600" y="164" text-anchor="middle" font-size="24" letter-spacing="6" class="sans" fill="#b8963e" font-weight="500">✒  NOTESCRIBE</text>
+
+<text x="600" y="268" text-anchor="middle" font-size="86" font-weight="700" class="brand" fill="#1c1410">Handwriting</text>
+<text x="600" y="352" text-anchor="middle" font-size="86" font-weight="700" class="brand" fill="#1c1410">→ Digital <tspan font-style="italic" font-weight="400" fill="#d4813a">Text</tspan></text>
+
+<text x="600" y="412" text-anchor="middle" font-size="26" class="sans" fill="#9a8f82" font-weight="400">Free · No sign-up · Works entirely in your browser</text>
+
+<line x1="352" y1="448" x2="848" y2="448" stroke="#e8e0d0" stroke-width="1.5"/>
+
+<rect x="112"  y="472" width="228" height="60" rx="30" fill="#f0ebe0" stroke="#d4813a" stroke-width="1.5"/>
+<text x="226"  y="508" text-anchor="middle" font-size="22" class="sans" fill="#7a4a1a" font-weight="500">Plain text</text>
+
+<rect x="360" y="472" width="228" height="60" rx="30" fill="#f0ebe0" stroke="#d4813a" stroke-width="1.5"/>
+<text x="474" y="508" text-anchor="middle" font-size="22" class="sans" fill="#7a4a1a" font-weight="500">Bullet list</text>
+
+<rect x="612" y="472" width="228" height="60" rx="30" fill="#f0ebe0" stroke="#d4813a" stroke-width="1.5"/>
+<text x="726" y="508" text-anchor="middle" font-size="22" class="sans" fill="#7a4a1a" font-weight="500">Markdown</text>
+
+<rect x="860" y="472" width="228" height="60" rx="30" fill="#f0ebe0" stroke="#d4813a" stroke-width="1.5"/>
+<text x="974" y="508" text-anchor="middle" font-size="22" class="sans" fill="#7a4a1a" font-weight="500">To-do list</text>
+
+<text x="600" y="592" text-anchor="middle" font-size="24" class="sans" fill="#b8963e" font-weight="500" letter-spacing="1">tools.oneliest.com</text>
+</svg>

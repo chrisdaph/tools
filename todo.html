@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Handwritten Notes to To-Do List Converter — Free Online | Notescribe</title>
-<meta name="description" content="Convert a photo of your handwritten notes into an interactive, checkable to-do list instantly. Free online tool — no account, no sign-up required. Supports 27 languages.">
+<meta name="description" content="Convert a photo of your handwritten notes into an interactive to-do list instantly. Free, no sign-up required. Supports 27 languages.">
 <meta name="keywords" content="handwriting to todo list, notes to checklist, convert handwriting to tasks, scan notes to checklist, photo of notes to checklist, digitize handwritten tasks, handwriting recognition todo, image to task list free">
 <meta name="author" content="Notescribe">
 <meta name="robots" content="index, follow">
@@ -15,7 +15,9 @@
 <meta property="og:description" content="Upload a photo of your handwritten notes and get an interactive, checkable to-do list in seconds. Free, no sign-up required.">
 <meta property="og:image" content="https://tools.oneliest.com/og-image.png">
 <meta property="og:site_name" content="Notescribe">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@notescribe">
 <meta name="twitter:title" content="Handwritten Notes to To-Do List — Notescribe">
 <meta name="twitter:description" content="Convert a photo of your handwritten notes to an interactive to-do list in seconds. Free, no sign-up required.">
 <meta name="twitter:image" content="https://tools.oneliest.com/og-image.png">
@@ -74,9 +76,9 @@
   .logo-wrap { display: inline-flex; flex-direction: column; align-items: center; }
   .logo-badge { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
   .quill-wrap { width: 42px; height: 42px; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 14px rgba(212,129,58,0.3); text-decoration: none; }
-  h1 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.2rem); letter-spacing: -0.03em; color: var(--ink); line-height: 1; }
-  h1 em { font-style: italic; font-weight: 400; color: var(--amber); }
-  .page-subtitle { font-size: 0.8rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.04em; }
+  .logo-link { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.2rem); letter-spacing: -0.03em; color: var(--ink); line-height: 1; text-decoration: none; }
+  .logo-link em { font-style: italic; font-weight: 400; color: var(--amber); }
+  .page-subtitle { font-size: 0.8rem; font-family: inherit; font-weight: 400; color: var(--muted); margin-top: 6px; letter-spacing: 0.04em; }
   .app-container { width: 100%; max-width: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
   @media (max-width: 720px) { .app-container { grid-template-columns: 1fr; } }
   .panel { background: var(--panel-bg); border: 1px solid rgba(255,255,255,0.9); border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; backdrop-filter: blur(8px); transition: box-shadow 0.3s ease; }
@@ -194,9 +196,9 @@
   <div class="logo-wrap">
     <div class="logo-badge">
       <a href="index.html" class="quill-wrap" aria-label="Notescribe home">✒️</a>
-      <h1>Note<em>scribe</em></h1>
+      <a href="index.html" class="logo-link">Note<em>scribe</em></a>
     </div>
-    <p class="page-subtitle">Image of Notes → To-Do List</p>
+    <h1 class="page-subtitle">Handwritten Notes to To-Do List</h1>
   </div>
 </header>
 

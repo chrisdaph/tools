@@ -214,6 +214,46 @@
   .seo-faq details p { padding: 10px 14px 14px; font-size: 0.84rem; line-height: 1.7; color: #5a5248; background: var(--paper); border-top: 1px solid var(--cream); margin: 0; }
   footer { margin-top: 48px; padding: 20px 24px; font-size: 0.68rem; letter-spacing: 0.06em; color: var(--muted); text-align: center; border-top: 1px solid var(--cream); width: 100%; max-width: 1000px; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the bullet formatting work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Each non-empty line is converted to a bullet point starting with \"•\". If a line begins with a number (like \"1.\" or \"2)\"), the numbering is stripped so all bullets are consistent."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit the bullet list after converting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The output text area is fully editable — click any bullet to correct errors, add new points, or reorder content before copying or downloading."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it work for notes with mixed content?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Each paragraph line becomes its own bullet. If your notes mix headings and regular lines, all of them will become bullet points in the output — you can then manually promote headings if needed."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What file formats can I download?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Choose plain .txt, Word .doc, or PDF from the download menu — all preserve the bullet characters (•) and paste or open cleanly in any editor or word processor."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

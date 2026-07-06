@@ -184,6 +184,46 @@
   .seo-faq details p { padding: 10px 14px 14px; font-size: 0.84rem; line-height: 1.7; color: #5a5248; background: var(--paper); border-top: 1px solid var(--cream); margin: 0; }
   footer { margin-top: 48px; padding: 20px 24px; font-size: 0.68rem; letter-spacing: 0.06em; color: var(--muted); text-align: center; border-top: 1px solid var(--cream); width: 100%; max-width: 1000px; }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What Markdown structure does it output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The first non-empty line is formatted as an # H1 heading. Remaining lines are output as plain body text. You can manually add further Markdown syntax — bold, lists, links — in the editable output area."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I download a .md file?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Open the Download menu and choose Markdown (.md) — ready to open in any Markdown editor or commit directly to a GitHub repository. Plain Text, Word, and PDF are also available from the same menu."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which editors support the output?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The .md output works with GitHub, GitLab, VS Code, Obsidian, Notion, Typora, Jekyll, Hugo, Gatsby, and any other tool that supports standard CommonMark Markdown."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it support non-English handwriting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — 27 languages are supported. For Chinese, Japanese, Korean, and Arabic the output font switches automatically to a system font that correctly renders those scripts."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 

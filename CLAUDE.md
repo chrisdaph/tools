@@ -41,7 +41,7 @@ Each converter page is **self-contained**: inline CSS in `<style>`, inline JS at
 - **`download-utils.js`** — `initDownloadDropdown(dropdownId, menuId, getText, filenameBase)` and `downloadAs(format, text, filenameBase)`. Supports txt, doc, md, and PDF (via jsPDF CDN).
 
 ### Conversion
-Images are sent to a third-party OCR API as base64. **Never mention the API name, key, or any technical details to users** — show only user-friendly status messages. Error messages must never reference the underlying service.
+The tool converts **any text in a photo** — handwritten notes, printed documents, typed pages, screenshots. Images are sent to a third-party OCR API as base64. **Never mention the API name, key, or any technical details to users** — show only user-friendly status messages. Error messages must never reference the underlying service.
 
 ### Camera (mobile only)
 The camera button uses `classList.add('cam-hidden')` / `classList.remove('cam-hidden')` — **not** `style.display` — so the CSS media query isn't overridden by inline styles. The button is hidden on desktop via:

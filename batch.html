@@ -126,12 +126,20 @@
   }
   .logo-link em { font-style: italic; font-weight: 400; color: var(--amber); }
   .page-subtitle {
-    font-size: 0.8rem;
-    font-family: inherit;
-    font-weight: 400;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.15rem, 3vw, 1.6rem);
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 10px;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+  }
+  .page-description {
+    font-size: 0.82rem;
     color: var(--muted);
-    margin-top: 6px;
-    letter-spacing: 0.04em;
+    margin-top: 5px;
+    max-width: 420px;
+    line-height: 1.6;
   }
 
   .app-container {
@@ -421,6 +429,7 @@
       <a href="index.html" class="logo-link">Note<em>scribe</em></a>
     </div>
     <h1 class="page-subtitle">Batch Handwriting to Plain Text</h1>
+    <p class="page-description">Upload multiple pages at once and get one combined, editable plain text document.</p>
   </div>
 </header>
 

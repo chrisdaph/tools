@@ -78,7 +78,8 @@
   .quill-wrap { width: 42px; height: 42px; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; box-shadow: 0 4px 14px rgba(212,129,58,0.3); text-decoration: none; }
   .logo-link { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.6rem, 4vw, 2.2rem); letter-spacing: -0.03em; color: var(--ink); line-height: 1; text-decoration: none; }
   .logo-link em { font-style: italic; font-weight: 400; color: var(--amber); }
-  .page-subtitle { font-size: 0.8rem; font-family: inherit; font-weight: 400; color: var(--muted); margin-top: 6px; letter-spacing: 0.04em; }
+  .page-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(1.15rem, 3vw, 1.6rem); font-weight: 700; color: var(--ink); margin-top: 10px; letter-spacing: -0.02em; line-height: 1.25; }
+  .page-description { font-size: 0.82rem; color: var(--muted); margin-top: 5px; max-width: 420px; line-height: 1.6; }
   .app-container { width: 100%; max-width: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
   @media (max-width: 720px) { .app-container { grid-template-columns: 1fr; } }
   .panel { background: var(--panel-bg); border: 1px solid rgba(255,255,255,0.9); border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; backdrop-filter: blur(8px); transition: box-shadow 0.3s ease; }
@@ -198,6 +199,7 @@
       <a href="index.html" class="logo-link">Note<em>scribe</em></a>
     </div>
     <h1 class="page-subtitle">Handwritten Notes to Markdown</h1>
+    <p class="page-description">Convert handwritten notes to structured Markdown — first line becomes an H1 heading.</p>
   </div>
 </header>
 

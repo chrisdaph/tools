@@ -294,6 +294,9 @@
     text-transform: uppercase; cursor: pointer; transition: all 0.18s ease;
   }
   .btn-ghost:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); background: var(--paper-dark); }
+  .btn-camera { display: none; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 10px; padding: 11px; background: var(--paper); border: 1.5px solid var(--amber); color: var(--amber); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all 0.18s ease; }
+  .btn-camera:hover { background: var(--amber-glow); }
+  @media (hover: none) and (pointer: coarse) { .btn-camera:not(.cam-hidden) { display: flex; } }
 
   .download-dropdown { position: relative; flex: 1; }
   .download-dropdown .btn-ghost { width: 100%; }
@@ -438,6 +441,11 @@
         <input type="file" id="file-input" accept="image/*" multiple>
       </div>
       <div id="thumb-grid" class="thumb-grid" style="display:none;"></div>
+      <button class="btn-camera" id="camera-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        Take Photo
+      </button>
+      <input type="file" id="camera-input" accept="image/*" capture="environment" style="display:none">
 
       <div class="divider"></div>
 
@@ -671,6 +679,8 @@
   const editHint      = document.getElementById('edit-hint');
   const langSelect    = document.getElementById('lang-select');
   const formatToolbar = document.getElementById('format-toolbar');
+  const cameraBtn   = document.getElementById('camera-btn');
+  const cameraInput = document.getElementById('camera-input');
 
   let pages = []; // { dataUrl }
 
@@ -694,6 +704,8 @@
     addFiles(e.dataTransfer.files);
   });
   fileInput.addEventListener('change', () => { addFiles(fileInput.files); fileInput.value = ''; });
+  cameraBtn.addEventListener('click', () => cameraInput.click());
+  cameraInput.addEventListener('change', () => { addFiles(cameraInput.files); cameraInput.value = ''; });
 
   function addFiles(fileList) {
     const files = Array.from(fileList).filter(f => f.type.startsWith('image/'));

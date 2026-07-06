@@ -139,6 +139,9 @@
   .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; transform: none; }
   .btn-ghost { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-top: 8px; padding: 11px; background: transparent; border: 1.5px solid var(--cream); color: var(--muted); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all 0.18s ease; }
   .btn-ghost:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); background: var(--paper-dark); }
+  .btn-camera { display: none; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 10px; padding: 11px; background: var(--paper); border: 1.5px solid var(--amber); color: var(--amber); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all 0.18s ease; }
+  .btn-camera:hover { background: var(--amber-glow); }
+  @media (hover: none) and (pointer: coarse) { .btn-camera:not(.cam-hidden) { display: flex; } }
 
   .download-dropdown { position: relative; flex: 1; }
   .download-dropdown .btn-ghost { width: 100%; }
@@ -242,6 +245,11 @@
         <small>or click to browse &nbsp;·&nbsp; JPG, PNG, WEBP</small>
         <input type="file" id="file-input" accept="image/*">
       </div>
+      <button class="btn-camera" id="camera-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        Take Photo
+      </button>
+      <input type="file" id="camera-input" accept="image/*" capture="environment" style="display:none">
       <img id="preview" class="preview-img" style="display:none; margin-top:16px;" alt="Preview">
       <div class="divider" style="margin-top:18px;"></div>
       <div class="lang-select-wrap">
@@ -472,6 +480,8 @@
   const editHint = document.getElementById('edit-hint');
   const langSelect = document.getElementById('lang-select');
   const formatToolbar = document.getElementById('format-toolbar');
+  const cameraBtn   = document.getElementById('camera-btn');
+  const cameraInput = document.getElementById('camera-input');
 
   let currentFile = null, currentDataUrl = null;
 
@@ -493,6 +503,8 @@
     if (file && file.type.startsWith('image/')) loadFile(file);
   });
   fileInput.addEventListener('change', () => { if (fileInput.files[0]) loadFile(fileInput.files[0]); });
+  cameraBtn.addEventListener('click', () => cameraInput.click());
+  cameraInput.addEventListener('change', () => { if (cameraInput.files[0]) loadFile(cameraInput.files[0]); });
 
   function loadFile(file) {
     currentFile = file;
@@ -500,7 +512,7 @@
     reader.onload = e => {
       currentDataUrl = e.target.result;
       preview.src = currentDataUrl; preview.style.display = 'block';
-      dropZone.style.display = 'none'; convertBtn.disabled = false;
+      dropZone.style.display = 'none'; cameraBtn.classList.add('cam-hidden'); convertBtn.disabled = false;
       clearBtn.style.display = 'flex'; resetOutput();
     };
     reader.readAsDataURL(file);
@@ -508,7 +520,7 @@
 
   clearBtn.addEventListener('click', () => {
     currentFile = null; currentDataUrl = null;
-    preview.style.display = 'none'; dropZone.style.display = 'block';
+    preview.style.display = 'none'; dropZone.style.display = 'block'; cameraBtn.classList.remove('cam-hidden');
     convertBtn.disabled = true; clearBtn.style.display = 'none';
     fileInput.value = ''; resetOutput();
   });

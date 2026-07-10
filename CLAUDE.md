@@ -33,6 +33,9 @@ GitHub Pages auto-deploys on every push to `main`. No separate deploy command.
 | `markdown.html` | Handwriting → Markdown |
 | `batch.html` | Multi-image batch conversion |
 | `todo.html` | Handwriting → interactive to-do list |
+| `summary.html` | Any photo → extractive key-point summary |
+| `flashcard.html` | Any photo → interactive Q&A flip cards |
+| `table.html` | Any photo → HTML table / CSV download |
 
 Each converter page is **self-contained**: inline CSS in `<style>`, inline JS at bottom. Shared utilities are loaded via `<script src>`.
 
@@ -56,6 +59,9 @@ The camera button uses `classList.add('cam-hidden')` / `classList.remove('cam-hi
 - **`markdown.html`**: Mono font selected by default in toolbar; slightly different font-size defaults.
 - **`batch.html`**: Uses `addFiles()` instead of `loadFile()`; camera input triggers `addFiles`, not hide/show logic.
 - **`todo.html`**: No formatting toolbar or camera — uses interactive checkboxes, swipe-to-delete, and WhatsApp share.
+- **`summary.html`**: Has a "Summary Length" selector (3/5/7/10 sentences) in left panel. Uses TF-IDF extractive scoring. Sentence badge shows count after conversion.
+- **`flashcard.html`**: No formatting toolbar. Detects Q:/A: labels, "?" line endings, or consecutive line pairs. Custom flip-card UI with CSS 3D transform. Keyboard: ←/→ navigate, Space flips.
+- **`table.html`**: No formatting toolbar. Auto-detects pipe/comma/tab/multi-space columns. Renders HTML table; Copy CSV and Download CSV actions. Separator can be forced via selector.
 
 ## CSS format consistency
 Some files use multi-line CSS blocks, others use single-line rules. Match the existing format of the file being edited.

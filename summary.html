@@ -3,39 +3,79 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Convert Images to Markdown — Free Online | Notescribe</title>
-<meta name="description" content="Convert any photo with text to Markdown format instantly — handwritten notes, printed documents, screenshots. Free, no sign-up required. Perfect for developers and writers.">
-<meta name="keywords" content="image to markdown, photo to markdown, convert photo to md file, extract text as markdown, notes to markdown free, image markdown converter">
+<title>Summarize Notes from Any Photo — Free Online | Notescribe</title>
+<meta name="description" content="Upload any photo with text and get a concise summary of the key points instantly — handwritten notes, printed documents, screenshots. Free, no sign-up required.">
+<meta name="keywords" content="summarize notes from photo, image to summary, extract key points from photo, auto summarize notes, summarize handwritten notes free, photo summary generator">
 <meta name="author" content="Notescribe">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tools.oneliest.com/markdown.html">
+<link rel="canonical" href="https://tools.oneliest.com/summary.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://tools.oneliest.com/markdown.html">
-<meta property="og:title" content="Convert Images to Markdown — Free | Notescribe">
-<meta property="og:description" content="Convert any image with text to Markdown instantly — perfect for developers, writers, and GitHub users. Free, no sign-up.">
+<meta property="og:url" content="https://tools.oneliest.com/summary.html">
+<meta property="og:title" content="Summarize Notes from Any Photo — Free | Notescribe">
+<meta property="og:description" content="Upload any photo with text and get a concise summary of the key points instantly. Free, no sign-up.">
 <meta property="og:image" content="https://tools.oneliest.com/og-image.png">
 <meta property="og:site_name" content="Notescribe">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@notescribe">
-<meta name="twitter:title" content="Convert Images to Markdown — Notescribe">
-<meta name="twitter:description" content="Convert any photo with text to Markdown format instantly. Free, no sign-up.">
+<meta name="twitter:title" content="Summarize Notes from Any Photo — Notescribe">
+<meta name="twitter:description" content="Upload any photo with text and get a concise key-point summary instantly. Free, no sign-up.">
 <meta name="twitter:image" content="https://tools.oneliest.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Notescribe — Markdown Converter",
-  "url": "https://tools.oneliest.com/markdown.html",
-  "description": "Free online tool that converts any photo with text — handwritten notes, printed pages, or screenshots — to structured Markdown format automatically. Supports 27 languages. No sign-up required.",
+  "name": "Notescribe — Notes Summarizer",
+  "url": "https://tools.oneliest.com/summary.html",
+  "description": "Free online tool that summarizes any photo with text — handwritten notes, printed documents, or screenshots — into concise key points. No sign-up required.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "All",
   "browserRequirements": "Requires a modern browser with JavaScript enabled",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "featureList": ["Handwriting to Markdown", "H1 heading from first line", "27 language support", "Downloadable .md file", "No sign-up required"],
+  "featureList": ["Auto-summarize notes from photos", "Adjustable summary length", "27 language support", "No sign-up required"],
   "isPartOf": { "@type": "WebSite", "name": "Notescribe", "url": "https://tools.oneliest.com/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the summarization work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool extracts all text from your photo, then uses an extractive algorithm to score each sentence by importance and return the highest-value sentences in their original order."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I control how long the summary is?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Use the Summary Length selector to choose Brief (3 sentences), Standard (5), Detailed (7), or Extended (10 sentences) before converting."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I edit the summary after converting?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The output area is fully editable — click anywhere to refine, rephrase, or add your own notes before copying or downloading."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What types of content summarize best?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Long-form text works best: lecture notes, meeting notes, book pages, articles, and reports. Very short notes (under 5 sentences) are returned as-is since they're already concise."
+      }
+    }
+  ]
 }
 </script>
 <!-- Google tag (gtag.js) -->
@@ -57,6 +97,7 @@
     --paper-dark: #f0ebe0;
     --cream: #e8e0d0;
     --amber: #d4813a;
+    --amber-hover: #c07030;
     --amber-light: #f0a855;
     --amber-glow: rgba(212,129,58,0.18);
     --gold: #b8963e;
@@ -74,6 +115,7 @@
 
   .back-link { align-self: flex-start; display: flex; align-items: center; gap: 6px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); text-decoration: none; margin-bottom: 32px; transition: color 0.15s ease; max-width: 1000px; width: 100%; }
   .back-link:hover { color: var(--amber); }
+
   header { text-align: center; margin-bottom: 40px; }
   .logo-wrap { display: inline-flex; flex-direction: column; align-items: center; }
   .logo-badge { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
@@ -82,15 +124,18 @@
   .logo-link em { font-style: italic; font-weight: 400; color: var(--amber); }
   .page-subtitle { font-family: 'Playfair Display', serif; font-size: clamp(1.15rem, 3vw, 1.6rem); font-weight: 700; color: var(--ink); margin-top: 10px; letter-spacing: -0.02em; line-height: 1.25; }
   .page-description { font-size: 0.82rem; color: var(--muted); margin-top: 5px; max-width: 420px; line-height: 1.6; }
+
   .app-container { width: 100%; max-width: 1000px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: start; }
   @media (max-width: 720px) { .app-container { grid-template-columns: 1fr; } }
+
   .panel { background: var(--panel-bg); border: 1px solid rgba(255,255,255,0.9); border-radius: var(--radius); box-shadow: var(--shadow-md); overflow: hidden; backdrop-filter: blur(8px); transition: box-shadow 0.3s ease; }
   .panel:hover { box-shadow: var(--shadow-lg); }
   .panel-header { padding: 14px 20px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--paper-dark); background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.5) 100%); }
-  .panel-icon { width: 28px; height: 28px; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; color: #fff; font-family: 'Inter', sans-serif; box-shadow: 0 2px 6px rgba(212,129,58,0.3); flex-shrink: 0; }
+  .panel-icon { width: 28px; height: 28px; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; box-shadow: 0 2px 6px rgba(212,129,58,0.3); flex-shrink: 0; }
   .panel-title { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); opacity: 0.7; }
   .panel-tag { margin-left: auto; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber); background: var(--amber-glow); border-radius: 100px; padding: 2px 10px; }
   .panel-body { padding: 22px; }
+
   #drop-zone { border: 2px dashed var(--cream); border-radius: var(--radius-sm); padding: 44px 20px; text-align: center; cursor: pointer; transition: all 0.25s ease; background: linear-gradient(180deg, var(--paper) 0%, rgba(250,247,242,0) 100%); position: relative; overflow: hidden; }
   #drop-zone::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, var(--amber-glow) 0%, transparent 70%); opacity: 0; transition: opacity 0.25s ease; }
   #drop-zone:hover, #drop-zone.dragover { border-color: var(--amber-light); background: rgba(212,129,58,0.03); }
@@ -101,15 +146,18 @@
   #drop-zone small { font-size: 0.68rem; color: var(--muted); letter-spacing: 0.06em; position: relative; z-index: 1; }
   #file-input { display: none; }
   .preview-img { width: 100%; border-radius: var(--radius-sm); border: 1px solid var(--cream); display: block; max-height: 260px; object-fit: contain; background: var(--paper); box-shadow: var(--shadow-sm); }
+
   .lang-select-wrap { position: relative; margin-bottom: 16px; }
   .lang-select-wrap label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
   .lang-select { width: 100%; padding: 9px 32px 9px 12px; background: var(--paper); border: 1.5px solid var(--cream); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--ink); cursor: pointer; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d4813a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; transition: border-color 0.15s ease; }
   .lang-select:focus { outline: none; border-color: var(--amber); }
+
   .btn-primary { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 16px; padding: 14px; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); color: #fff; border: none; border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 16px rgba(212,129,58,0.35), inset 0 1px 0 rgba(255,255,255,0.2); position: relative; overflow: hidden; }
   .btn-primary::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(255,255,255,0.15) 0%, transparent 100%); pointer-events: none; }
   .btn-primary:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(212,129,58,0.45), inset 0 1px 0 rgba(255,255,255,0.2); }
   .btn-primary:active:not(:disabled) { transform: scale(0.98); }
   .btn-primary:disabled { opacity: 0.4; cursor: not-allowed; box-shadow: none; transform: none; }
+
   .btn-ghost { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-top: 8px; padding: 11px; background: transparent; border: 1.5px solid var(--cream); color: var(--muted); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all 0.18s ease; }
   .btn-ghost:hover:not(:disabled) { border-color: var(--ink); color: var(--ink); background: var(--paper-dark); }
   .btn-camera { display: none; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 10px; padding: 11px; background: var(--paper); border: 1.5px solid var(--amber); color: var(--amber); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; transition: all 0.18s ease; }
@@ -120,24 +168,12 @@
   .download-dropdown .btn-ghost { width: 100%; }
   .download-dropdown .caret { margin-left: auto; transition: transform 0.2s ease; }
   .download-dropdown.open .caret { transform: rotate(180deg); }
-  .download-menu {
-    position: absolute; bottom: calc(100% + 8px); left: 0; right: 0;
-    background: #fff; border: 1px solid var(--cream); border-radius: var(--radius-sm);
-    box-shadow: var(--shadow-lg); padding: 6px; z-index: 20;
-    display: none; flex-direction: column; gap: 2px;
-  }
+  .download-menu { position: absolute; bottom: calc(100% + 8px); left: 0; right: 0; background: #fff; border: 1px solid var(--cream); border-radius: var(--radius-sm); box-shadow: var(--shadow-lg); padding: 6px; z-index: 20; display: none; flex-direction: column; gap: 2px; }
   .download-menu.open { display: flex; }
-  .download-option {
-    display: flex; align-items: center; gap: 9px; width: 100%;
-    padding: 9px 10px; background: transparent; border: none; border-radius: 8px;
-    font-family: 'Inter', sans-serif; font-size: 0.76rem; font-weight: 500; color: var(--ink);
-    text-align: left; cursor: pointer; transition: background 0.15s ease;
-  }
+  .download-option { display: flex; align-items: center; gap: 9px; width: 100%; padding: 9px 10px; background: transparent; border: none; border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 0.76rem; font-weight: 500; color: var(--ink); text-align: left; cursor: pointer; transition: background 0.15s ease; }
   .download-option:hover { background: var(--paper-dark); }
-  .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 8px; padding: 12px; background: #25D366; color: #fff; border: none; border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 14px rgba(37,211,102,0.3); }
-  .btn-whatsapp:hover { background: #20b858; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37,211,102,0.4); }
-  #output-area { min-height: 210px; width: 100%; font-family: 'Courier New', monospace; font-size: 0.9rem; font-weight: 400; line-height: 1.8; color: var(--ink); white-space: pre-wrap; word-break: break-word; border: none; outline: none; background: transparent; cursor: text; transition: opacity 0.3s ease; }
-  #output-area:empty::before { content: 'Your Markdown will appear here'; font-style: italic; color: var(--cream); pointer-events: none; display: block; }
+
+  #output-area { min-height: 210px; width: 100%; font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; line-height: 1.9; color: var(--ink); white-space: pre-wrap; word-break: break-word; border: none; outline: none; background: transparent; cursor: text; transition: opacity 0.3s ease; }
   .format-toolbar { display: flex; align-items: center; gap: 2px; padding: 5px 8px; background: var(--paper-dark); border: 1px solid var(--cream); border-radius: var(--radius-sm); margin-bottom: 10px; flex-wrap: wrap; }
   .fmt-btn { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 26px; border: none; background: transparent; border-radius: 5px; cursor: pointer; color: var(--ink); font-size: 0.82rem; font-family: 'Inter', sans-serif; transition: background 0.12s; padding: 0; }
   .fmt-btn:hover { background: var(--cream); }
@@ -147,30 +183,30 @@
   .fmt-color-btn { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; width: 28px; height: 26px; border-radius: 5px; cursor: pointer; padding: 3px 2px 2px; position: relative; }
   .fmt-color-btn:hover { background: var(--cream); }
   .fmt-color-input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; padding: 0; border: none; }
-  #output-area h1 { font-size: 1.5em; font-weight: 700; margin: 4px 0 2px; }
-  #output-area h2 { font-size: 1.25em; font-weight: 700; margin: 4px 0 2px; }
-  #output-area h3 { font-size: 1.1em; font-weight: 600; margin: 4px 0 2px; }
-  #output-area blockquote { border-left: 3px solid var(--amber); padding-left: 10px; margin: 4px 0; color: var(--muted); font-style: italic; }
-  #output-area ul, #output-area ol { padding-left: 1.4em; margin: 2px 0; }
+
   .output-placeholder { min-height: 210px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; color: var(--cream); pointer-events: none; }
   .output-placeholder p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.95rem; }
+
   .edit-hint { font-size: 0.65rem; font-weight: 500; letter-spacing: 0.06em; color: var(--sage); margin-top: 12px; display: none; align-items: center; gap: 6px; }
   .edit-hint.visible { display: flex; }
+
   .status-bar { margin-top: 14px; padding: 10px 14px; background: linear-gradient(135deg, rgba(212,129,58,0.08) 0%, rgba(184,150,62,0.06) 100%); border: 1px solid rgba(212,129,58,0.15); border-radius: var(--radius-sm); font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; color: var(--amber); display: flex; align-items: center; gap: 10px; }
   .spinner { width: 14px; height: 14px; border: 2px solid rgba(212,129,58,0.25); border-top-color: var(--amber); border-radius: 50%; animation: spin 0.75s linear infinite; flex-shrink: 0; }
   @keyframes spin { to { transform: rotate(360deg); } }
+
   .action-row { display: flex; gap: 8px; margin-top: 12px; }
   .action-row .btn-primary { margin-top: 0; flex: 1; }
   .action-row .btn-ghost { margin-top: 0; flex: 1; }
   .divider { height: 1px; background: linear-gradient(90deg, transparent, var(--cream), transparent); margin: 18px 0; }
+
   @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
   .fade-in { animation: fadeUp 0.4s ease forwards; }
+
   .seo-section { width: 100%; max-width: 1000px; margin-top: 64px; border-top: 1px solid var(--cream); padding-top: 48px; }
   .seo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 48px; }
   @media (max-width: 720px) { .seo-grid { grid-template-columns: 1fr; } }
   .seo-block h2 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: 14px; letter-spacing: -0.01em; }
   .seo-block p { font-size: 0.88rem; line-height: 1.75; color: #5a5248; margin-bottom: 10px; }
-  .seo-block code { font-family: 'Courier New', monospace; font-size: 0.82rem; background: var(--paper-dark); padding: 1px 5px; border-radius: 4px; }
   .seo-steps { list-style: none; counter-reset: steps; display: flex; flex-direction: column; gap: 10px; }
   .seo-steps li { counter-increment: steps; display: flex; gap: 12px; font-size: 0.88rem; line-height: 1.6; color: #5a5248; align-items: flex-start; }
   .seo-steps li::before { content: counter(steps); min-width: 22px; height: 22px; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); color: #fff; border-radius: 50%; font-size: 0.68rem; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
@@ -190,46 +226,6 @@
   .also-try a { color: var(--amber); text-decoration: none; }
   .also-try a:hover { text-decoration: underline; }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What Markdown structure does it output?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The first non-empty line is formatted as an # H1 heading. Remaining lines are output as plain body text. You can manually add further Markdown syntax — bold, lists, links — in the editable output area."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I download a .md file?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Open the Download menu and choose Markdown (.md) — ready to open in any Markdown editor or commit directly to a GitHub repository. Plain Text, Word, and PDF are also available from the same menu."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which editors support the output?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The .md output works with GitHub, GitLab, VS Code, Obsidian, Notion, Typora, Jekyll, Hugo, Gatsby, and any other tool that supports standard CommonMark Markdown."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does it support non-English handwriting?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes — 27 languages are supported. For Chinese, Japanese, Korean, and Arabic the output font switches automatically to a system font that correctly renders those scripts."
-      }
-    }
-  ]
-}
-</script>
 </head>
 <body>
 
@@ -244,13 +240,14 @@
       <a href="index.html" class="quill-wrap" aria-label="Notescribe home">✒️</a>
       <a href="index.html" class="logo-link">Note<em>scribe</em></a>
     </div>
-    <h1 class="page-subtitle">Notes & Photos to Markdown</h1>
-    <p class="page-description">Convert any image with text to structured Markdown — works for notes, printed pages, and typed documents.</p>
+    <h1 class="page-subtitle">Notes & Photos to Summary</h1>
+    <p class="page-description">Upload any photo with text and get a concise summary of the key points — perfect for long notes, articles, and documents.</p>
   </div>
 </header>
 
 <main role="main">
 <div class="app-container">
+
   <div class="panel">
     <div class="panel-header">
       <div class="panel-icon">📷</div>
@@ -269,7 +266,9 @@
       </button>
       <input type="file" id="camera-input" accept="image/*" capture="environment" style="display:none">
       <img id="preview" class="preview-img" style="display:none; margin-top:16px;" alt="Preview">
+
       <div class="divider" style="margin-top:18px;"></div>
+
       <div class="lang-select-wrap">
         <label>🌐 Language</label>
         <select class="lang-select" id="lang-select">
@@ -302,9 +301,20 @@
           <option value="ukr">Ukrainian (Українська)</option>
         </select>
       </div>
+
+      <div class="lang-select-wrap">
+        <label>📝 Summary Length</label>
+        <select class="lang-select" id="length-select">
+          <option value="3">Brief (3 sentences)</option>
+          <option value="5" selected>Standard (5 sentences)</option>
+          <option value="7">Detailed (7 sentences)</option>
+          <option value="10">Extended (10 sentences)</option>
+        </select>
+      </div>
+
       <button class="btn-primary" id="convert-btn" disabled>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        Convert to Markdown
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Summarize
       </button>
       <button class="btn-ghost" id="clear-btn" style="display:none">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -315,91 +325,55 @@
 
   <div class="panel">
     <div class="panel-header">
-      <div class="panel-icon">#</div>
-      <span class="panel-title">Markdown</span>
-      <span class="panel-tag">Markdown</span>
+      <div class="panel-icon">📋</div>
+      <span class="panel-title">Summary</span>
+      <span class="panel-tag" id="sentence-badge" style="display:none">Summary</span>
     </div>
     <div class="panel-body">
       <div id="output-placeholder" class="output-placeholder">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        <p>Your Markdown will appear here</p>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <p>Your summary will appear here</p>
       </div>
       <div class="format-toolbar" id="format-toolbar" style="display:none;">
         <button class="fmt-btn" data-cmd="bold" title="Bold"><b>B</b></button>
         <button class="fmt-btn" data-cmd="italic" title="Italic"><i>I</i></button>
         <button class="fmt-btn" data-cmd="underline" title="Underline"><u>U</u></button>
         <button class="fmt-btn" data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
-        <button class="fmt-btn" data-cmd="superscript" title="Superscript" style="font-size:0.68rem">x²</button>
-        <button class="fmt-btn" data-cmd="subscript" title="Subscript" style="font-size:0.68rem">x₂</button>
         <button class="fmt-btn" data-cmd="removeFormat" title="Clear formatting" style="font-size:0.72rem">✕</button>
         <span class="fmt-sep"></span>
-        <select class="fmt-select fmt-block" title="Text style" aria-label="Text style">
-          <option value="p">Normal</option>
-          <option value="h1">H1</option>
-          <option value="h2">H2</option>
-          <option value="h3">H3</option>
-          <option value="blockquote">Quote</option>
-        </select>
-        <button class="fmt-btn" data-cmd="insertUnorderedList" title="Bullet list" style="font-size:0.75rem">•≡</button>
-        <button class="fmt-btn" data-cmd="insertOrderedList" title="Numbered list" style="font-size:0.75rem">1≡</button>
-        <button class="fmt-btn" data-cmd="indent" title="Indent" style="font-size:0.7rem">→|</button>
-        <button class="fmt-btn" data-cmd="outdent" title="Outdent" style="font-size:0.7rem">|←</button>
-        <span class="fmt-sep"></span>
-        <label class="fmt-color-btn" title="Text color" aria-label="Text color">
-          <span style="font-weight:700;font-size:0.85rem;line-height:1;font-family:'Inter',sans-serif">A</span>
-          <span class="fmt-text-swatch" style="width:14px;height:3px;border-radius:1px;background:#1c1410;display:block;margin-top:2px"></span>
-          <input type="color" class="fmt-color-input fmt-text-color" value="#1c1410" tabindex="-1">
-        </label>
-        <label class="fmt-color-btn" title="Highlight" aria-label="Highlight color">
-          <span style="font-size:0.85rem;line-height:1;font-family:'Inter',sans-serif">H</span>
-          <span class="fmt-highlight-swatch" style="width:14px;height:3px;border-radius:1px;background:#fac775;display:block;margin-top:2px"></span>
-          <input type="color" class="fmt-color-input fmt-highlight-color" value="#fac775" tabindex="-1">
-        </label>
-        <span class="fmt-sep"></span>
         <select class="fmt-select fmt-font-family" title="Font" aria-label="Font">
-          <option value="'Playfair Display',Georgia,serif">Playfair</option>
+          <option value="'Playfair Display',Georgia,serif" selected>Playfair</option>
           <option value="Georgia,serif">Georgia</option>
           <option value="'Times New Roman',serif">Times</option>
-          <option value="'Roboto',sans-serif">Roboto</option>
-          <option value="'Open Sans',sans-serif">Open Sans</option>
           <option value="'Inter',sans-serif">Inter</option>
-          <option value="'Dancing Script',cursive">Dancing</option>
-          <option value="'Courier New',monospace" selected>Mono</option>
-          <option value="'Inconsolata',monospace">Inconsolata</option>
+          <option value="'Roboto',sans-serif">Roboto</option>
+          <option value="'Courier New',monospace">Mono</option>
         </select>
         <select class="fmt-select fmt-font-size" title="Size" aria-label="Font size">
-          <option value="0.75rem">XS</option>
           <option value="0.875rem">S</option>
-          <option value="0.9rem" selected>M</option>
-          <option value="1.1rem">L</option>
-          <option value="1.4rem">XL</option>
-          <option value="1.8rem">2XL</option>
+          <option value="1rem" selected>M</option>
+          <option value="1.2rem">L</option>
+          <option value="1.5rem">XL</option>
         </select>
         <select class="fmt-select fmt-line-height" title="Line spacing" aria-label="Line spacing">
-          <option value="1.2">Tight</option>
           <option value="1.5">Compact</option>
           <option value="1.9" selected>Normal</option>
           <option value="2.5">Spacious</option>
         </select>
-        <span class="fmt-sep"></span>
-        <button class="fmt-btn" data-cmd="justifyLeft" title="Align left"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg></button>
-        <button class="fmt-btn" data-cmd="justifyCenter" title="Center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="5" y1="18" x2="19" y2="18"/></svg></button>
-        <button class="fmt-btn" data-cmd="justifyRight" title="Align right"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="6" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="fmt-btn" data-cmd="justifyFull" title="Justify"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       </div>
-      <div id="output-area" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="false" style="display:none;"></div>
+      <div id="output-area" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="true" style="display:none;"></div>
       <p class="edit-hint" id="edit-hint">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        Click anywhere to edit or correct mistakes
+        Click anywhere to edit or refine the summary
       </p>
       <div id="status-bar" class="status-bar" style="display:none">
         <div class="spinner"></div>
-        <span id="status-text">Reading your handwriting...</span>
+        <span id="status-text">Reading and summarizing...</span>
       </div>
       <div class="action-row" id="action-row" style="display:none">
         <button class="btn-primary" id="copy-btn">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy Text
+          Copy Summary
         </button>
         <div class="download-dropdown" id="download-dropdown">
           <button class="btn-ghost" id="download-btn">
@@ -408,67 +382,62 @@
             <svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="download-menu" id="download-menu">
-            <button class="download-option" data-format="md">⬇️ Markdown (.md)</button>
             <button class="download-option" data-format="txt">📄 Plain Text (.txt)</button>
             <button class="download-option" data-format="pdf">📕 PDF (.pdf)</button>
             <button class="download-option" data-format="doc">📝 Word (.doc)</button>
           </div>
         </div>
       </div>
-      <button class="btn-whatsapp" id="whatsapp-btn" style="display:none">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        Send via WhatsApp
-      </button>
     </div>
   </div>
 </div>
 </main>
 
-<section class="seo-section" aria-label="About Markdown Conversion">
+<section class="seo-section" aria-label="About Note Summarization">
   <div class="seo-grid">
     <div class="seo-block">
-      <h2>Convert Handwritten Notes to Markdown</h2>
-      <p>The Markdown converter takes your handwritten notes and outputs structured Markdown syntax. The first line becomes an <code># H1</code> heading and the remaining lines follow as body content — ready to use in GitHub READMEs, documentation tools, static site generators, Notion, Obsidian, and any Markdown-compatible editor.</p>
-      <p>The output uses a monospace font so you can clearly read the syntax, and you can download it as <code>.md</code>, <code>.txt</code>, <code>.doc</code>, or <code>.pdf</code> from the download menu.</p>
+      <h2>Summarize Notes & Documents from Photos</h2>
+      <p>The summary tool extracts all text from your photo, then automatically identifies and returns the most important sentences — compressed to your chosen length. It uses an extractive approach: real sentences from your notes, ranked by importance and returned in their original order.</p>
+      <p>Perfect for long lecture notes, meeting minutes, article pages, and any document where you need the key points fast.</p>
     </div>
     <div class="seo-block">
       <h2>How It Works</h2>
       <ol class="seo-steps">
-        <li><strong>Upload a photo</strong> of your handwritten notes — drag and drop or tap to browse.</li>
-        <li><strong>Select your language</strong> — 27 languages supported.</li>
-        <li><strong>Click Convert</strong> — the first line becomes an <code># H1</code> heading, the rest becomes body text.</li>
-        <li><strong>Download the .md file</strong> or copy to paste directly into your editor.</li>
+        <li><strong>Upload a photo</strong> of your notes or document — drag and drop or tap to browse.</li>
+        <li><strong>Choose your length</strong> — Brief, Standard, Detailed, or Extended.</li>
+        <li><strong>Click Summarize</strong> — the key sentences are extracted and returned in seconds.</li>
+        <li><strong>Edit, copy, or download</strong> — refine the summary before saving.</li>
       </ol>
     </div>
     <div class="seo-block">
-      <h2>Who Uses Markdown Output</h2>
+      <h2>When to Use Summary Output</h2>
       <ul class="seo-features">
-        <li>✦ <strong>Developers</strong> — draft README files and docs from handwritten specs</li>
-        <li>✦ <strong>Writers and bloggers</strong> — convert paper drafts for publishing platforms</li>
-        <li>✦ <strong>GitHub users</strong> — turn whiteboard notes into properly formatted .md files</li>
-        <li>✦ <strong>Notion and Obsidian users</strong> — import handwritten content to their knowledge base</li>
-        <li>✦ <strong>Students</strong> — organize lecture notes in a searchable Markdown format</li>
-        <li>✦ <strong>Technical writers</strong> — start documentation drafts from handwritten outlines</li>
+        <li>✦ <strong>Lecture notes</strong> — get the 5 most important points from a full page</li>
+        <li>✦ <strong>Meeting minutes</strong> — compress a whiteboard into key decisions</li>
+        <li>✦ <strong>Book pages</strong> — extract the main argument from a chapter</li>
+        <li>✦ <strong>Research notes</strong> — surface the key findings quickly</li>
+        <li>✦ <strong>Study revision</strong> — condense notes before an exam</li>
+        <li>✦ <strong>Articles & reports</strong> — get the gist of a printed page</li>
       </ul>
     </div>
     <div class="seo-block">
       <h2>Frequently Asked Questions</h2>
       <div class="seo-faq">
         <details>
-          <summary>What Markdown structure does it output?</summary>
-          <p>The first non-empty line is formatted as an <code># H1</code> heading. Remaining lines are output as plain body text. You can manually add further Markdown syntax — bold, lists, links — in the editable output area.</p>
+          <summary>How does the summarization work?</summary>
+          <p>The tool extracts all text from your photo, then uses an extractive algorithm to score each sentence by importance and return the highest-value sentences in their original order.</p>
         </details>
         <details>
-          <summary>Can I download a .md file?</summary>
-          <p>Yes. Open the Download menu and choose Markdown (.md) — ready to open in any Markdown editor or commit directly to a GitHub repository. Plain Text, Word, and PDF are also available from the same menu.</p>
+          <summary>Can I control how long the summary is?</summary>
+          <p>Yes. Use the Summary Length selector to choose Brief (3 sentences), Standard (5), Detailed (7), or Extended (10 sentences) before converting.</p>
         </details>
         <details>
-          <summary>Which editors support the output?</summary>
-          <p>The .md output works with GitHub, GitLab, VS Code, Obsidian, Notion, Typora, Jekyll, Hugo, Gatsby, and any other tool that supports standard CommonMark Markdown.</p>
+          <summary>Can I edit the summary after converting?</summary>
+          <p>Yes. The output area is fully editable — click anywhere to refine, rephrase, or add your own notes before copying or downloading.</p>
         </details>
         <details>
-          <summary>Does it support non-English handwriting?</summary>
-          <p>Yes — 27 languages are supported. For Chinese, Japanese, Korean, and Arabic the output font switches automatically to a system font that correctly renders those scripts.</p>
+          <summary>What types of content summarize best?</summary>
+          <p>Long-form text works best: lecture notes, meeting notes, book pages, articles, and reports. Very short notes are returned as-is since they're already concise.</p>
         </details>
       </div>
     </div>
@@ -479,11 +448,9 @@
   <span>Also try:</span>
   <a href="plain.html">Plain Text</a>
   <a href="bullet.html">Bullet List</a>
-  <a href="summary.html">Summary</a>
   <a href="flashcard.html">Flashcards</a>
   <a href="table.html">Table</a>
   <a href="batch.html">Batch Convert</a>
-  <a href="todo.html">To-Do List</a>
 </nav>
 <footer role="contentinfo">
   <p>© 2026 Notescribe &nbsp;·&nbsp; Free Image & Notes to Text Converter &nbsp;·&nbsp; No data stored</p>
@@ -492,23 +459,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="download-utils.js"></script>
 <script src="formatting-toolbar.js"></script>
-
 <script>
-  const dropZone = document.getElementById('drop-zone');
-  const fileInput = document.getElementById('file-input');
-  const preview = document.getElementById('preview');
-  const convertBtn = document.getElementById('convert-btn');
-  const clearBtn = document.getElementById('clear-btn');
-  const outputArea = document.getElementById('output-area');
-  const outputPH = document.getElementById('output-placeholder');
-  const statusBar = document.getElementById('status-bar');
-  const statusText = document.getElementById('status-text');
-  const copyBtn = document.getElementById('copy-btn');
-  const actionRow = document.getElementById('action-row');
-  const whatsappBtn = document.getElementById('whatsapp-btn');
-  const editHint = document.getElementById('edit-hint');
-  const langSelect = document.getElementById('lang-select');
+  const dropZone    = document.getElementById('drop-zone');
+  const fileInput   = document.getElementById('file-input');
+  const preview     = document.getElementById('preview');
+  const convertBtn  = document.getElementById('convert-btn');
+  const clearBtn    = document.getElementById('clear-btn');
+  const outputArea  = document.getElementById('output-area');
+  const outputPH    = document.getElementById('output-placeholder');
+  const statusBar   = document.getElementById('status-bar');
+  const statusText  = document.getElementById('status-text');
+  const copyBtn     = document.getElementById('copy-btn');
+  const actionRow   = document.getElementById('action-row');
+  const editHint    = document.getElementById('edit-hint');
+  const langSelect  = document.getElementById('lang-select');
+  const lengthSelect = document.getElementById('length-select');
   const formatToolbar = document.getElementById('format-toolbar');
+  const sentenceBadge = document.getElementById('sentence-badge');
   const cameraBtn   = document.getElementById('camera-btn');
   const cameraInput = document.getElementById('camera-input');
 
@@ -519,10 +486,10 @@
 
   function applyOutputDir(lang) {
     outputArea.dir = RTL_LANGS.has(lang) ? 'rtl' : 'ltr';
-    outputArea.style.fontFamily = SYSTEM_FONT_LANGS.has(lang) ? 'system-ui,-apple-system,"Segoe UI",sans-serif' : "'Courier New',monospace";
+    outputArea.style.fontFamily = SYSTEM_FONT_LANGS.has(lang) ? 'system-ui,-apple-system,"Segoe UI",sans-serif' : "'Playfair Display',serif";
   }
-
   langSelect.addEventListener('change', () => applyOutputDir(langSelect.value));
+
   dropZone.addEventListener('click', () => fileInput.click());
   dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
   dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
@@ -540,9 +507,13 @@
     const reader = new FileReader();
     reader.onload = e => {
       currentDataUrl = e.target.result;
-      preview.src = currentDataUrl; preview.style.display = 'block';
-      dropZone.style.display = 'none'; cameraBtn.classList.add('cam-hidden'); convertBtn.disabled = false;
-      clearBtn.style.display = 'flex'; resetOutput();
+      preview.src = currentDataUrl;
+      preview.style.display = 'block';
+      dropZone.style.display = 'none';
+      cameraBtn.classList.add('cam-hidden');
+      convertBtn.disabled = false;
+      clearBtn.style.display = 'flex';
+      resetOutput();
     };
     reader.readAsDataURL(file);
   }
@@ -558,23 +529,50 @@
     outputArea.innerHTML = ''; outputArea.style.display = 'none';
     formatToolbar.style.display = 'none';
     outputPH.style.display = 'flex'; statusBar.style.display = 'none';
-    actionRow.style.display = 'none'; whatsappBtn.style.display = 'none';
-    editHint.classList.remove('visible');
+    actionRow.style.display = 'none'; editHint.classList.remove('visible');
+    sentenceBadge.style.display = 'none';
   }
 
-  function applyFormat(rawText) {
-    const lines = rawText.split('\n').map(l => l.trim()).filter(l => l.length > 0);
-    if (!lines.length) return rawText.trim();
-    const [first, ...rest] = lines;
-    return '# ' + first + (rest.length ? '\n\n' + rest.join('\n') : '');
+  const STOPWORDS = new Set(['a','an','the','is','it','in','on','at','to','for','of','and','or','but','with','are','was','were','be','been','have','has','had','do','does','did','will','would','could','should','may','might','this','that','these','those','i','you','he','she','we','they','my','your','his','her','its','our','their','me','him','us','them','so','if','as','by','not','from','into','than','then','when','where','who','which','what','how','all','each','both','more','most','some','no','too','very','just','also','about','over','under','after','before']);
+
+  function summarize(text, maxSentences) {
+    const raw = text.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+    const sentenceRe = /[^.!?\n]+[.!?]*(?:\n|$)/g;
+    const sentences = (raw.match(sentenceRe) || raw.split('\n'))
+      .map(s => s.trim()).filter(s => s.length > 15);
+
+    if (!sentences.length) return text.trim();
+    if (sentences.length <= maxSentences) return sentences.join(' ');
+
+    const freq = {};
+    sentences.forEach(s => {
+      s.toLowerCase().split(/\W+/).filter(w => w.length > 3 && !STOPWORDS.has(w))
+        .forEach(w => { freq[w] = (freq[w] || 0) + 1; });
+    });
+
+    const scored = sentences.map((s, idx) => {
+      const words = s.toLowerCase().split(/\W+/).filter(w => w.length > 3 && !STOPWORDS.has(w));
+      const score = words.length ? words.reduce((sum, w) => sum + (freq[w] || 0), 0) / words.length : 0;
+      const posBonus = idx === 0 ? 1.5 : idx === 1 ? 1.2 : 1;
+      return { s, score: score * posBonus, idx };
+    });
+
+    return scored
+      .sort((a, b) => b.score - a.score)
+      .slice(0, maxSentences)
+      .sort((a, b) => a.idx - b.idx)
+      .map(x => x.s)
+      .join(' ');
   }
 
   convertBtn.addEventListener('click', async () => {
     if (!currentFile || !currentDataUrl) return;
     convertBtn.disabled = true;
-    statusBar.style.display = 'flex'; actionRow.style.display = 'none'; formatToolbar.style.display = 'none';
-    outputArea.style.display = 'none'; outputPH.style.display = 'flex';
-    statusText.textContent = 'Analyzing your handwriting...';
+    statusBar.style.display = 'flex';
+    actionRow.style.display = 'none'; formatToolbar.style.display = 'none';
+    outputArea.style.display = 'none';
+    outputPH.style.display = 'flex';
+    statusText.textContent = 'Reading and summarizing your content...';
     editHint.classList.remove('visible');
 
     try {
@@ -596,8 +594,13 @@
         showResult('Could not read this image. Try a clearer photo and convert again.', false);
       } else if (data.ParsedResults && data.ParsedResults.length > 0) {
         const rawText = data.ParsedResults[0].ParsedText || '';
-        const formatted = applyFormat(rawText);
-        showResult(formatted || 'No text detected. Try a clearer or higher-contrast image.', !!rawText.trim());
+        if (!rawText.trim()) {
+          showResult('No text detected. Try a clearer or higher-contrast image.', false);
+        } else {
+          const maxSentences = parseInt(lengthSelect.value, 10);
+          const summary = summarize(rawText, maxSentences);
+          showResult(summary, true, maxSentences);
+        }
       } else {
         showResult('No text found in the image.', false);
       }
@@ -607,26 +610,31 @@
     convertBtn.disabled = false;
   });
 
-  function showResult(text, success) {
+  function showResult(text, success, sentences) {
     outputPH.style.display = 'none'; statusBar.style.display = 'none';
     outputArea.innerText = text; outputArea.style.display = 'block';
     formatToolbar.style.display = 'flex';
     outputArea.classList.add('fade-in');
     setTimeout(() => outputArea.classList.remove('fade-in'), 400);
-    if (success) { actionRow.style.display = 'flex'; whatsappBtn.style.display = 'flex'; editHint.classList.add('visible'); }
+    if (success) {
+      actionRow.style.display = 'flex';
+      editHint.classList.add('visible');
+      sentenceBadge.textContent = sentences + ' sentences';
+      sentenceBadge.style.display = 'inline-block';
+    }
   }
 
   copyBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(outputArea.innerText).then(() => {
-      copyBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
-      setTimeout(() => { copyBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Text`; }, 2000);
+    const text = outputArea.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const orig = copyBtn.innerHTML;
+      copyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+      setTimeout(() => { copyBtn.innerHTML = orig; }, 2000);
     });
   });
 
-  whatsappBtn.addEventListener('click', () => { window.open('https://wa.me/?text=' + encodeURIComponent(outputArea.innerText), '_blank'); });
-
-  initDownloadDropdown('download-dropdown', 'download-menu', () => outputArea.innerText, 'note');
   initFormattingToolbar('format-toolbar', 'output-area');
+  initDownloadDropdown('download-dropdown', 'download-menu', () => outputArea.innerText, 'summary');
 </script>
 </body>
 </html>

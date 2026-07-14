@@ -219,6 +219,8 @@
   .also-try span { font-weight: 600; letter-spacing: 0.04em; }
   .also-try a { color: var(--amber); text-decoration: none; }
   .also-try a:hover { text-decoration: underline; }
+  .btn-sample { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-top: 8px; padding: 10px; background: transparent; border: 1.5px dashed var(--amber); color: var(--amber); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.15s ease; }
+  .btn-sample:hover { background: var(--amber-glow); }
 </style>
 <script type="application/ld+json">
 {
@@ -299,6 +301,7 @@
       </button>
       <input type="file" id="camera-input" accept="image/*" capture="environment" style="display:none">
       <img id="preview" class="preview-img" style="display:none; margin-top:16px;" alt="Preview">
+      <button class="btn-sample" id="sample-btn">✦ Try a sample</button>
       <div class="divider" style="margin-top:18px;"></div>
       <div class="lang-select-wrap">
         <label>🌐 Language</label>
@@ -597,13 +600,19 @@
   }
 
   convertBtn.addEventListener('click', async () => {
-    if (!currentFile || !currentDataUrl) return;
+    if (!currentDataUrl) return;
     convertBtn.disabled = true;
     statusBar.style.display = 'flex'; actionRow.style.display = 'none'; formatToolbar.style.display = 'none';
     outputArea.style.display = 'none'; outputPH.style.display = 'flex';
-    statusText.textContent = 'Analyzing your handwriting...';
     editHint.classList.remove('visible');
-
+    if (isSample) {
+      statusText.textContent = 'Loading demo...';
+      await new Promise(r => setTimeout(r, 700));
+      showResult(SAMPLE_OUTPUT, true);
+      convertBtn.disabled = false;
+      return;
+    }
+    statusText.textContent = 'Analyzing your handwriting...';
     try {
       const formData = new FormData();
       const selectedLang = langSelect.value;
@@ -654,6 +663,48 @@
 
   initDownloadDropdown('download-dropdown', 'download-menu', () => outputArea.innerText, 'bullets');
   initFormattingToolbar('format-toolbar', 'output-area');
+
+  const SAMPLE_LINES = [
+    {t:'Things to Do', x:68, y:38, s:20, b:true},
+    {t:'Call dentist for appointment', x:68, y:82, s:16},
+    {t:'Submit project proposal', x:68, y:112, s:16},
+    {t:'Buy groceries and milk', x:68, y:142, s:16},
+    {t:'Review team feedback doc', x:68, y:172, s:16},
+    {t:'Email client about deadline', x:68, y:202, s:16},
+    {t:'Finish slides for Monday', x:68, y:232, s:16},
+  ];
+  const SAMPLE_OUTPUT = '• Call dentist for appointment\n• Submit project proposal\n• Buy groceries and milk\n• Review team feedback doc\n• Email client about deadline\n• Finish slides for Monday';
+  let isSample = false;
+
+  function buildSampleDataUrl() {
+    const c = document.createElement('canvas'); c.width = 600; c.height = 370;
+    const ctx = c.getContext('2d');
+    ctx.fillStyle = '#faf7f2'; ctx.fillRect(0, 0, 600, 370);
+    ctx.strokeStyle = '#ddd5c0'; ctx.lineWidth = 1;
+    for (let y = 48; y < 370; y += 30) { ctx.beginPath(); ctx.moveTo(10, y); ctx.lineTo(590, y); ctx.stroke(); }
+    ctx.strokeStyle = '#f0aaaa'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(56, 0); ctx.lineTo(56, 370); ctx.stroke();
+    SAMPLE_LINES.forEach(({t, x, y, s, b}) => {
+      ctx.font = (b ? 'bold ' : '') + (s || 16) + 'px Georgia, serif';
+      ctx.fillStyle = '#1c1410'; ctx.fillText(t, x, y);
+    });
+    return c.toDataURL('image/png');
+  }
+
+  function loadSample() {
+    isSample = true;
+    currentDataUrl = buildSampleDataUrl();
+    preview.src = currentDataUrl; preview.style.display = 'block';
+    dropZone.style.display = 'none'; cameraBtn.classList.add('cam-hidden');
+    convertBtn.disabled = false; clearBtn.style.display = 'flex';
+    resetOutput();
+  }
+
+  document.getElementById('sample-btn').addEventListener('click', loadSample);
+  dropZone.addEventListener('drop', () => { isSample = false; });
+  fileInput.addEventListener('change', () => { isSample = false; });
+  cameraInput.addEventListener('change', () => { isSample = false; });
+  clearBtn.addEventListener('click', () => { isSample = false; });
 </script>
 </body>
 </html>

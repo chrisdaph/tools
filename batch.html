@@ -419,6 +419,8 @@
   .also-try span { font-weight: 600; letter-spacing: 0.04em; }
   .also-try a { color: var(--amber); text-decoration: none; }
   .also-try a:hover { text-decoration: underline; }
+  .btn-sample { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-top: 8px; padding: 10px; background: transparent; border: 1.5px dashed var(--amber); color: var(--amber); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.15s ease; }
+  .btn-sample:hover { background: var(--amber-glow); }
 </style>
 <script type="application/ld+json">
 {
@@ -501,6 +503,7 @@
         Take Photo
       </button>
       <input type="file" id="camera-input" accept="image/*" capture="environment" style="display:none">
+      <button class="btn-sample" id="sample-btn">✦ Try a sample</button>
 
       <div class="divider"></div>
 
@@ -841,14 +844,20 @@
   }
 
   convertBtn.addEventListener('click', async () => {
-    if (!pages.length) return;
+    if (!pages.length && !isSample) return;
     convertBtn.disabled = true;
     statusBar.style.display = 'flex';
     actionRow.style.display = 'none'; formatToolbar.style.display = 'none';
     outputArea.style.display = 'none';
     outputPH.style.display = 'flex';
     editHint.classList.remove('visible');
-
+    if (isSample) {
+      statusText.textContent = 'Loading demo...';
+      await new Promise(r => setTimeout(r, 700));
+      showResult(SAMPLE_OUTPUT, true);
+      convertBtn.disabled = false;
+      return;
+    }
     const selectedLang = langSelect.value;
     applyOutputDir(selectedLang);
 
@@ -913,6 +922,56 @@
 
   initDownloadDropdown('download-dropdown', 'download-menu', () => outputArea.innerText, 'notes');
   initFormattingToolbar('format-toolbar', 'output-area');
+
+  const SAMPLE_LINES = [
+    {t:'Project Notes — Q3 Planning', x:68, y:38, s:20, b:true},
+    {t:'Increase revenue target by 20%', x:68, y:82, s:16},
+    {t:'Hire 2 engineers + 1 designer', x:68, y:112, s:16},
+    {t:'Launch v2.0 by end of August', x:68, y:142, s:16},
+    {t:'Client presentation on Friday', x:68, y:172, s:16},
+    {t:'Confirm Q3 budget with finance', x:68, y:202, s:16},
+  ];
+  const SAMPLE_OUTPUT = '— Page 1 —\nProject Notes — Q3 Planning\n\nIncrease revenue target by 20%\nHire 2 engineers + 1 designer\nLaunch v2.0 by end of August\nClient presentation on Friday\nConfirm Q3 budget with finance';
+  let isSample = false;
+
+  function buildSampleDataUrl() {
+    const c = document.createElement('canvas'); c.width = 600; c.height = 370;
+    const ctx = c.getContext('2d');
+    ctx.fillStyle = '#faf7f2'; ctx.fillRect(0, 0, 600, 370);
+    ctx.strokeStyle = '#ddd5c0'; ctx.lineWidth = 1;
+    for (let y = 48; y < 370; y += 30) { ctx.beginPath(); ctx.moveTo(10, y); ctx.lineTo(590, y); ctx.stroke(); }
+    ctx.strokeStyle = '#f0aaaa'; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(56, 0); ctx.lineTo(56, 370); ctx.stroke();
+    SAMPLE_LINES.forEach(({t, x, y, s, b}) => {
+      ctx.font = (b ? 'bold ' : '') + (s || 16) + 'px Georgia, serif';
+      ctx.fillStyle = '#1c1410'; ctx.fillText(t, x, y);
+    });
+    return c.toDataURL('image/png');
+  }
+
+  function loadSample() {
+    isSample = true; pages = [];
+    const dataUrl = buildSampleDataUrl();
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'position:relative;border-radius:6px;overflow:hidden;border:1.5px solid var(--amber);';
+    const img = document.createElement('img');
+    img.src = dataUrl; img.style.cssText = 'width:100%;height:80px;object-fit:cover;display:block;';
+    const lbl = document.createElement('div');
+    lbl.style.cssText = 'position:absolute;top:4px;left:4px;background:rgba(0,0,0,0.55);color:#fff;font-size:9px;font-weight:700;letter-spacing:0.05em;padding:2px 5px;border-radius:3px;';
+    lbl.textContent = 'DEMO';
+    wrap.appendChild(img); wrap.appendChild(lbl);
+    thumbGrid.innerHTML = ''; thumbGrid.appendChild(wrap);
+    dropZone.style.display = 'none'; thumbGrid.style.display = 'grid';
+    pageCountTag.style.display = 'inline-block'; pageCountTag.textContent = '1 page';
+    convertBtn.disabled = false; clearBtn.style.display = 'flex';
+    resetOutput();
+  }
+
+  document.getElementById('sample-btn').addEventListener('click', loadSample);
+  dropZone.addEventListener('drop', () => { isSample = false; });
+  fileInput.addEventListener('change', () => { isSample = false; });
+  cameraInput.addEventListener('change', () => { isSample = false; });
+  clearBtn.addEventListener('click', () => { isSample = false; });
 </script>
 </body>
 </html>

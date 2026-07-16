@@ -693,6 +693,7 @@
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="sample-utils.js"></script>
 <script src="download-utils.js"></script>
 <script src="formatting-toolbar.js"></script>
 <script>
@@ -714,7 +715,7 @@
   const cameraBtn   = document.getElementById('camera-btn');
   const cameraInput = document.getElementById('camera-input');
 
-  let currentFile = null, currentDataUrl = null;
+  let currentFile = null, currentDataUrl = null, isSample = false;
   const activeFormat = 'plain';
 
   const RTL_LANGS = new Set(['ara','heb','per','urd']);
@@ -742,7 +743,7 @@
   cameraInput.addEventListener('change', () => { if (cameraInput.files[0]) loadFile(cameraInput.files[0]); });
 
   function loadFile(file) {
-    currentFile = file;
+    currentFile = file; isSample = false;
     const reader = new FileReader();
     reader.onload = e => {
       currentDataUrl = e.target.result;
@@ -758,7 +759,7 @@
   }
 
   clearBtn.addEventListener('click', () => {
-    currentFile = null; currentDataUrl = null;
+    currentFile = null; currentDataUrl = null; isSample = false;
     preview.style.display = 'none'; dropZone.style.display = 'block'; cameraBtn.classList.remove('cam-hidden');
     convertBtn.disabled = true; clearBtn.style.display = 'none';
     fileInput.value = ''; resetOutput();
@@ -855,26 +856,9 @@
     {t:'Confirm budget with finance team', x:68, y:232, s:16},
   ];
   const SAMPLE_OUTPUT = 'Meeting Notes\n\nDiscuss Q3 targets with team\nMarketing plan approved by board\nHire 2 engineers by September\nClient presentation — Friday 3pm\nReview Q2 metrics next Monday\nConfirm budget with finance team';
-  let isSample = false;
-
-  function buildSampleDataUrl() {
-    const c = document.createElement('canvas'); c.width = 600; c.height = 370;
-    const ctx = c.getContext('2d');
-    ctx.fillStyle = '#faf7f2'; ctx.fillRect(0, 0, 600, 370);
-    ctx.strokeStyle = '#ddd5c0'; ctx.lineWidth = 1;
-    for (let y = 48; y < 370; y += 30) { ctx.beginPath(); ctx.moveTo(10, y); ctx.lineTo(590, y); ctx.stroke(); }
-    ctx.strokeStyle = '#f0aaaa'; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.moveTo(56, 0); ctx.lineTo(56, 370); ctx.stroke();
-    SAMPLE_LINES.forEach(({t, x, y, s, b}) => {
-      ctx.font = (b ? 'bold ' : '') + (s || 16) + 'px Georgia, serif';
-      ctx.fillStyle = '#1c1410'; ctx.fillText(t, x, y);
-    });
-    return c.toDataURL('image/png');
-  }
-
   function loadSample() {
     isSample = true;
-    currentDataUrl = buildSampleDataUrl();
+    currentDataUrl = buildSampleDataUrl(SAMPLE_LINES);
     preview.src = currentDataUrl; preview.style.display = 'block';
     dropZone.style.display = 'none'; cameraBtn.classList.add('cam-hidden');
     convertBtn.disabled = false; clearBtn.style.display = 'flex';
@@ -882,10 +866,6 @@
   }
 
   document.getElementById('sample-btn').addEventListener('click', loadSample);
-  dropZone.addEventListener('drop', () => { isSample = false; });
-  fileInput.addEventListener('change', () => { isSample = false; });
-  cameraInput.addEventListener('change', () => { isSample = false; });
-  clearBtn.addEventListener('click', () => { isSample = false; });
 </script>
 </body>
 </html>

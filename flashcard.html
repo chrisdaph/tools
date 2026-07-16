@@ -441,6 +441,7 @@
   <p>© 2026 Notescribe &nbsp;·&nbsp; Free Image & Notes to Text Converter &nbsp;·&nbsp; No data stored</p>
 </footer>
 
+<script src="sample-utils.js"></script>
 <script>
   const dropZone   = document.getElementById('drop-zone');
   const fileInput  = document.getElementById('file-input');
@@ -466,7 +467,7 @@
   const cameraInput = document.getElementById('camera-input');
   const whatsappBtn = document.getElementById('whatsapp-btn');
 
-  let currentDataUrl = null, cards = [], currentIdx = 0, isFlipped = false;
+  let currentDataUrl = null, cards = [], currentIdx = 0, isFlipped = false, isSample = false;
 
   dropZone.addEventListener('click', () => fileInput.click());
   dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
@@ -481,6 +482,7 @@
   cameraInput.addEventListener('change', () => { if (cameraInput.files[0]) loadFile(cameraInput.files[0]); });
 
   function loadFile(file) {
+    isSample = false;
     const reader = new FileReader();
     reader.onload = e => {
       currentDataUrl = e.target.result;
@@ -496,7 +498,7 @@
   }
 
   clearBtn.addEventListener('click', () => {
-    currentDataUrl = null;
+    currentDataUrl = null; isSample = false;
     preview.style.display = 'none'; dropZone.style.display = 'block'; cameraBtn.classList.remove('cam-hidden');
     convertBtn.disabled = true; clearBtn.style.display = 'none';
     fileInput.value = ''; resetOutput();
@@ -671,26 +673,9 @@
     {q:'What is mitosis?', a:'Cell division producing two genetically identical daughter cells'},
     {q:'What is the role of chlorophyll?', a:'Absorbs red and blue light from the sun to power photosynthesis'},
   ];
-  let isSample = false;
-
-  function buildSampleDataUrl() {
-    const c = document.createElement('canvas'); c.width = 600; c.height = 370;
-    const ctx = c.getContext('2d');
-    ctx.fillStyle = '#faf7f2'; ctx.fillRect(0, 0, 600, 370);
-    ctx.strokeStyle = '#ddd5c0'; ctx.lineWidth = 1;
-    for (let y = 48; y < 370; y += 30) { ctx.beginPath(); ctx.moveTo(10, y); ctx.lineTo(590, y); ctx.stroke(); }
-    ctx.strokeStyle = '#f0aaaa'; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.moveTo(56, 0); ctx.lineTo(56, 370); ctx.stroke();
-    SAMPLE_LINES.forEach(({t, x, y, s, b}) => {
-      ctx.font = (b ? 'bold ' : '') + (s || 16) + 'px Georgia, serif';
-      ctx.fillStyle = '#1c1410'; ctx.fillText(t, x, y);
-    });
-    return c.toDataURL('image/png');
-  }
-
   function loadSample() {
     isSample = true;
-    currentDataUrl = buildSampleDataUrl();
+    currentDataUrl = buildSampleDataUrl(SAMPLE_LINES);
     preview.src = currentDataUrl; preview.style.display = 'block';
     dropZone.style.display = 'none'; cameraBtn.classList.add('cam-hidden');
     convertBtn.disabled = false; clearBtn.style.display = 'flex';
@@ -698,10 +683,6 @@
   }
 
   document.getElementById('sample-btn').addEventListener('click', loadSample);
-  dropZone.addEventListener('drop', () => { isSample = false; });
-  fileInput.addEventListener('change', () => { isSample = false; });
-  cameraInput.addEventListener('change', () => { isSample = false; });
-  clearBtn.addEventListener('click', () => { isSample = false; });
 </script>
 </body>
 </html>

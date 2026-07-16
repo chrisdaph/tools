@@ -42,6 +42,7 @@ Each converter page is **self-contained**: inline CSS in `<style>`, inline JS at
 ### Shared JS files
 - **`formatting-toolbar.js`** — `initFormattingToolbar(toolbarId, editorId)`. Uses `document.execCommand()` for bold/italic/etc. Font family, size, and line-height are applied as `editor.style.*` directly. Paste is intercepted to strip HTML.
 - **`download-utils.js`** — `initDownloadDropdown(dropdownId, menuId, getText, filenameBase)` and `downloadAs(format, text, filenameBase)`. Supports txt, doc, md, and PDF (via jsPDF CDN).
+- **`sample-utils.js`** — `buildSampleDataUrl(lines)`. Draws a notebook-paper demo image on a canvas from an array of `{t, x, y, s, b}` line objects and returns a PNG data URL. Backs the "✦ Try a sample" button on every tool. Each page keeps its own `SAMPLE_LINES` data and pre-built sample output; an `isSample` flag (reset in `loadFile`/`addFiles` and `clearBtn`) makes the convert handler short-circuit to the canned result instead of calling the API.
 
 ### Conversion
 The tool converts **any text in a photo** — handwritten notes, printed documents, typed pages, screenshots. Images are sent to a third-party OCR API as base64. **Never mention the API name, key, or any technical details to users** — show only user-friendly status messages. Error messages must never reference the underlying service.

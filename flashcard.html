@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Convert Notes to Flashcards from Any Photo — Free | Notescribe</title>
 <meta name="description" content="Turn any photo of notes into interactive flashcards instantly — handwritten Q&amp;A, study cards, vocabulary. Free, no sign-up required.">
-<meta name="keywords" content="photo to flashcards, notes to flashcards, image to study cards, handwritten flashcards online, convert notes to flashcards free, study card generator from photo">
+<meta name="keywords" content="photo to flashcards, notes to flashcards, image to study cards, handwritten flashcards online, convert notes to flashcards free, study card generator from photo, download flashcards as txt, share flashcards on whatsapp">
 <meta name="author" content="Notescribe">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tools.oneliest.com/flashcard.html">
@@ -34,7 +34,7 @@
   "operatingSystem": "All",
   "browserRequirements": "Requires a modern browser with JavaScript enabled",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "featureList": ["Auto-detect Q&A pairs from photos", "Interactive 3D flip cards", "Keyboard navigation", "27 language support", "No sign-up required"],
+  "featureList": ["Auto-detect Q&A pairs from photos", "Interactive 3D flip cards", "Keyboard navigation", "Download as TXT", "Share via WhatsApp", "27 language support", "No sign-up required"],
   "isPartOf": { "@type": "WebSite", "name": "Notescribe", "url": "https://tools.oneliest.com/" }
 }
 </script>
@@ -73,6 +73,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. Use the Download button to save all your Q&A pairs as a plain text file you can review, edit, or import elsewhere."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I share my flashcards via WhatsApp?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Once your flashcards are generated, tap the Share via WhatsApp button to send the full set of questions and answers straight to a chat."
       }
     }
   ]
@@ -228,6 +236,10 @@
   .also-try a:hover { text-decoration: underline; }
   .btn-sample { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-top: 8px; padding: 10px; background: transparent; border: 1.5px dashed var(--amber); color: var(--amber); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.15s ease; }
   .btn-sample:hover { background: var(--amber-glow); }
+  .feature-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin-top: 16px; max-width: 560px; }
+  .feature-pill { display: inline-flex; align-items: center; gap: 7px; padding: 7px 13px; background: #fff; border: 1px solid var(--cream); border-radius: 999px; font-size: 0.72rem; font-weight: 600; color: #5a5248; box-shadow: var(--shadow-sm); transition: all 0.2s ease; cursor: default; }
+  .feature-pill:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .feature-icon { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); color: #fff; font-size: 0.62rem; flex-shrink: 0; }
   .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 8px; padding: 12px; background: #25D366; color: #fff; border: none; border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em; cursor: pointer; transition: all 0.2s ease; box-shadow: 0 4px 14px rgba(37,211,102,0.3); }
   .btn-whatsapp:hover { background: #20b858; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37,211,102,0.4); }
 </style>
@@ -247,6 +259,11 @@
     </div>
     <h1 class="page-subtitle">Notes & Photos to Flashcards</h1>
     <p class="page-description">Upload any photo with Q&amp;A notes and get interactive flip flashcards instantly — great for studying, vocabulary, and revision.</p>
+    <div class="feature-strip" aria-label="Available features">
+      <span class="feature-pill" title="Tap a card or press Space to flip it — use the arrow keys to move between cards"><span class="feature-icon">🔄</span> 3D Flip Cards</span>
+      <span class="feature-pill" title="Download all your flashcards as a plain .txt file"><span class="feature-icon">⬇</span> Download as TXT</span>
+      <span class="feature-pill" title="Send your flashcards straight to a WhatsApp chat"><span class="feature-icon">💬</span> Share via WhatsApp</span>
+    </div>
   </div>
 </header>
 
@@ -423,6 +440,10 @@
         <details>
           <summary>Can I download my flashcards?</summary>
           <p>Yes. Use the Download button to save all your Q&amp;A pairs as a plain text file you can review, edit, or import elsewhere.</p>
+        </details>
+        <details>
+          <summary>Can I share my flashcards via WhatsApp?</summary>
+          <p>Yes. Once your flashcards are generated, tap the Share via WhatsApp button to send the full set of questions and answers straight to a chat.</p>
         </details>
       </div>
     </div>

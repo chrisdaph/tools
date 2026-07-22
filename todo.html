@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Convert Photos to To-Do List — Free Online | Notescribe</title>
 <meta name="description" content="Convert any photo with text into an interactive to-do list instantly — handwritten or printed task lists. Free, no sign-up required. Supports 27 languages.">
-<meta name="keywords" content="photo to todo list, image to checklist, convert photo to tasks, task list from image, photo task extractor free, image to interactive checklist">
+<meta name="keywords" content="photo to todo list, image to checklist, convert photo to tasks, task list from image, photo task extractor free, image to interactive checklist, download todo list as pdf, share todo list on whatsapp">
 <meta name="author" content="Notescribe">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://tools.oneliest.com/todo.html">
@@ -34,7 +34,7 @@
   "operatingSystem": "All",
   "browserRequirements": "Requires a modern browser with JavaScript enabled",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "featureList": ["Handwriting to to-do list", "Interactive checkboxes", "Swipe to delete", "27 language support", "No sign-up required"],
+  "featureList": ["Handwriting to to-do list", "Interactive checkboxes", "Swipe to delete", "Download as PDF, Word, or TXT", "Share via WhatsApp", "27 language support", "No sign-up required"],
   "isPartOf": { "@type": "WebSite", "name": "Notescribe", "url": "https://tools.oneliest.com/" }
 }
 </script>
@@ -192,6 +192,10 @@
   .also-try a:hover { text-decoration: underline; }
   .btn-sample { display: flex; align-items: center; justify-content: center; gap: 6px; width: 100%; margin-top: 8px; padding: 10px; background: transparent; border: 1.5px dashed var(--amber); color: var(--amber); border-radius: var(--radius-sm); font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: all 0.15s ease; }
   .btn-sample:hover { background: var(--amber-glow); }
+  .feature-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin-top: 16px; max-width: 560px; }
+  .feature-pill { display: inline-flex; align-items: center; gap: 7px; padding: 7px 13px; background: #fff; border: 1px solid var(--cream); border-radius: 999px; font-size: 0.72rem; font-weight: 600; color: #5a5248; box-shadow: var(--shadow-sm); transition: all 0.2s ease; cursor: default; }
+  .feature-pill:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .feature-icon { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); color: #fff; font-size: 0.62rem; flex-shrink: 0; }
 </style>
 <script type="application/ld+json">
 {
@@ -229,6 +233,14 @@
         "@type": "Answer",
         "text": "Yes. The \"Send via WhatsApp\" button formats your list with [ ] and [x] markers and opens WhatsApp's share dialog, ready to send to any contact or group chat."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I download my to-do list?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Use the download button to save your list as a PDF, Word document, or plain .txt file, in addition to checking items off in the browser and sharing via WhatsApp."
+      }
     }
   ]
 }
@@ -249,6 +261,11 @@
     </div>
     <h1 class="page-subtitle">Notes & Photos to To-Do List</h1>
     <p class="page-description">Convert handwritten or printed task lists from any photo into interactive checkboxes you can tick off instantly.</p>
+    <div class="feature-strip" aria-label="Available features">
+      <span class="feature-pill" title="Tap any item to check it off, or swipe to delete it from the list"><span class="feature-icon">✓</span> Tap-to-Check Items</span>
+      <span class="feature-pill" title="Download your to-do list as a PDF, Word document, or plain .txt file"><span class="feature-icon">⬇</span> Download PDF · Word · TXT</span>
+      <span class="feature-pill" title="Send your to-do list straight to a WhatsApp chat"><span class="feature-icon">💬</span> Share via WhatsApp</span>
+    </div>
   </div>
 </header>
 
@@ -404,6 +421,10 @@
         <details>
           <summary>Can I share the list via WhatsApp?</summary>
           <p>Yes. The "Send via WhatsApp" button formats your list with [ ] and [x] markers and opens WhatsApp's share dialog, ready to send to any contact or group chat.</p>
+        </details>
+        <details>
+          <summary>Can I download my to-do list?</summary>
+          <p>Yes. Use the download button to save your list as a PDF, Word document, or plain .txt file, in addition to checking items off in the browser and sharing via WhatsApp.</p>
         </details>
       </div>
     </div>

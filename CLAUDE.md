@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project overview
 
-Notescribe is a static HTML/CSS/JS site hosted on GitHub Pages at **tools.oneliest.com**. There is no build step — pushing to `main` deploys immediately.
+Oneliest Tools is a static HTML/CSS/JS site hosted on GitHub Pages at **tools.oneliest.com**. There is no build step — pushing to `main` deploys immediately.
 
 ## Local development
 

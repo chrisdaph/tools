@@ -18,7 +18,7 @@ function downloadAsMd(text, filenameBase) {
 
 function downloadAsDoc(text, filenameBase) {
   const body = text.split('\n').map(line => `<p style="margin:0 0 8px;font-family:Calibri,Arial,sans-serif;">${escapeHtmlForDoc(line) || '&nbsp;'}</p>`).join('');
-  const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Notescribe</title></head><body>${body}</body></html>`;
+  const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>Oneliest Tools</title></head><body>${body}</body></html>`;
   const blob = new Blob(['﻿', html], { type: 'application/msword' });
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);

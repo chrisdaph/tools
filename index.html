@@ -146,6 +146,7 @@
   }
 
   .tool-card {
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -159,6 +160,20 @@
     backdrop-filter: blur(8px);
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     cursor: pointer;
+  }
+
+  .tool-card-badge {
+    position: absolute;
+    top: -8px; right: 14px;
+    background: linear-gradient(135deg, var(--sage) 0%, #5a8f6a 100%);
+    color: #fff;
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 100px;
+    box-shadow: 0 3px 8px rgba(74,122,90,0.35);
   }
 
   .tool-card:hover {
@@ -280,6 +295,17 @@
 <main role="main">
   <div class="tools-grid">
 
+    <a href="collage.html" class="tool-card">
+      <span class="tool-card-badge">New</span>
+      <div class="tool-card-icon">🖼️</div>
+      <h2>Photo Collage</h2>
+      <p>Automatically arrange multiple photos into a grid on one printable page. Download as PDF or PNG.</p>
+      <div class="tool-card-cta">
+        Arrange
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>
+
     <a href="plain.html" class="tool-card">
       <div class="tool-card-icon">📄</div>
       <h2>Plain Notes</h2>
@@ -356,16 +382,6 @@
       <p>Extract structured data from any photo into a clean table you can download as CSV.</p>
       <div class="tool-card-cta">
         Extract
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </div>
-    </a>
-
-    <a href="collage.html" class="tool-card">
-      <div class="tool-card-icon">🖼️</div>
-      <h2>Photo Collage</h2>
-      <p>Automatically arrange multiple photos into a grid on one printable page. Download as PDF or PNG.</p>
-      <div class="tool-card-cta">
-        Arrange
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
       </div>
     </a>

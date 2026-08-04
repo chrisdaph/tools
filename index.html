@@ -38,7 +38,8 @@
     { "@type": "WebApplication", "name": "Batch Text Extractor", "url": "https://tools.oneliest.com/batch.html", "description": "Extract text from multiple photos at once into one combined document" },
     { "@type": "WebApplication", "name": "Notes Summarizer", "url": "https://tools.oneliest.com/summary.html", "description": "Extract key points from any photo of notes or documents as a concise summary" },
     { "@type": "WebApplication", "name": "Flashcard Generator", "url": "https://tools.oneliest.com/flashcard.html", "description": "Convert Q&A notes from any photo into interactive flip flashcards" },
-    { "@type": "WebApplication", "name": "Table Extractor", "url": "https://tools.oneliest.com/table.html", "description": "Extract structured data from any photo into a clean HTML table or CSV" }
+    { "@type": "WebApplication", "name": "Table Extractor", "url": "https://tools.oneliest.com/table.html", "description": "Extract structured data from any photo into a clean HTML table or CSV" },
+    { "@type": "WebApplication", "name": "Photo Collage Maker", "url": "https://tools.oneliest.com/collage.html", "description": "Automatically arrange multiple photos into a grid on one printable page" }
   ]
 }
 </script>
@@ -256,6 +257,7 @@
   .tool-card:nth-child(6) { animation: fadeUp 0.4s ease 0.30s both; }
   .tool-card:nth-child(7) { animation: fadeUp 0.4s ease 0.35s both; }
   .tool-card:nth-child(8) { animation: fadeUp 0.4s ease 0.40s both; }
+  .tool-card:nth-child(9) { animation: fadeUp 0.4s ease 0.45s both; }
 </style>
 </head>
 <body>
@@ -358,6 +360,16 @@
       </div>
     </a>
 
+    <a href="collage.html" class="tool-card">
+      <div class="tool-card-icon">🖼️</div>
+      <h2>Photo Collage</h2>
+      <p>Automatically arrange multiple photos into a grid on one printable page. Download as PDF or PNG.</p>
+      <div class="tool-card-cta">
+        Arrange
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </div>
+    </a>
+
   </div>
 </main>
 
@@ -365,7 +377,7 @@
   <div class="seo-grid">
     <div class="seo-block">
       <h2>Choose Your Output Format</h2>
-      <p>Oneliest Tools offers eight dedicated converters, each optimized for a specific output format. Whether you need clean plain text, organized bullet points, Markdown, a summary, interactive flashcards, a data table, a to-do list, or multi-page batch conversion — there's a purpose-built tool for every use case.</p>
+      <p>Oneliest Tools offers nine dedicated converters, each optimized for a specific output format. Whether you need clean plain text, organized bullet points, Markdown, a summary, interactive flashcards, a data table, a to-do list, multi-page batch conversion, or a printable photo collage — there's a purpose-built tool for every use case.</p>
       <ul class="seo-features">
         <li>✦ <strong>Plain Notes</strong> — clean, unformatted text exactly as written</li>
         <li>✦ <strong>Bullet List</strong> — each line becomes an organized bullet point</li>
@@ -375,6 +387,7 @@
         <li>✦ <strong>Table / CSV</strong> — structured data rendered as a table, downloadable as CSV</li>
         <li>✦ <strong>To-Do List</strong> — interactive checkboxes with swipe-to-delete</li>
         <li>✦ <strong>Batch Convert</strong> — upload multiple pages and merge into one document</li>
+        <li>✦ <strong>Photo Collage</strong> — auto-arrange multiple photos into a grid on one page</li>
       </ul>
     </div>
     <div class="seo-block">
@@ -406,7 +419,7 @@
         </details>
         <details>
           <summary>What output formats are available?</summary>
-          <p>Eight formats: plain text, bullet points, Markdown, summary, flashcards, table/CSV, to-do list, and batch conversion. Each has its own dedicated page optimized for that output.</p>
+          <p>Nine formats: plain text, bullet points, Markdown, summary, flashcards, table/CSV, to-do list, batch conversion, and a photo collage maker. Each has its own dedicated page optimized for that output.</p>
         </details>
         <details>
           <summary>What languages does it support?</summary>

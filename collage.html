@@ -3,39 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Batch Extract Text from Photos — Free Online | Oneliest Tools</title>
-<meta name="description" content="Upload multiple photos with text and get one combined plain text document — notes, printed documents, screenshots. Free, no sign-up required. Supports 27 languages.">
-<meta name="keywords" content="batch image to text, multiple photos to text, bulk image text extraction, batch photo to text converter, multi-image text extractor free, format combined text online, download combined text as pdf word, share on whatsapp">
+<title>Print Multiple Photos on One Page — Free | Oneliest Tools</title>
+<meta name="description" content="Upload multiple photos and they're automatically arranged in a neat grid on a single printable page. Free photo collage maker — works entirely in your browser, nothing uploaded. Download as PDF or PNG.">
+<meta name="keywords" content="print multiple photos on one page, photo collage maker online, arrange photos on one page free, multiple pictures one page pdf, photo grid layout maker, contact sheet maker online, combine photos into one page">
 <meta name="author" content="Oneliest Tools">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://tools.oneliest.com/batch.html">
+<link rel="canonical" href="https://tools.oneliest.com/collage.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://tools.oneliest.com/batch.html">
-<meta property="og:title" content="Batch Extract Text from Photos — Free | Oneliest Tools">
-<meta property="og:description" content="Upload multiple photos at once and get one combined plain text document — notes, docs, screenshots. Free, no sign-up.">
+<meta property="og:url" content="https://tools.oneliest.com/collage.html">
+<meta property="og:title" content="Print Multiple Photos on One Page — Free | Oneliest Tools">
+<meta property="og:description" content="Upload multiple photos and get them automatically arranged in a grid on one printable page. Free, no sign-up, nothing uploaded to a server.">
 <meta property="og:image" content="https://tools.oneliest.com/og-image.png">
 <meta property="og:site_name" content="Oneliest Tools">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@oneliesttools">
-<meta name="twitter:title" content="Batch Extract Text from Photos — Oneliest Tools">
-<meta name="twitter:description" content="Upload multiple photos at once and get one combined, editable plain text document. Free, no sign-up.">
+<meta name="twitter:title" content="Print Multiple Photos on One Page — Oneliest Tools">
+<meta name="twitter:description" content="Upload multiple photos and get them automatically arranged in a grid on one printable page. Free, no sign-up.">
 <meta name="twitter:image" content="https://tools.oneliest.com/og-image.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Oneliest Tools — Batch Plain Text Converter",
-  "url": "https://tools.oneliest.com/batch.html",
-  "description": "Free online tool that converts multiple photos with text — handwritten notes, printed documents, or screenshots — into one combined plain text document. Supports 27 languages. No sign-up required.",
+  "name": "Oneliest Tools — Photo Collage Maker",
+  "url": "https://tools.oneliest.com/collage.html",
+  "description": "Free online tool that automatically arranges multiple uploaded photos into a grid on a single printable page. Works entirely in the browser — no photos are uploaded to a server. Download as PDF or PNG.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "All",
   "browserRequirements": "Requires a modern browser with JavaScript enabled",
   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
-  "featureList": ["Multi-image upload", "Batch handwriting processing", "Rich text formatting toolbar", "Download as PDF, Word, or TXT", "Share via WhatsApp", "27 language support", "No sign-up required"],
+  "featureList": ["Auto-arrange photos into a grid", "Fits any number of photos on one page", "A4 and US Letter paper sizes", "Download as PDF or PNG", "Works entirely in your browser", "No sign-up required"],
   "isPartOf": { "@type": "WebSite", "name": "Oneliest Tools", "url": "https://tools.oneliest.com/" }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How does the auto-arrange work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The tool automatically works out the best grid — rows and columns — to fit all of your photos as large as possible on a single page, based on how many you upload."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many photos can I add?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There's no fixed limit. Add as many as you like and the grid automatically shrinks each photo to keep everything on one page."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are my photos uploaded to a server?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Everything happens locally in your browser — your photos are never sent anywhere, so nothing leaves your device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I choose the paper size?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Switch between A4 and US Letter before arranging your photos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I download the result?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Download your arranged page as a print-ready PDF or as a PNG image, or copy it straight to your clipboard."
+      }
+    }
+  ]
 }
 </script>
 <!-- Google tag (gtag.js) -->
@@ -140,7 +188,7 @@
     font-size: 0.82rem;
     color: var(--muted);
     margin-top: 5px;
-    max-width: 420px;
+    max-width: 440px;
     line-height: 1.6;
   }
 
@@ -337,29 +385,6 @@
   }
   .btn-whatsapp:hover { background: #20b858; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(37,211,102,0.4); }
 
-  #output-area {
-    min-height: 210px; width: 100%;
-    font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400;
-    line-height: 1.9; color: var(--ink); white-space: pre-wrap; word-break: break-word;
-    border: none; outline: none; background: transparent;
-    cursor: text; transition: opacity 0.3s ease;
-  }
-  #output-area:empty::before { content: 'Your combined notes will appear here'; font-style: italic; color: var(--cream); pointer-events: none; display: block; }
-  .format-toolbar { display: flex; align-items: center; gap: 2px; padding: 5px 8px; background: var(--paper-dark); border: 1px solid var(--cream); border-radius: var(--radius-sm); margin-bottom: 10px; flex-wrap: wrap; }
-  .fmt-btn { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 26px; border: none; background: transparent; border-radius: 5px; cursor: pointer; color: var(--ink); font-size: 0.82rem; font-family: 'Inter', sans-serif; transition: background 0.12s; padding: 0; }
-  .fmt-btn:hover { background: var(--cream); }
-  .fmt-btn.active { background: var(--amber-glow); color: var(--amber); }
-  .fmt-select { height: 26px; border: 1px solid var(--cream); border-radius: 5px; background: var(--paper); padding: 0 4px; font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--ink); cursor: pointer; outline: none; }
-  .fmt-sep { width: 1px; height: 18px; background: var(--cream); margin: 0 4px; flex-shrink: 0; }
-  .fmt-color-btn { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; width: 28px; height: 26px; border-radius: 5px; cursor: pointer; padding: 3px 2px 2px; position: relative; }
-  .fmt-color-btn:hover { background: var(--cream); }
-  .fmt-color-input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; padding: 0; border: none; }
-  #output-area h1 { font-size: 1.5em; font-weight: 700; margin: 4px 0 2px; }
-  #output-area h2 { font-size: 1.25em; font-weight: 700; margin: 4px 0 2px; }
-  #output-area h3 { font-size: 1.1em; font-weight: 600; margin: 4px 0 2px; }
-  #output-area blockquote { border-left: 3px solid var(--amber); padding-left: 10px; margin: 4px 0; color: var(--muted); font-style: italic; }
-  #output-area ul, #output-area ol { padding-left: 1.4em; margin: 2px 0; }
-
   .output-placeholder {
     min-height: 210px; display: flex; flex-direction: column;
     align-items: center; justify-content: center; gap: 10px;
@@ -367,11 +392,8 @@
   }
   .output-placeholder p { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.95rem; }
 
-  .edit-hint {
-    font-size: 0.65rem; font-weight: 500; letter-spacing: 0.06em; color: var(--sage);
-    margin-top: 12px; display: none; align-items: center; gap: 6px;
-  }
-  .edit-hint.visible { display: flex; }
+  #collage-wrap { display: none; }
+  #collage-canvas { width: 100%; height: auto; display: block; border-radius: 6px; box-shadow: var(--shadow-sm); border: 1px solid var(--cream); background: #fff; }
 
   .status-bar {
     margin-top: 14px; padding: 10px 14px;
@@ -426,54 +448,6 @@
   .feature-pill:hover { border-color: var(--amber); color: var(--amber); transform: translateY(-2px); box-shadow: var(--shadow-md); }
   .feature-icon { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, var(--amber) 0%, var(--gold) 100%); color: #fff; font-size: 0.62rem; flex-shrink: 0; }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How many images can I upload at once?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "There's no hard limit, but for the fastest results and to stay within the free service's fair-use limits, batches of up to about 15 images work best."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are the pages combined in the order I add them?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Pages are processed and merged in the order they were added, each labeled by page number in the combined output."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I remove a photo before converting?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Click the × on any thumbnail to remove that page before clicking Convert."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I edit the combined output?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The output area is fully editable — click anywhere to correct mistakes or rearrange text before copying or downloading."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I format the output, download it, and share it via WhatsApp?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The combined output has a full formatting toolbar — bold, italic, fonts, colors, and more. Download it as a PDF, Word document, or plain .txt file, or share it straight to WhatsApp."
-      }
-    }
-  ]
-}
-</script>
 </head>
 <body>
 
@@ -488,12 +462,12 @@
       <a href="index.html" class="quill-wrap" aria-label="Oneliest Tools home">✒️</a>
       <a href="index.html" class="logo-link">Oneliest<em> Tools</em></a>
     </div>
-    <h1 class="page-subtitle">Batch Photos to Plain Text</h1>
-    <p class="page-description">Upload multiple images at once — notes, documents, or any photo with text — and get one combined, editable document.</p>
+    <h1 class="page-subtitle">Multiple Photos on One Page</h1>
+    <p class="page-description">Upload several photos and they're automatically arranged into a neat grid on a single printable page — perfect for saving paper or building a quick photo sheet.</p>
     <div class="feature-strip" aria-label="Available features">
-      <span class="feature-pill" title="Bold, italic, underline, strikethrough, superscript/subscript, text & highlight color, fonts, headings, alignment, lists"><span class="feature-icon">✎</span> Rich Text Formatting</span>
-      <span class="feature-pill" title="Download your combined document as a PDF, Word document, or plain .txt file"><span class="feature-icon">⬇</span> Download PDF · Word · TXT</span>
-      <span class="feature-pill" title="Send your combined document straight to a WhatsApp chat"><span class="feature-icon">💬</span> Share via WhatsApp</span>
+      <span class="feature-pill" title="Automatically calculates the best grid to fit every photo as large as possible on one page"><span class="feature-icon">▦</span> Auto-Arrange Grid</span>
+      <span class="feature-pill" title="Download your arranged page as a print-ready PDF or PNG image"><span class="feature-icon">⬇</span> Download PDF · PNG</span>
+      <span class="feature-pill" title="Photos are arranged entirely on your device — nothing is ever uploaded to a server"><span class="feature-icon">🔒</span> 100% Private</span>
     </div>
   </div>
 </header>
@@ -505,11 +479,11 @@
     <div class="panel-header">
       <div class="panel-icon">🗂️</div>
       <span class="panel-title">Your Photos</span>
-      <span class="panel-tag" id="page-count-tag" style="display:none">0 pages</span>
+      <span class="panel-tag" id="photo-count-tag" style="display:none">0 photos</span>
     </div>
     <div class="panel-body">
       <div id="drop-zone">
-        <div class="upload-icon-wrap">📚</div>
+        <div class="upload-icon-wrap">🖼️</div>
         <p class="drop-title">Drop multiple photos here</p>
         <small>or click to browse &nbsp;·&nbsp; JPG, PNG, WEBP</small>
         <input type="file" id="file-input" accept="image/*" multiple>
@@ -525,41 +499,16 @@
       <div class="divider"></div>
 
       <div class="lang-select-wrap">
-        <label>🌐 Language</label>
-        <select class="lang-select" id="lang-select">
-          <option value="eng">English</option>
-          <option value="ara">Arabic (العربية)</option>
-          <option value="bul">Bulgarian (Български)</option>
-          <option value="chs">Chinese Simplified (简体中文)</option>
-          <option value="cht">Chinese Traditional (繁體中文)</option>
-          <option value="hrv">Croatian (Hrvatski)</option>
-          <option value="cze">Czech (Čeština)</option>
-          <option value="dan">Danish (Dansk)</option>
-          <option value="dut">Dutch (Nederlands)</option>
-          <option value="fin">Finnish (Suomi)</option>
-          <option value="fre">French (Français)</option>
-          <option value="ger">German (Deutsch)</option>
-          <option value="gre">Greek (Ελληνικά)</option>
-          <option value="hun">Hungarian (Magyar)</option>
-          <option value="ita">Italian (Italiano)</option>
-          <option value="jpn">Japanese (日本語)</option>
-          <option value="kor">Korean (한국어)</option>
-          <option value="nor">Norwegian (Norsk)</option>
-          <option value="pol">Polish (Polski)</option>
-          <option value="por">Portuguese (Português)</option>
-          <option value="rom">Romanian (Română)</option>
-          <option value="rus">Russian (Русский)</option>
-          <option value="slv">Slovenian (Slovenščina)</option>
-          <option value="spa">Spanish (Español)</option>
-          <option value="swe">Swedish (Svenska)</option>
-          <option value="tur">Turkish (Türkçe)</option>
-          <option value="ukr">Ukrainian (Українська)</option>
+        <label>📐 Paper Size</label>
+        <select class="lang-select" id="size-select">
+          <option value="a4">A4</option>
+          <option value="letter">US Letter</option>
         </select>
       </div>
 
-      <button class="btn-primary" id="convert-btn" disabled>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-        Convert All to Plain Text
+      <button class="btn-primary" id="arrange-btn" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+        Arrange on One Page
       </button>
       <button class="btn-ghost" id="clear-btn" style="display:none">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -570,91 +519,26 @@
 
   <div class="panel">
     <div class="panel-header">
-      <div class="panel-icon">📝</div>
-      <span class="panel-title">Combined Plain Text</span>
-      <span class="panel-tag">Batch</span>
+      <div class="panel-icon">📄</div>
+      <span class="panel-title">Your Page</span>
+      <span class="panel-tag" id="grid-badge" style="display:none">0 photos</span>
     </div>
     <div class="panel-body">
       <div id="output-placeholder" class="output-placeholder">
-        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        <p>Your combined notes will appear here</p>
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <p>Your arranged page will appear here</p>
       </div>
-      <div class="format-toolbar" id="format-toolbar" style="display:none;">
-        <button class="fmt-btn" data-cmd="bold" title="Bold"><b>B</b></button>
-        <button class="fmt-btn" data-cmd="italic" title="Italic"><i>I</i></button>
-        <button class="fmt-btn" data-cmd="underline" title="Underline"><u>U</u></button>
-        <button class="fmt-btn" data-cmd="strikeThrough" title="Strikethrough"><s>S</s></button>
-        <button class="fmt-btn" data-cmd="superscript" title="Superscript" style="font-size:0.68rem">x²</button>
-        <button class="fmt-btn" data-cmd="subscript" title="Subscript" style="font-size:0.68rem">x₂</button>
-        <button class="fmt-btn" data-cmd="removeFormat" title="Clear formatting" style="font-size:0.72rem">✕</button>
-        <span class="fmt-sep"></span>
-        <select class="fmt-select fmt-block" title="Text style" aria-label="Text style">
-          <option value="p">Normal</option>
-          <option value="h1">H1</option>
-          <option value="h2">H2</option>
-          <option value="h3">H3</option>
-          <option value="blockquote">Quote</option>
-        </select>
-        <button class="fmt-btn" data-cmd="insertUnorderedList" title="Bullet list" style="font-size:0.75rem">•≡</button>
-        <button class="fmt-btn" data-cmd="insertOrderedList" title="Numbered list" style="font-size:0.75rem">1≡</button>
-        <button class="fmt-btn" data-cmd="indent" title="Indent" style="font-size:0.7rem">→|</button>
-        <button class="fmt-btn" data-cmd="outdent" title="Outdent" style="font-size:0.7rem">|←</button>
-        <span class="fmt-sep"></span>
-        <label class="fmt-color-btn" title="Text color" aria-label="Text color">
-          <span style="font-weight:700;font-size:0.85rem;line-height:1;font-family:'Inter',sans-serif">A</span>
-          <span class="fmt-text-swatch" style="width:14px;height:3px;border-radius:1px;background:#1c1410;display:block;margin-top:2px"></span>
-          <input type="color" class="fmt-color-input fmt-text-color" value="#1c1410" tabindex="-1">
-        </label>
-        <label class="fmt-color-btn" title="Highlight" aria-label="Highlight color">
-          <span style="font-size:0.85rem;line-height:1;font-family:'Inter',sans-serif">H</span>
-          <span class="fmt-highlight-swatch" style="width:14px;height:3px;border-radius:1px;background:#fac775;display:block;margin-top:2px"></span>
-          <input type="color" class="fmt-color-input fmt-highlight-color" value="#fac775" tabindex="-1">
-        </label>
-        <span class="fmt-sep"></span>
-        <select class="fmt-select fmt-font-family" title="Font" aria-label="Font">
-          <option value="'Playfair Display',Georgia,serif" selected>Playfair</option>
-          <option value="Georgia,serif">Georgia</option>
-          <option value="'Times New Roman',serif">Times</option>
-          <option value="'Roboto',sans-serif">Roboto</option>
-          <option value="'Open Sans',sans-serif">Open Sans</option>
-          <option value="'Inter',sans-serif">Inter</option>
-          <option value="'Dancing Script',cursive">Dancing</option>
-          <option value="'Courier New',monospace">Mono</option>
-          <option value="'Inconsolata',monospace">Inconsolata</option>
-        </select>
-        <select class="fmt-select fmt-font-size" title="Size" aria-label="Font size">
-          <option value="0.75rem">XS</option>
-          <option value="0.875rem">S</option>
-          <option value="1rem" selected>M</option>
-          <option value="1.2rem">L</option>
-          <option value="1.5rem">XL</option>
-          <option value="2rem">2XL</option>
-        </select>
-        <select class="fmt-select fmt-line-height" title="Line spacing" aria-label="Line spacing">
-          <option value="1.2">Tight</option>
-          <option value="1.5">Compact</option>
-          <option value="1.9" selected>Normal</option>
-          <option value="2.5">Spacious</option>
-        </select>
-        <span class="fmt-sep"></span>
-        <button class="fmt-btn" data-cmd="justifyLeft" title="Align left"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="15" y2="12"/><line x1="3" y1="18" x2="18" y2="18"/></svg></button>
-        <button class="fmt-btn" data-cmd="justifyCenter" title="Center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="5" y1="18" x2="19" y2="18"/></svg></button>
-        <button class="fmt-btn" data-cmd="justifyRight" title="Align right"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="9" y1="12" x2="21" y2="12"/><line x1="6" y1="18" x2="21" y2="18"/></svg></button>
-        <button class="fmt-btn" data-cmd="justifyFull" title="Justify"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <div id="collage-wrap">
+        <canvas id="collage-canvas"></canvas>
       </div>
-      <div id="output-area" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="true" style="display:none;"></div>
-      <p class="edit-hint" id="edit-hint">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
-        Click anywhere to edit or correct mistakes
-      </p>
       <div id="status-bar" class="status-bar" style="display:none">
         <div class="spinner"></div>
-        <span id="status-text">Reading your handwriting...</span>
+        <span id="status-text">Arranging your photos...</span>
       </div>
       <div class="action-row" id="action-row" style="display:none">
         <button class="btn-primary" id="copy-btn">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy Text
+          Copy Image
         </button>
         <div class="download-dropdown" id="download-dropdown">
           <button class="btn-ghost" id="download-btn">
@@ -663,70 +547,69 @@
             <svg class="caret" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
           </button>
           <div class="download-menu" id="download-menu">
-            <button class="download-option" data-format="txt">📄 Plain Text (.txt)</button>
             <button class="download-option" data-format="pdf">📕 PDF (.pdf)</button>
-            <button class="download-option" data-format="doc">📝 Word (.doc)</button>
+            <button class="download-option" data-format="png">🖼️ PNG Image (.png)</button>
           </div>
         </div>
       </div>
-      <button class="btn-whatsapp" id="whatsapp-btn" style="display:none">
+      <button class="btn-whatsapp" id="share-btn" style="display:none">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
-        Send via WhatsApp
+        Share Photo Page
       </button>
     </div>
   </div>
 </div>
 </main>
 
-<section class="seo-section" aria-label="About Batch Conversion">
+<section class="seo-section" aria-label="About the Photo Collage Maker">
   <div class="seo-grid">
     <div class="seo-block">
-      <h2>Convert Multiple Pages at Once</h2>
-      <p>The batch converter lets you upload several photos of handwritten notes in one go and merges every page into a single, editable plain text document — no need to convert one image at a time and paste the results together yourself.</p>
-      <p>It's built for multi-page notes: lecture notebooks, journal entries spanning several days, or a stack of meeting-note pages photographed back to back.</p>
+      <h2>Fit Multiple Photos on One Printable Page</h2>
+      <p>This tool takes any number of photos and automatically works out the best grid to fit them all on a single page — no manual resizing, dragging, or aligning. Just add your photos and the layout is built for you.</p>
+      <p>It's built for printing: save paper by fitting several photos on one sheet instead of printing each one separately, or build a quick contact sheet to review a batch of images at a glance.</p>
     </div>
     <div class="seo-block">
-      <h2>How Batch Conversion Works</h2>
+      <h2>How It Works</h2>
       <ol class="seo-steps">
-        <li><strong>Add multiple photos</strong> — drag and drop several images at once, or select them together from your files.</li>
-        <li><strong>Remove any page</strong> you don't need by clicking the × on its thumbnail.</li>
-        <li><strong>Select your language</strong> — 27 languages supported.</li>
-        <li><strong>Click Convert</strong> — each photo is processed in order and merged into one document.</li>
-        <li><strong>Copy, download, or share</strong> the combined result via WhatsApp.</li>
+        <li><strong>Add your photos</strong> — drag and drop several images at once, or select them together from your files.</li>
+        <li><strong>Remove any photo</strong> you don't need by clicking the × on its thumbnail.</li>
+        <li><strong>Choose a paper size</strong> — A4 or US Letter.</li>
+        <li><strong>Click Arrange</strong> — every photo is automatically laid out in a grid on one page.</li>
+        <li><strong>Download or copy</strong> the result as a PDF or PNG image.</li>
       </ol>
     </div>
     <div class="seo-block">
-      <h2>When to Use Batch Convert</h2>
+      <h2>When to Use This</h2>
       <ul class="seo-features">
-        <li>✦ <strong>Multi-page lecture notes</strong> — digitize an entire notebook section in one pass</li>
-        <li>✦ <strong>Journal entries</strong> — combine several handwritten diary pages into one file</li>
-        <li>✦ <strong>Scanned worksheets</strong> — merge multi-page assignments or exam answers</li>
-        <li>✦ <strong>Meeting notes</strong> — photograph multiple whiteboard pages and get one document</li>
-        <li>✦ <strong>Research notes</strong> — consolidate pages of handwritten research into a single text file</li>
+        <li>✦ <strong>Save paper when printing</strong> — fit several photos on one sheet instead of printing them one at a time</li>
+        <li>✦ <strong>Passport or ID photos</strong> — arrange multiple copies of the same photo for printing</li>
+        <li>✦ <strong>Contact sheets</strong> — get a quick overview of a batch of photos on one page</li>
+        <li>✦ <strong>Event or trip photos</strong> — build a simple printable summary sheet</li>
+        <li>✦ <strong>School or craft projects</strong> — lay out reference images on one page before printing</li>
       </ul>
     </div>
     <div class="seo-block">
       <h2>Frequently Asked Questions</h2>
       <div class="seo-faq">
         <details>
-          <summary>How many images can I upload at once?</summary>
-          <p>There's no hard limit, but for the fastest results and to stay within the free service's fair-use limits, batches of up to about 15 images work best.</p>
+          <summary>How does the auto-arrange work?</summary>
+          <p>The tool automatically works out the best grid — rows and columns — to fit all of your photos as large as possible on a single page, based on how many you upload.</p>
         </details>
         <details>
-          <summary>Are the pages combined in the order I add them?</summary>
-          <p>Yes. Pages are processed and merged in the order they were added, each labeled by page number in the combined output.</p>
+          <summary>How many photos can I add?</summary>
+          <p>There's no fixed limit. Add as many as you like and the grid automatically shrinks each photo to keep everything on one page.</p>
         </details>
         <details>
-          <summary>Can I remove a photo before converting?</summary>
-          <p>Yes. Click the × on any thumbnail to remove that page before clicking Convert.</p>
+          <summary>Are my photos uploaded to a server?</summary>
+          <p>No. Everything happens locally in your browser — your photos are never sent anywhere, so nothing leaves your device.</p>
         </details>
         <details>
-          <summary>Can I edit the combined output?</summary>
-          <p>Yes. The output area is fully editable — click anywhere to correct mistakes or rearrange text before copying or downloading.</p>
+          <summary>Can I choose the paper size?</summary>
+          <p>Yes. Switch between A4 and US Letter before arranging your photos.</p>
         </details>
         <details>
-          <summary>Can I format the output, download it, and share it via WhatsApp?</summary>
-          <p>Yes. The combined output has a full formatting toolbar — bold, italic, fonts, colors, and more. Download it as a PDF, Word document, or plain .txt file, or share it straight to WhatsApp.</p>
+          <summary>Can I download the result?</summary>
+          <p>Yes. Download your arranged page as a print-ready PDF or as a PNG image, or copy it straight to your clipboard.</p>
         </details>
       </div>
     </div>
@@ -742,50 +625,43 @@
   <a href="flashcard.html">Flashcards</a>
   <a href="table.html">Table</a>
   <a href="todo.html">To-Do List</a>
-  <a href="collage.html">Photo Collage</a>
+  <a href="batch.html">Batch Convert</a>
 </nav>
 <footer role="contentinfo">
   <p>© 2026 Oneliest Tools &nbsp;·&nbsp; Free Image & Notes to Text Converter &nbsp;·&nbsp; No data stored</p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="sample-utils.js"></script>
-<script src="download-utils.js"></script>
-<script src="formatting-toolbar.js"></script>
 
 <script>
   const dropZone      = document.getElementById('drop-zone');
   const fileInput     = document.getElementById('file-input');
   const thumbGrid     = document.getElementById('thumb-grid');
-  const pageCountTag  = document.getElementById('page-count-tag');
-  const convertBtn    = document.getElementById('convert-btn');
+  const photoCountTag = document.getElementById('photo-count-tag');
+  const arrangeBtn    = document.getElementById('arrange-btn');
   const clearBtn      = document.getElementById('clear-btn');
-  const outputArea    = document.getElementById('output-area');
   const outputPH      = document.getElementById('output-placeholder');
+  const collageWrap   = document.getElementById('collage-wrap');
+  const collageCanvas = document.getElementById('collage-canvas');
   const statusBar     = document.getElementById('status-bar');
   const statusText    = document.getElementById('status-text');
   const copyBtn       = document.getElementById('copy-btn');
   const actionRow     = document.getElementById('action-row');
-  const whatsappBtn   = document.getElementById('whatsapp-btn');
-  const editHint      = document.getElementById('edit-hint');
-  const langSelect    = document.getElementById('lang-select');
-  const formatToolbar = document.getElementById('format-toolbar');
-  const cameraBtn   = document.getElementById('camera-btn');
-  const cameraInput = document.getElementById('camera-input');
+  const shareBtn      = document.getElementById('share-btn');
+  const gridBadge     = document.getElementById('grid-badge');
+  const sizeSelect    = document.getElementById('size-select');
+  const cameraBtn     = document.getElementById('camera-btn');
+  const cameraInput   = document.getElementById('camera-input');
+  const downloadDropdown = document.getElementById('download-dropdown');
+  const downloadMenu  = document.getElementById('download-menu');
 
-  let pages = [], isSample = false; // { dataUrl }
+  let pages = []; // { dataUrl }
 
-  const RTL_LANGS = new Set(['ara','heb','per','urd']);
-  const SYSTEM_FONT_LANGS = new Set(['ara','chs','cht','jpn','kor']);
-
-  function applyOutputDir(lang) {
-    const isRTL = RTL_LANGS.has(lang);
-    const needsSystemFont = SYSTEM_FONT_LANGS.has(lang);
-    outputArea.dir = isRTL ? 'rtl' : 'ltr';
-    outputArea.style.fontFamily = needsSystemFont ? 'system-ui,-apple-system,"Segoe UI",sans-serif' : "'Playfair Display',serif";
-  }
-
-  langSelect.addEventListener('change', () => applyOutputDir(langSelect.value));
+  let canShareFiles = false;
+  try {
+    const testFile = new File([''], 'test.png', { type: 'image/png' });
+    canShareFiles = !!(navigator.canShare && navigator.canShare({ files: [testFile] }));
+  } catch (e) {}
 
   dropZone.addEventListener('click', () => fileInput.click());
   dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
@@ -799,7 +675,6 @@
   cameraInput.addEventListener('change', () => { addFiles(cameraInput.files); cameraInput.value = ''; });
 
   function addFiles(fileList) {
-    isSample = false;
     const files = Array.from(fileList).filter(f => f.type.startsWith('image/'));
     if (!files.length) return;
     let remaining = files.length;
@@ -818,20 +693,20 @@
     if (pages.length === 0) {
       dropZone.style.display = 'block';
       thumbGrid.style.display = 'none';
-      pageCountTag.style.display = 'none';
-      convertBtn.disabled = true;
+      photoCountTag.style.display = 'none';
+      arrangeBtn.disabled = true;
       clearBtn.style.display = 'none';
       return;
     }
     dropZone.style.display = 'none';
     thumbGrid.style.display = 'grid';
-    pageCountTag.style.display = 'inline-block';
-    pageCountTag.textContent = pages.length + (pages.length === 1 ? ' page' : ' pages');
+    photoCountTag.style.display = 'inline-block';
+    photoCountTag.textContent = pages.length + (pages.length === 1 ? ' photo' : ' photos');
     thumbGrid.innerHTML = '';
     pages.forEach((p, i) => {
       const item = document.createElement('div');
       item.className = 'thumb-item';
-      item.innerHTML = `<img src="${p.dataUrl}" alt="Page ${i + 1}"><span class="thumb-num">${i + 1}</span><button class="thumb-remove" data-i="${i}" aria-label="Remove page ${i + 1}">×</button>`;
+      item.innerHTML = `<img src="${p.dataUrl}" alt="Photo ${i + 1}"><span class="thumb-num">${i + 1}</span><button class="thumb-remove" data-i="${i}" aria-label="Remove photo ${i + 1}">×</button>`;
       thumbGrid.appendChild(item);
     });
     const addTile = document.createElement('div');
@@ -848,129 +723,205 @@
         resetOutput();
       });
     });
-    convertBtn.disabled = false;
+    arrangeBtn.disabled = false;
     clearBtn.style.display = 'flex';
   }
 
   clearBtn.addEventListener('click', () => {
-    pages = []; isSample = false;
+    pages = [];
     fileInput.value = '';
     renderThumbs();
     resetOutput();
   });
 
   function resetOutput() {
-    outputArea.innerHTML = ''; outputArea.style.display = 'none';
-    formatToolbar.style.display = 'none';
+    collageWrap.style.display = 'none';
     outputPH.style.display = 'flex'; statusBar.style.display = 'none';
-    actionRow.style.display = 'none'; whatsappBtn.style.display = 'none';
-    editHint.classList.remove('visible');
+    actionRow.style.display = 'none'; shareBtn.style.display = 'none';
+    gridBadge.style.display = 'none';
   }
 
-  convertBtn.addEventListener('click', async () => {
-    if (!pages.length && !isSample) return;
-    convertBtn.disabled = true;
+  function computeGrid(n, w, h) {
+    let best = null;
+    for (let cols = 1; cols <= n; cols++) {
+      const rows = Math.ceil(n / cols);
+      const cellW = w / cols, cellH = h / rows;
+      const score = Math.min(cellW, cellH);
+      if (!best || score > best.score) best = { cols, rows, score };
+    }
+    return best;
+  }
+
+  function loadImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+
+  function getPageDims(size) {
+    const w = 1000;
+    const h = size === 'letter' ? Math.round(w * 11 / 8.5) : Math.round(w * 297 / 210);
+    return { w, h };
+  }
+
+  async function renderCollage() {
+    const { w: pageW, h: pageH } = getPageDims(sizeSelect.value);
+    collageCanvas.width = pageW; collageCanvas.height = pageH;
+    const ctx = collageCanvas.getContext('2d');
+    ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, pageW, pageH);
+
+    const margin = Math.round(pageW * 0.025);
+    const gap = Math.round(pageW * 0.018);
+    const innerW = pageW - margin * 2;
+    const innerH = pageH - margin * 2;
+
+    const imgs = await Promise.all(pages.map(p => loadImage(p.dataUrl)));
+    const { cols, rows } = computeGrid(imgs.length, innerW, innerH);
+    const cellW = (innerW - gap * (cols - 1)) / cols;
+    const cellH = (innerH - gap * (rows - 1)) / rows;
+
+    imgs.forEach((img, i) => {
+      const col = i % cols, row = Math.floor(i / cols);
+      const cellX = margin + col * (cellW + gap);
+      const cellY = margin + row * (cellH + gap);
+
+      ctx.save();
+      ctx.shadowColor = 'rgba(28,20,16,0.18)'; ctx.shadowBlur = 8; ctx.shadowOffsetY = 2;
+      ctx.fillStyle = '#fff';
+      ctx.fillRect(cellX, cellY, cellW, cellH);
+      ctx.restore();
+      ctx.strokeStyle = '#e8e0d0'; ctx.lineWidth = 1;
+      ctx.strokeRect(cellX + 0.5, cellY + 0.5, cellW - 1, cellH - 1);
+
+      const pad = pageW * 0.006;
+      const availW = cellW - pad * 2, availH = cellH - pad * 2;
+      const scale = Math.min(availW / img.width, availH / img.height);
+      const drawW = img.width * scale, drawH = img.height * scale;
+      const dx = cellX + pad + (availW - drawW) / 2;
+      const dy = cellY + pad + (availH - drawH) / 2;
+      ctx.drawImage(img, dx, dy, drawW, drawH);
+    });
+
+    return { cols, rows };
+  }
+
+  arrangeBtn.addEventListener('click', async () => {
+    if (!pages.length) return;
+    arrangeBtn.disabled = true;
     statusBar.style.display = 'flex';
-    actionRow.style.display = 'none'; formatToolbar.style.display = 'none';
-    outputArea.style.display = 'none';
-    outputPH.style.display = 'flex';
-    editHint.classList.remove('visible');
-    if (isSample) {
-      statusText.textContent = 'Loading demo...';
-      await new Promise(r => setTimeout(r, 700));
-      showResult(SAMPLE_OUTPUT, true);
-      convertBtn.disabled = false;
-      return;
+    statusText.textContent = 'Arranging your photos...';
+    actionRow.style.display = 'none'; shareBtn.style.display = 'none';
+    collageWrap.style.display = 'none'; outputPH.style.display = 'flex';
+    gridBadge.style.display = 'none';
+
+    try {
+      const { cols, rows } = await renderCollage();
+      outputPH.style.display = 'none'; statusBar.style.display = 'none';
+      collageWrap.style.display = 'block';
+      collageWrap.classList.add('fade-in');
+      setTimeout(() => collageWrap.classList.remove('fade-in'), 400);
+      gridBadge.textContent = pages.length + (pages.length === 1 ? ' photo' : ' photos') + ' · ' + cols + '×' + rows + ' grid';
+      gridBadge.style.display = 'inline-block';
+      actionRow.style.display = 'flex';
+      if (canShareFiles) shareBtn.style.display = 'flex';
+    } catch (err) {
+      statusBar.style.display = 'none';
+      outputPH.style.display = 'flex';
+      outputPH.querySelector('p').textContent = 'Could not build the page. Try again with fewer or smaller photos.';
     }
-    const selectedLang = langSelect.value;
-    applyOutputDir(selectedLang);
-
-    const results = [];
-    let hadSuccess = false;
-
-    for (let i = 0; i < pages.length; i++) {
-      statusText.textContent = `Processing page ${i + 1} of ${pages.length}...`;
-      try {
-        const formData = new FormData();
-        formData.append('apikey', 'helloworld');
-        formData.append('base64Image', pages[i].dataUrl);
-        formData.append('language', selectedLang);
-        formData.append('isOverlayRequired', 'false');
-        formData.append('detectOrientation', 'true');
-        formData.append('scale', 'true');
-        formData.append('OCREngine', '2');
-
-        const response = await fetch('https://api.ocr.space/parse/image', { method: 'POST', body: formData });
-        const data = await response.json();
-
-        let pageText;
-        if (data.IsErroredOnProcessing) {
-          pageText = '[Could not read this page — try a clearer photo]';
-        } else if (data.ParsedResults && data.ParsedResults.length > 0) {
-          const rawText = (data.ParsedResults[0].ParsedText || '').trim();
-          pageText = rawText || '[No text detected on this page]';
-          if (rawText) hadSuccess = true;
-        } else {
-          pageText = '[No text found on this page]';
-        }
-        results.push(pages.length > 1 ? `— Page ${i + 1} —\n${pageText}` : pageText);
-      } catch (err) {
-        results.push(`— Page ${i + 1} —\n[Connection error — check your internet connection]`);
-      }
-      if (i < pages.length - 1) await new Promise(r => setTimeout(r, 350));
-    }
-
-    showResult(results.join('\n\n'), hadSuccess);
-    convertBtn.disabled = false;
+    arrangeBtn.disabled = false;
   });
 
-  function showResult(text, success) {
-    outputPH.style.display = 'none'; statusBar.style.display = 'none';
-    outputArea.innerText = text; outputArea.style.display = 'block';
-    formatToolbar.style.display = 'flex';
-    outputArea.classList.add('fade-in');
-    setTimeout(() => outputArea.classList.remove('fade-in'), 400);
-    if (success) { actionRow.style.display = 'flex'; whatsappBtn.style.display = 'flex'; editHint.classList.add('visible'); }
-  }
-
   copyBtn.addEventListener('click', () => {
-    navigator.clipboard.writeText(outputArea.innerText).then(() => {
-      copyBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
-      setTimeout(() => { copyBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Copy Text`; }, 2000);
+    collageCanvas.toBlob(async blob => {
+      try {
+        await navigator.clipboard.write([new ClipboardItem({ 'image/png': blob })]);
+        const orig = copyBtn.innerHTML;
+        copyBtn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Copied!`;
+        setTimeout(() => { copyBtn.innerHTML = orig; }, 2000);
+      } catch (e) {
+        alert('Copying images is not supported in this browser — use Download instead.');
+      }
     });
   });
 
-  whatsappBtn.addEventListener('click', () => {
-    window.open('https://wa.me/?text=' + encodeURIComponent(outputArea.innerText), '_blank');
+  downloadDropdown.querySelector('.btn-ghost').addEventListener('click', e => {
+    e.stopPropagation();
+    const isOpen = downloadMenu.classList.toggle('open');
+    downloadDropdown.classList.toggle('open', isOpen);
+  });
+  document.addEventListener('click', () => {
+    downloadMenu.classList.remove('open');
+    downloadDropdown.classList.remove('open');
+  });
+  downloadMenu.querySelectorAll('.download-option').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      downloadMenu.classList.remove('open');
+      downloadDropdown.classList.remove('open');
+      if (btn.dataset.format === 'png') downloadPng();
+      else downloadPdf();
+    });
   });
 
-  initDownloadDropdown('download-dropdown', 'download-menu', () => outputArea.innerText, 'notes');
-  initFormattingToolbar('format-toolbar', 'output-area');
+  function downloadPng() {
+    const a = document.createElement('a');
+    a.href = collageCanvas.toDataURL('image/png');
+    a.download = 'photo-page.png';
+    a.click();
+  }
 
-  const SAMPLE_LINES = [
-    {t:'Project Notes — Q3 Planning', x:68, y:38, s:20, b:true},
-    {t:'Increase revenue target by 20%', x:68, y:82, s:16},
-    {t:'Hire 2 engineers + 1 designer', x:68, y:112, s:16},
-    {t:'Launch v2.0 by end of August', x:68, y:142, s:16},
-    {t:'Client presentation on Friday', x:68, y:172, s:16},
-    {t:'Confirm Q3 budget with finance', x:68, y:202, s:16},
-  ];
-  const SAMPLE_OUTPUT = '— Page 1 —\nProject Notes — Q3 Planning\n\nIncrease revenue target by 20%\nHire 2 engineers + 1 designer\nLaunch v2.0 by end of August\nClient presentation on Friday\nConfirm Q3 budget with finance';
+  function downloadPdf() {
+    if (!window.jspdf) { alert('PDF export could not load. Check your connection and try again.'); return; }
+    const { jsPDF } = window.jspdf;
+    const size = sizeSelect.value;
+    const format = size === 'letter' ? 'letter' : 'a4';
+    const dims = size === 'letter' ? [215.9, 279.4] : [210, 297];
+    const doc = new jsPDF({ unit: 'mm', format });
+    const imgData = collageCanvas.toDataURL('image/jpeg', 0.92);
+    doc.addImage(imgData, 'JPEG', 0, 0, dims[0], dims[1]);
+    doc.save('photo-page.pdf');
+  }
+
+  shareBtn.addEventListener('click', () => {
+    collageCanvas.toBlob(async blob => {
+      const file = new File([blob], 'photo-page.png', { type: 'image/png' });
+      try {
+        await navigator.share({ files: [file], title: 'Photo Page', text: 'Made with Oneliest Tools' });
+      } catch (e) {}
+    });
+  });
+
+  const SAMPLE_COLORS = ['#f4a896', '#a8d5c4', '#f7d488', '#a8c5e8', '#e8a8d4', '#c4b8f0'];
+  const SAMPLE_EMOJIS = ['🏖️', '🌄', '🍕', '🐶', '🎂', '🌸'];
+
+  function buildSamplePhotoDataUrl(color, emoji, label) {
+    const c = document.createElement('canvas');
+    c.width = 400; c.height = 300;
+    const ctx = c.getContext('2d');
+    ctx.fillStyle = color;
+    ctx.fillRect(0, 0, 400, 300);
+    ctx.font = '90px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(emoji, 200, 125);
+    ctx.font = 'bold 26px Inter, sans-serif';
+    ctx.fillStyle = 'rgba(0,0,0,0.5)';
+    ctx.fillText(label, 200, 225);
+    ctx.font = 'bold 11px Inter, sans-serif';
+    ctx.fillStyle = 'rgba(0,0,0,0.32)';
+    ctx.textAlign = 'right';
+    ctx.fillText('SAMPLE', 386, 284);
+    return c.toDataURL('image/png');
+  }
+
   function loadSample() {
-    isSample = true; pages = [];
-    const dataUrl = buildSampleDataUrl(SAMPLE_LINES);
-    const wrap = document.createElement('div');
-    wrap.style.cssText = 'position:relative;border-radius:6px;overflow:hidden;border:1.5px solid var(--amber);';
-    const img = document.createElement('img');
-    img.src = dataUrl; img.style.cssText = 'width:100%;height:80px;object-fit:cover;display:block;';
-    const lbl = document.createElement('div');
-    lbl.style.cssText = 'position:absolute;top:4px;left:4px;background:rgba(0,0,0,0.55);color:#fff;font-size:9px;font-weight:700;letter-spacing:0.05em;padding:2px 5px;border-radius:3px;';
-    lbl.textContent = 'DEMO';
-    wrap.appendChild(img); wrap.appendChild(lbl);
-    thumbGrid.innerHTML = ''; thumbGrid.appendChild(wrap);
-    dropZone.style.display = 'none'; thumbGrid.style.display = 'grid';
-    pageCountTag.style.display = 'inline-block'; pageCountTag.textContent = '1 page';
-    convertBtn.disabled = false; clearBtn.style.display = 'flex';
+    pages = SAMPLE_COLORS.map((color, i) => ({
+      dataUrl: buildSamplePhotoDataUrl(color, SAMPLE_EMOJIS[i], 'Photo ' + (i + 1))
+    }));
+    renderThumbs();
     resetOutput();
   }
 

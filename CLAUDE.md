@@ -36,6 +36,7 @@ GitHub Pages auto-deploys on every push to `main`. No separate deploy command.
 | `summary.html` | Any photo → extractive key-point summary |
 | `flashcard.html` | Any photo → interactive Q&A flip cards |
 | `table.html` | Any photo → HTML table / CSV download |
+| `collage.html` | Multiple photos → auto-arranged grid on one printable page |
 
 Each converter page is **self-contained**: inline CSS in `<style>`, inline JS at bottom. Shared utilities are loaded via `<script src>`.
 
@@ -63,6 +64,7 @@ The camera button uses `classList.add('cam-hidden')` / `classList.remove('cam-hi
 - **`summary.html`**: Has a "Summary Length" selector (3/5/7/10 sentences) in left panel. Uses TF-IDF extractive scoring. Sentence badge shows count after conversion.
 - **`flashcard.html`**: No formatting toolbar. Detects Q:/A: labels, "?" line endings, or consecutive line pairs. Custom flip-card UI with CSS 3D transform. Keyboard: ←/→ navigate, Space flips.
 - **`table.html`**: No formatting toolbar. Auto-detects pipe/comma/tab/multi-space columns. Renders HTML table; Copy CSV and Download CSV actions. Separator can be forced via selector.
+- **`collage.html`**: The one page that does **not** call the OCR API — everything is client-side `<canvas>` work, so it's worth understanding separately. No language selector (not needed); a Paper Size selector (A4/US Letter) reuses the `.lang-select` CSS classes instead. `computeGrid(n, w, h)` picks the grid by maximizing `Math.min(cellW, cellH)`, not raw area — plain area comparison ties across factor pairs of `n` (e.g. 1×6 and 2×3 score identically) and produces degenerate single-row/column layouts. Sample mode generates 6 colorful placeholder "photos" on canvas (not via `sample-utils.js`, which is text-notebook-specific) and feeds them through the exact same `pages` array and render path as real uploads — no `isSample` branch is needed since there's no API call to skip. Download offers PDF (via jsPDF `addImage`) and PNG (`canvas.toDataURL`); the WhatsApp-style share button uses the Web Share API (`navigator.canShare({files})`) and is feature-detected, only shown when the browser supports sharing image files — mostly mobile.
 
 ## CSS format consistency
 Some files use multi-line CSS blocks, others use single-line rules. Match the existing format of the file being edited.

@@ -706,7 +706,7 @@
         return;
       }
       const reader = new FileReader();
-      reader.onload = e => { pages.push({ dataUrl: e.target.result }); settle(); };
+      reader.onload = e => { pages.push({ dataUrl: e.target.result, name: file.name }); settle(); };
       reader.onerror = () => { failedFiles.push({ name: file.name, reason: 'read' }); settle(); };
       reader.readAsDataURL(file);
     });
@@ -823,6 +823,27 @@
 
   async function renderCollage() {
     const { w: pageW, h: pageH } = getPageDims(sizeSelect.value);
+
+    const settled = await Promise.all(pages.map(p =>
+      loadImage(p.dataUrl).then(img => ({ ok: true, img, page: p })).catch(() => ({ ok: false, page: p }))
+    ));
+    const failed = settled.filter(r => !r.ok);
+    const imgs = settled.filter(r => r.ok).map(r => r.img);
+
+    if (failed.length) {
+      failed.forEach(r => {
+        const idx = pages.indexOf(r.page);
+        if (idx !== -1) pages.splice(idx, 1);
+        failedFiles.push({ name: r.page.name || 'Untitled photo', reason: 'decode' });
+      });
+    }
+
+    if (!imgs.length) {
+      const err = new Error('no valid images');
+      err.allFailed = true;
+      throw err;
+    }
+
     collageCanvas.width = pageW; collageCanvas.height = pageH;
     const ctx = collageCanvas.getContext('2d');
     ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, pageW, pageH);
@@ -832,7 +853,6 @@
     const innerW = pageW - margin * 2;
     const innerH = pageH - margin * 2;
 
-    const imgs = await Promise.all(pages.map(p => loadImage(p.dataUrl)));
     const { cols, rows } = computeGrid(imgs.length, innerW, innerH);
     const cellW = (innerW - gap * (cols - 1)) / cols;
     const cellH = (innerH - gap * (rows - 1)) / rows;
@@ -859,7 +879,7 @@
       ctx.drawImage(img, dx, dy, drawW, drawH);
     });
 
-    return { cols, rows };
+    return { cols, rows, failedCount: failed.length };
   }
 
   arrangeBtn.addEventListener('click', async () => {
@@ -872,7 +892,7 @@
     gridBadge.style.display = 'none';
 
     try {
-      const { cols, rows } = await renderCollage();
+      const { cols, rows, failedCount } = await renderCollage();
       outputPH.style.display = 'none'; statusBar.style.display = 'none';
       collageWrap.style.display = 'block';
       collageWrap.classList.add('fade-in');
@@ -881,12 +901,16 @@
       gridBadge.style.display = 'inline-block';
       actionRow.style.display = 'flex';
       if (canShareFiles) shareBtn.style.display = 'flex';
+      if (failedCount) renderThumbs();
     } catch (err) {
       statusBar.style.display = 'none';
       outputPH.style.display = 'flex';
-      outputPH.querySelector('p').textContent = 'Could not build the page. Try again with fewer or smaller photos.';
+      outputPH.querySelector('p').textContent = err.allFailed
+        ? "None of your photos could be used. They're marked in red below — remove them and try uploading different photos."
+        : 'Could not build the page. Please try again.';
+      renderThumbs();
     }
-    arrangeBtn.disabled = false;
+    arrangeBtn.disabled = pages.length === 0;
   });
 
   copyBtn.addEventListener('click', () => {
@@ -973,7 +997,8 @@
 
   function loadSample() {
     pages = SAMPLE_COLORS.map((color, i) => ({
-      dataUrl: buildSamplePhotoDataUrl(color, SAMPLE_EMOJIS[i], 'Photo ' + (i + 1))
+      dataUrl: buildSamplePhotoDataUrl(color, SAMPLE_EMOJIS[i], 'Photo ' + (i + 1)),
+      name: 'Photo ' + (i + 1) + '.png'
     }));
     failedFiles = [];
     renderThumbs();

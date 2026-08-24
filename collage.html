@@ -678,13 +678,19 @@
     const files = Array.from(fileList).filter(f => f.type.startsWith('image/'));
     if (!files.length) return;
     let remaining = files.length;
+    let failed = 0;
+    const settle = () => {
+      remaining--;
+      if (remaining === 0) {
+        renderThumbs();
+        resetOutput();
+        if (failed) alert(failed + (failed === 1 ? ' photo' : ' photos') + " couldn't be loaded — try re-selecting " + (failed === 1 ? 'it' : 'them') + '.');
+      }
+    };
     files.forEach(file => {
       const reader = new FileReader();
-      reader.onload = e => {
-        pages.push({ dataUrl: e.target.result });
-        remaining--;
-        if (remaining === 0) { renderThumbs(); resetOutput(); }
-      };
+      reader.onload = e => { pages.push({ dataUrl: e.target.result }); settle(); };
+      reader.onerror = () => { failed++; settle(); };
       reader.readAsDataURL(file);
     });
   }

@@ -266,6 +266,17 @@
   .thumb-add:hover { border-color: var(--amber-light); color: var(--amber); background: rgba(212,129,58,0.03); }
   .thumb-add span:first-child { font-size: 20px; font-weight: 400; }
 
+  .thumb-item.failed { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 6px; text-align: center; border-color: rgba(193,92,82,0.4); background: rgba(193,92,82,0.07); }
+  .thumb-fail-icon { font-size: 18px; }
+  .thumb-fail-label { font-size: 0.56rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: #c15c52; }
+  .thumb-fail-name { font-size: 0.56rem; color: #a8433f; line-height: 1.2; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; padding: 0 4px; }
+  .thumb-item.failed .thumb-remove { background: rgba(193,92,82,0.75); }
+  .thumb-item.failed .thumb-remove:hover { background: #c15c52; }
+
+  .upload-warning { display: none; align-items: flex-start; gap: 8px; margin-top: 10px; padding: 10px 12px; background: rgba(193,92,82,0.08); border: 1px solid rgba(193,92,82,0.28); border-radius: var(--radius-sm); font-size: 0.72rem; line-height: 1.55; color: #a8433f; }
+  .upload-warning.visible { display: flex; }
+  .upload-warning strong { color: #8a332f; }
+
   .lang-select-wrap { position: relative; margin-bottom: 16px; }
   .lang-select-wrap label { display: block; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
   .lang-select {
@@ -511,10 +522,14 @@
       <div id="drop-zone">
         <div class="upload-icon-wrap">📚</div>
         <p class="drop-title">Drop multiple photos here</p>
-        <small>or click to browse &nbsp;·&nbsp; JPG, PNG, WEBP</small>
+        <small>or click to browse &nbsp;·&nbsp; JPG, PNG, WEBP &nbsp;·&nbsp; under 20MB each</small>
         <input type="file" id="file-input" accept="image/*" multiple>
       </div>
       <div id="thumb-grid" class="thumb-grid" style="display:none;"></div>
+      <div id="upload-warning" class="upload-warning">
+        <span>⚠️</span>
+        <span id="upload-warning-text"></span>
+      </div>
       <button class="btn-camera" id="camera-btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
         Take Photo
@@ -774,6 +789,8 @@
   const cameraInput = document.getElementById('camera-input');
 
   let pages = [], isSample = false; // { dataUrl }
+  let failedFiles = []; // { name, reason: 'size' | 'read' }
+  const MAX_FILE_SIZE = 20 * 1024 * 1024;
 
   const RTL_LANGS = new Set(['ara','heb','per','urd']);
   const SYSTEM_FONT_LANGS = new Set(['ara','chs','cht','jpn','kor']);
@@ -803,41 +820,64 @@
     const files = Array.from(fileList).filter(f => f.type.startsWith('image/'));
     if (!files.length) return;
     let remaining = files.length;
-    let failed = 0;
     const settle = () => {
       remaining--;
-      if (remaining === 0) {
-        renderThumbs();
-        resetOutput();
-        if (failed) alert(failed + (failed === 1 ? ' photo' : ' photos') + " couldn't be loaded — try re-selecting " + (failed === 1 ? 'it' : 'them') + '.');
-      }
+      if (remaining === 0) { renderThumbs(); resetOutput(); }
     };
     files.forEach(file => {
+      if (file.size > MAX_FILE_SIZE) {
+        failedFiles.push({ name: file.name, reason: 'size' });
+        settle();
+        return;
+      }
       const reader = new FileReader();
       reader.onload = e => { pages.push({ dataUrl: e.target.result }); settle(); };
-      reader.onerror = () => { failed++; settle(); };
+      reader.onerror = () => { failedFiles.push({ name: file.name, reason: 'read' }); settle(); };
       reader.readAsDataURL(file);
     });
   }
 
+  function updateWarningBanner() {
+    const banner = document.getElementById('upload-warning');
+    const text = document.getElementById('upload-warning-text');
+    if (!failedFiles.length) { banner.classList.remove('visible'); return; }
+    const n = failedFiles.length;
+    text.innerHTML = '<strong>' + n + (n === 1 ? ' photo' : ' photos') + " couldn't be loaded</strong> — remove " + (n === 1 ? 'it' : 'them') + ' below (marked in red), then try again. For best results, upload JPG, PNG, or WEBP files under 20MB each.';
+    banner.classList.add('visible');
+  }
+
   function renderThumbs() {
-    if (pages.length === 0) {
+    if (pages.length === 0 && failedFiles.length === 0) {
       dropZone.style.display = 'block';
       thumbGrid.style.display = 'none';
       pageCountTag.style.display = 'none';
       convertBtn.disabled = true;
       clearBtn.style.display = 'none';
+      updateWarningBanner();
       return;
     }
     dropZone.style.display = 'none';
     thumbGrid.style.display = 'grid';
-    pageCountTag.style.display = 'inline-block';
-    pageCountTag.textContent = pages.length + (pages.length === 1 ? ' page' : ' pages');
+    if (pages.length) {
+      pageCountTag.style.display = 'inline-block';
+      pageCountTag.textContent = pages.length + (pages.length === 1 ? ' page' : ' pages');
+    } else {
+      pageCountTag.style.display = 'none';
+    }
     thumbGrid.innerHTML = '';
     pages.forEach((p, i) => {
       const item = document.createElement('div');
       item.className = 'thumb-item';
-      item.innerHTML = `<img src="${p.dataUrl}" alt="Page ${i + 1}"><span class="thumb-num">${i + 1}</span><button class="thumb-remove" data-i="${i}" aria-label="Remove page ${i + 1}">×</button>`;
+      item.innerHTML = `<img src="${p.dataUrl}" alt="Page ${i + 1}"><span class="thumb-num">${i + 1}</span><button class="thumb-remove" data-type="page" data-i="${i}" aria-label="Remove page ${i + 1}">×</button>`;
+      thumbGrid.appendChild(item);
+    });
+    failedFiles.forEach((f, i) => {
+      const item = document.createElement('div');
+      item.className = 'thumb-item failed';
+      const label = f.reason === 'size' ? 'Too Large' : 'Failed to Load';
+      const hint = f.reason === 'size' ? 'This file is larger than 20MB — try a smaller photo' : "This photo couldn't be read — try re-selecting it or use a different file";
+      item.title = hint;
+      item.innerHTML = `<span class="thumb-fail-icon">⚠️</span><span class="thumb-fail-label">${label}</span><span class="thumb-fail-name">${f.name}</span><button class="thumb-remove" data-type="failed" data-i="${i}" aria-label="Remove ${f.name}">×</button>`;
       thumbGrid.appendChild(item);
     });
     const addTile = document.createElement('div');
@@ -849,17 +889,24 @@
     thumbGrid.querySelectorAll('.thumb-remove').forEach(btn => {
       btn.addEventListener('click', e => {
         e.stopPropagation();
-        pages.splice(parseInt(btn.dataset.i, 10), 1);
-        renderThumbs();
-        resetOutput();
+        const i = parseInt(btn.dataset.i, 10);
+        if (btn.dataset.type === 'failed') {
+          failedFiles.splice(i, 1);
+          renderThumbs();
+        } else {
+          pages.splice(i, 1);
+          renderThumbs();
+          resetOutput();
+        }
       });
     });
-    convertBtn.disabled = false;
+    convertBtn.disabled = pages.length === 0;
     clearBtn.style.display = 'flex';
+    updateWarningBanner();
   }
 
   clearBtn.addEventListener('click', () => {
-    pages = []; isSample = false;
+    pages = []; failedFiles = []; isSample = false;
     fileInput.value = '';
     renderThumbs();
     resetOutput();
@@ -963,7 +1010,7 @@
   ];
   const SAMPLE_OUTPUT = '— Page 1 —\nProject Notes — Q3 Planning\n\nIncrease revenue target by 20%\nHire 2 engineers + 1 designer\nLaunch v2.0 by end of August\nClient presentation on Friday\nConfirm Q3 budget with finance';
   function loadSample() {
-    isSample = true; pages = [];
+    isSample = true; pages = []; failedFiles = [];
     const dataUrl = buildSampleDataUrl(SAMPLE_LINES);
     const wrap = document.createElement('div');
     wrap.style.cssText = 'position:relative;border-radius:6px;overflow:hidden;border:1.5px solid var(--amber);';
@@ -977,6 +1024,7 @@
     dropZone.style.display = 'none'; thumbGrid.style.display = 'grid';
     pageCountTag.style.display = 'inline-block'; pageCountTag.textContent = '1 page';
     convertBtn.disabled = false; clearBtn.style.display = 'flex';
+    updateWarningBanner();
     resetOutput();
   }
 
